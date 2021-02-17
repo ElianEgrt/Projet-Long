@@ -2,7 +2,7 @@ const fs = require("fs");
 
 const homepage = films => `
 <!doctype html>
-<link href="./assets/styles/test.css" rel="stylesheet">
+<link href="./public/assets/styles/index.css" rel="stylesheet">
 <html>
   <head>
       <meta charset="utf-8">
@@ -20,7 +20,12 @@ const homepage = films => `
       </ul>
     </div>
 
-    <div id="grid_film">
+
+    <div class="categorie">
+      Trending
+    </div>
+
+    <div class="grid_film">
 
       ${films
         .map(
@@ -38,9 +43,8 @@ const homepage = films => `
           </div>
           `
         )
-  .join("")}
-        
-
+        .join("")}
+              
     </div>
   </body>
 </html>
