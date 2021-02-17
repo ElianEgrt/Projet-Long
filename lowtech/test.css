@@ -5,6 +5,7 @@
 	text-align: center;
 	font-size: xx-large;
 	font-family: Impact;
+	color: black;
 }
 
 #nav {
@@ -32,7 +33,7 @@
 
 
 .carac_film {
-	height: 100%;
+	height: auto;
 	width:100%;
 	margin: 0;
 	padding :1em;
