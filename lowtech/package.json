@@ -1,0 +1,24 @@
+{
+  "name": "lowtech",
+  "version": "1.0.0",
+  "description": "Site eco-responsable",
+  "main": "server.js",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ElianEgrt/Projet-Long.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElianEgrt/Projet-Long/issues"
+  },
+  "homepage": "https://github.com/ElianEgrt/Projet-Long#readme"
+}
