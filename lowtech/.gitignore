@@ -9,7 +9,8 @@
 /coverage
 
 # production
-/build
+/public/index.html
+/public/tutorial.html
 
 # misc
 .DS_Store
