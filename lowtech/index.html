@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="card">
-      <h1>
+      <h1 id="title">
         <script type=text/javascript>
           const TOKEN = "db901b15ecb34557e221c042836a2359";
           const getFilmsFromApi = async (id) => {
@@ -22,9 +22,9 @@
                 console.error(error);
             }
           };
-          const film = getFilmsFromApi(343611).then(result => document.write(result["title"]))
-          // console.log(film)
-          // document.write(film);
+          const film = getFilmsFromApi(343611).then(result => {
+            document.getElementById('title').textContent = result['title']
+          });
         </script>
       </h1>
       <iframe width="560" height="315"
