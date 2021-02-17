@@ -1,14 +1,28 @@
 import React from "react";
 
 import styled from "styled-components";
+import { Film } from "../api";
+import FilmCard from "./FilmCard";
 
-const TextFilm = styled.h3`
-  color: ${(props) => props.theme.colors.accentColor};
+const FilmContainer = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
 `;
 
-class ListeFilm extends React.Component {
+interface Props {
+  films: Film[];
+}
+
+class ListeFilm extends React.Component<Props, {}> {
   render() {
-    return <TextFilm>film.titre</TextFilm>;
+    return (
+      <FilmContainer>
+        {this.props.films.map((film) => (
+          <FilmCard key={film.id} value={film} />
+        ))}
+      </FilmContainer>
+    );
   }
 }
 

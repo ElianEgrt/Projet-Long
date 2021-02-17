@@ -11,9 +11,11 @@ const metrics = {
   smallSize: '0.7em',
   mediumSize: '1em',
   largeSize: '2em',
-  extraLargeSize: '3em'
+  extraLargeSize: '3em',
+  cardSize: '20em'
 }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default { colors, metrics };
 
 type color = typeof colors;
