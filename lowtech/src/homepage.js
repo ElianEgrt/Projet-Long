@@ -19,7 +19,13 @@ const homepage = films => `
         <li><a href="/tutorial.html">Tutoriel</a></li>
       </ul>
     </div>
-    <div id="grid_film">
+
+
+    <div class="categorie">
+      Trending
+    </div>
+
+    <div class="grid_film">
 
       ${films
         .map(
@@ -37,8 +43,8 @@ const homepage = films => `
           </div>
           `
         )
-  .join("")}
-
+        .join("")}
+              
     </div>
   </body>
 </html>
