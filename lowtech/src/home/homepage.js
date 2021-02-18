@@ -1,5 +1,3 @@
-const fs = require("fs");
-
 const homepage = films => `
 <!doctype html>
 <link href="./assets/styles/index.css" rel="stylesheet">
@@ -53,11 +51,5 @@ const homepage = films => `
 </html>
 `;
   
-const addHomePage = films => {
-  fs.writeFile(`public/index.html`, homepage(films), e => {
-    if (e) throw e;
-    console.log(`index.html was created successfully`);
-  });
-};
 
-module.exports = addHomePage;
+module.exports = homepage;
