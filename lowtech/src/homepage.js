@@ -21,31 +21,34 @@ const homepage = films => `
     </div>
 
 
-    <div class="categorie">
-      Trending
-    </div>
+    ${films
+      .map(
+      category => ` 
+      <div class="categorie">
+        ${category[0]}
+      </div>
 
-    <div class="grid_film">
-
-      ${films
-        .map(
-          film => `
-          <div class="film">
-            <img class="img_film"
-            src="https://image.tmdb.org/t/p/w200${film.poster_path}"
-            />
-            <ul class="carac_film">
-              <li> ${film.title} </li>
-              <li> Réalisateur </li>
-              <li> Genre </li>
-              <li> Synopsis </li>
-            </ul>
-          </div>
-          `
-        )
-        .join("")}
-              
-    </div>
+      <div class="grid_film">
+        ${category[1]
+          .map(
+            film => `
+            <div class="film">
+              <img class="img_film"
+              src="https://image.tmdb.org/t/p/w200${film.poster_path}"
+              />
+              <ul class="carac_film">
+                <li> ${film.title} </li>
+                <li> Réalisateur </li>
+                <li> Genre </li>
+                <li> Synopsis </li>
+              </ul>
+            </div>
+          `)
+          .join("")}
+      </div>
+      `)
+      .join("")}        
+    
   </body>
 </html>
 `;

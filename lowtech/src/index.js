@@ -6,43 +6,36 @@ var fs = require("fs");
 
 // Fetch films
 // const filmsResponse = require("./seed")
-const discoverFilms = async () => {
-  let url = `https://api.themoviedb.org/3/discover/movie?api_key=${TOKEN}&language=fr&sort_by=popularity.desc&page=1`
-  
-  try {
-      let response = await fetch(url)           // wait for api fetch
-      let responseJson = await response.json()  // wait for JSON parsing
-      addHomePage(responseJson.results.slice(0,3))         // callback function
-  } catch (error) {
-      console.error(error);
+const discoverFilms = async (categories) => {
+  let films = []
+  for (index in categories) {
+    
+    let real_cat
+    if (categories[index] === "popularity") {
+      real_cat = "Popular"
+    }
+
+    else if (categories[index] === "release_date") {
+      real_cat = "Latest"
+    }
+
+    else {
+
+    }
+    
+    let url = `https://api.themoviedb.org/3/discover/movie?api_key=${TOKEN}&language=fr&sort_by=${categories[index]}.desc&page=1`
+    
+    try {
+        let response = await fetch(url)           // wait for api fetch
+        let responseJson = await response.json()  // wait for JSON parsing
+        films.push([real_cat, responseJson.results.slice(0,3)])
+    } catch (error) {
+        console.error(error);
+    }
   }
+  
+  addHomePage(films)
+
 };
 
-discoverFilms()
-
-http.createServer(function (request, response) {
-    
-  if (request.url === "/") {
-    sendFileContent(response, "./public/index.html", 'text/html');
-  }
-
-  if(/^\/[a-zA-Z0-9\/]*.css$/.test(request.url.toString())){
-    sendFileContent(response, request.url.toString().substring(1), "text/css");
-  }
-
-}).listen(3000);
-
-function sendFileContent(response, fileName, contentType){
-fs.readFile(fileName, function(err, data){
-  if(err){
-    response.writeHead(404);
-    response.write("Not Found!");
-  }
-  else {
-    response.writeHead(200, {'Content-Type': contentType});
-    response.write(data);
-  }
-  
-  response.end();
-});
-}
+discoverFilms(["popularity", "release_date"])
