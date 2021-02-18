@@ -1,7 +1,8 @@
 const path = require('path')
 const fs = require('fs'); 
-const { getCurrentFilenames } = require('./utils')
+var CleanCSS = require('clean-css');
 
+const { getCurrentFilenames } = require('./utils')
 const { buildHomepage } = require('./home')
 const { buildTutorial } = require('./tutorial')
 
@@ -37,17 +38,48 @@ publicTree.forEach(dir => {
   console.log(`${dir} was created successfully`); 
 })
 
-// Copy css files
-console.log(`\nCopying css files...`)
+// Scouting for css files
 var files = getCurrentFilenames(stylesheetPath)
-files.forEach(file => {
-  try {
-    fs.copyFileSync(path.join(stylesheetPath, file), path.join(staticStylesheetPath, file)); 
-  } catch (err) {
-    console.log("Error Found:", err);
+
+// Minifying and copying css files
+console.log(`\nMinifying and copying css files...`)
+var output = new CleanCSS({ batch: true }).minify(files.map(file => path.join(stylesheetPath, file)));
+
+
+for (const key in output) {
+
+  let publicCssFilePath = path.join(staticStylesheetPath, path.basename(key))
+  let error = output[key].error;
+  let warning = output[key].warning;
+  let styles = output[key].styles;
+
+  if (error) {
+    console.error(`Error minifying ${key} : ${error}`)
+    console.log('Copying file as-is...')
+    try { fs.copyFileSync(key, publicCssFilePath); } catch (err) {
+      console.log("Error Found:", err);
+    }
+    console.log(file + " was created successfully")
   }
-  console.log(file + " was created successfully")
-})
+  
+  else if (warning) {
+    console.error(`Warning minifying ${key} : ${warning}`)
+    console.log('Copying file as-is...')
+    try { fs.copyFileSync(key, publicCssFilePath); } catch (err) {
+      console.log("Error Found:", err);
+    }
+  }
+  
+  else {
+    console.log(`Writing ${path.basename(publicCssFilePath)}`)
+    fs.writeFileSync(publicCssFilePath, styles, e => {
+      if (e) throw e;
+      console.log(`${publicCssFilePath} was created successfully`);
+    });
+  }
+
+}
+
 
 // Build and copy html files
 console.log(`\nBuilding & copying html files... (async)`)
