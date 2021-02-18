@@ -18,6 +18,15 @@ const homepage = films => `
       </ul>
     </div>
 
+    <div class="center-div">
+      <div id="barreRecherche">
+        <form action="/film.html" id="search" method="get"/>
+          <input id="film" type="text"/>
+          <input id="buttonSearch" type="submit" value="Rechercher"/>
+        </form>
+      </div>
+    </div>
+
 
     ${films
       .map(
