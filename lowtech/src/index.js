@@ -1,10 +1,12 @@
 const path = require('path')
 const fs = require('fs'); 
+
 var CleanCSS = require('clean-css');
+var minify = require('html-minifier').minify;
 
 const { getCurrentFilenames } = require('./utils')
-const { buildHomepage } = require('./home')
-const { buildTutorial } = require('./tutorial')
+const buildHomepage = require('./home')
+const buildTutorial = require('./tutorial');
 
 // Local source files
 var stylesheetPath = path.join(__dirname, '/stylesheets');
@@ -82,7 +84,31 @@ for (const key in output) {
 
 
 // Build and copy html files
-console.log(`\nBuilding & copying html files... (async)`)
-buildHomepage(path.join(staticPath, homeFile), ["popularity", "release_date"])
-buildTutorial(path.join(staticPath, tutorialFile))
+console.log(`\nBuilding, minifying and copying html files... (async)`)
+
+// https://github.com/kangax/html-minifier#options-quick-reference
+const minifyOptions = {
+  collapseInlineTagWhitespace: true,
+  collapseWhitespace: true,
+  html5: true
+}
+
+var homeFilePath = path.join(staticPath, homeFile) 
+var tutorialFilePath = path.join(staticPath, tutorialFile)
+
+buildHomepage(["popularity", "release_date"]).then((value) => {  
+  var result = minify(value, minifyOptions);
+  fs.writeFile(homeFilePath, result, e => {
+    if (e) throw e;
+    console.log(`Writing ${homeFile}`);
+  });
+})
+
+buildTutorial().then((value) => {  
+  var result = minify(value, minifyOptions);
+  fs.writeFile(tutorialFilePath, result, e => {
+    if (e) throw e;
+    console.log(`Writing ${tutorialFile}`);
+  });
+})
 
