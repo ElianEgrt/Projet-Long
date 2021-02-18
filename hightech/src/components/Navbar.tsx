@@ -2,12 +2,12 @@ import React from "react";
 
 import styled from "styled-components";
 
-const Bar = styled.div`
+const NBar = styled.div`
   background: ${(props) => props.theme.colors.backgroundColor};
   width: auto;
   height: ${(props) => props.theme.metrics.extraLargeSize};
   padding: ${(props) => props.theme.metrics.mediumSize};
-  margin-bottom: ${(props) => props.theme.metrics.extraLargeSize};
+  margin-bottom: 0;
   display: flex;
   align-items: center;
 `;
@@ -19,9 +19,9 @@ const TitleText = styled.h1`
 class Navbar extends React.Component {
   render() {
     return (
-      <Bar>
+      <NBar>
         <TitleText>ccc</TitleText>
-      </Bar>
+      </NBar>
     );
   }
 }

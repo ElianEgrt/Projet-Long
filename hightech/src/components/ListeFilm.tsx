@@ -5,9 +5,11 @@ import { Film } from "../api";
 import FilmCard from "./FilmCard";
 
 const FilmContainer = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(300px, auto);
+  margin: ${(props) => props.theme.metrics.mediumSize};
+  gap: ${(props) => props.theme.metrics.mediumSize};
 `;
 
 interface Props {
@@ -19,7 +21,7 @@ class ListeFilm extends React.Component<Props, {}> {
     return (
       <FilmContainer>
         {this.props.films.map((film) => (
-          <FilmCard key={film.id} value={film} />
+          <FilmCard key={film.id} value={film}/>
         ))}
       </FilmContainer>
     );
