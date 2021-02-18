@@ -3,8 +3,8 @@ const fetch = require("node-fetch");
 const TOKEN = "db901b15ecb34557e221c042836a2359";
 const homepage = require ('./homepage')
 
-const addHomePage = films => {
-  fs.writeFile(`public/index.html`, homepage(films), e => {
+const addHomePage = (films, filePath) => {
+  fs.writeFile(filePath, homepage(films), e => {
     if (e) throw e;
     console.log(`index.html was created successfully`);
   });
@@ -12,7 +12,7 @@ const addHomePage = films => {
 
 // Fetch films
 // const filmsResponse = require("./seed")
-const buildHomepage = async (categories) => {
+const buildHomepage = async (filePath, categories) => {
   let films = []
   for (index in categories) {
     
@@ -41,7 +41,7 @@ const buildHomepage = async (categories) => {
     }
   }
   
-  addHomePage(films)
+  addHomePage(films, filePath)
 
 };
   

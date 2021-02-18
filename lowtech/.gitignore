@@ -10,8 +10,7 @@ package-lock.json
 /coverage
 
 # production
-/public/index.html
-/public/tutorial.html
+/public
 
 # misc
 .DS_Store
