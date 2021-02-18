@@ -1,13 +1,16 @@
 const express = require('express');
 var path = require('path');
+
 const logger = require('./middlewares/logger')
 const fileCheck = require('./middlewares/fileCheck')
+var compression = require('compression')
 
 const app = express();
 
 // path to static files
 var staticPath = path.join(__dirname, '../public');
 
+app.use(compression())  // compress all responses
 app.use(logger);        // log requests
 app.use(fileCheck)      // check files for potential build
 

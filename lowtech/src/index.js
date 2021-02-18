@@ -9,7 +9,8 @@ const buildHomepage = require('./home')
 const buildTutorial = require('./tutorial');
 
 // Local source files
-var stylesheetPath = path.join(__dirname, '/stylesheets');
+var stylesheetPath =          path.join(__dirname, '/stylesheets');
+var iconsPath =               path.join(__dirname, '/icons');
 var homeFile = 'index.html'
 var tutorialFile = 'tutorial.html'
 
@@ -76,12 +77,32 @@ for (const key in output) {
     console.log(`Writing ${path.basename(publicCssFilePath)}`)
     fs.writeFileSync(publicCssFilePath, styles, e => {
       if (e) throw e;
-      console.log(`${publicCssFilePath} was created successfully`);
     });
   }
 
 }
 
+// Copy icons
+
+// Scouting for icons
+var icons = getCurrentFilenames(iconsPath)
+
+icons.forEach(icon => {
+  let iconPath = path.join(iconsPath, icon)
+  let staticIconPath
+  if (icon === 'favicon.ico') {
+    staticIconPath = path.join(staticPath, icon)
+  } else {
+    staticIconPath = path.join(staticIconsPath, icon)
+  }
+  
+  console.log(iconPath, staticIconPath)
+  try {
+    fs.copyFileSync(iconPath, staticIconPath);
+  } catch (err) {
+    console.log("Error Found:", err);
+  }
+})
 
 // Build and copy html files
 console.log(`\nBuilding, minifying and copying html files... (async)`)
