@@ -13,35 +13,36 @@ const addHomePage = films => {
 // Fetch films
 // const filmsResponse = require("./seed")
 const buildHomepage = async (categories) => {
-    let films = []
-    for (index in categories) {
-      
-      let real_cat
-      if (categories[index] === "popularity") {
-        real_cat = "Popular"
-      }
-  
-      else if (categories[index] === "release_date") {
-        real_cat = "Latest"
-      }
-  
-      else {
-  
-      }
-      
-      let url = `https://api.themoviedb.org/3/discover/movie?api_key=${TOKEN}&language=fr&sort_by=${categories[index]}.desc&page=1`
-      
-      try {
-          let response = await fetch(url)           // wait for api fetch
-          let responseJson = await response.json()  // wait for JSON parsing
-          films.push([real_cat, responseJson.results.slice(0,3)])
-      } catch (error) {
-          console.error(error);
-      }
+  let films = []
+  for (index in categories) {
+    
+    let url = `https://api.themoviedb.org/3/discover/movie?api_key=${TOKEN}&language=fr&sort_by=${categories[index]}.desc&page=`
+
+    let real_cat
+    if (categories[index] === "popularity") {
+      real_cat = "Popular"
+    }
+
+    else if (categories[index] === "release_date") {
+      real_cat = "Latest"
+      url = url + `100`
+    }
+
+    else {
+
     }
     
-    addHomePage(films)
+    try {
+        let response = await fetch(url)           // wait for api fetch
+        let responseJson = await response.json()  // wait for JSON parsing
+        films.push([real_cat, responseJson.results.slice(0,3)])
+    } catch (error) {
+        console.error(error);
+    }
+  }
   
+  addHomePage(films)
+
 };
   
 
