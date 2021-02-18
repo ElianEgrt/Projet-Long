@@ -18,7 +18,7 @@ const buildHomepage = async (categories) => {
 
     else if (categories[index] === "release_date") {
       real_cat = "Latest"
-      url = url + `100`
+      url = url + `500`
     }
 
     else {
