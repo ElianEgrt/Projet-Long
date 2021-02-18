@@ -10,6 +10,8 @@ const discoverFilms = async (categories) => {
   let films = []
   for (index in categories) {
     
+    let url = `https://api.themoviedb.org/3/discover/movie?api_key=${TOKEN}&language=fr&sort_by=${categories[index]}.desc&page=`
+
     let real_cat
     if (categories[index] === "popularity") {
       real_cat = "Popular"
@@ -17,13 +19,12 @@ const discoverFilms = async (categories) => {
 
     else if (categories[index] === "release_date") {
       real_cat = "Latest"
+      url = url + `100`
     }
 
     else {
 
     }
-    
-    let url = `https://api.themoviedb.org/3/discover/movie?api_key=${TOKEN}&language=fr&sort_by=${categories[index]}.desc&page=1`
     
     try {
         let response = await fetch(url)           // wait for api fetch
