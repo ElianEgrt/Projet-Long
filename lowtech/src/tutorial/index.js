@@ -1,6 +1,6 @@
 const tutorial = require ('./tutorial')
 
-const buildTutorial = async (staticPath) => {
+const buildTutorial = () => {
 
   
   return tutorial()

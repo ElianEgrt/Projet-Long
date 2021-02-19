@@ -11,8 +11,8 @@ const buildTutorial = require('./tutorial');
 // Local source files
 var stylesheetPath =          path.join(__dirname, '/stylesheets');
 var iconsPath =               path.join(__dirname, '/icons');
-var homeFile = 'index.html'
-var tutorialFile = 'tutorial.html'
+var HOME_FILE = 'index.html'
+var TUTORIAL_FILE = 'tutorial.html'
 
 // Public folders
 var staticPath =              path.join(__dirname, '../public');
@@ -25,111 +25,141 @@ var staticStylesheetPath =    path.join(staticAssetsPath, '/stylesheets');
 var publicTree = [staticPath, staticAssetsPath, staticFontsPath, staticIconsPath, staticImagesPath, staticStylesheetPath]
 
 // Create public directory tree
-console.log(`\nGenerating public tree...`)
-publicTree.forEach(dir => {
-  // console.log(`Trying to create ${dir}`)
-  try {
-    fs.mkdirSync(dir, {}); 
-  } catch (err) {
-    if (err.code === 'EEXIST') {
-      console.log(`${dir} already exists.`); 
-      return
-    } else {
-      return console.error(err)
+const genTree = () => {
+  console.log(`\nGenerating public tree...`)
+  publicTree.forEach(dir => {
+    // console.log(`Trying to create ${dir}`)
+    try {
+      fs.mkdirSync(dir, {}); 
+    } catch (err) {
+      if (err.code === 'EEXIST') {
+        console.log(`${dir} already exists.`); 
+        return
+      } else {
+        return console.error(err)
+      }
     }
-  }
-  console.log(`${dir} was created successfully`); 
-})
-
-// Scouting for css files
-var files = getCurrentFilenames(stylesheetPath)
+    console.log(`${dir} was created successfully`); 
+  })
+}
 
 // Minifying and copying css files
-console.log(`\nMinifying and copying css files...`)
-var output = new CleanCSS({ batch: true }).minify(files.map(file => path.join(stylesheetPath, file)));
+const genCss = (files) => {
 
-
-for (const key in output) {
-
-  let publicCssFilePath = path.join(staticStylesheetPath, path.basename(key))
-  let error = output[key].error;
-  let warning = output[key].warning;
-  let styles = output[key].styles;
-
-  if (error) {
-    console.error(`Error minifying ${key} : ${error}`)
-    console.log('Copying file as-is...')
-    try { fs.copyFileSync(key, publicCssFilePath); } catch (err) {
-      console.log("Error Found:", err);
-    }
-    console.log(file + " was created successfully")
+  // console.log(`\nMinifying and copying css files...`)
+  
+  if (!files) {
+    // Scouting for css files
+    var files = getCurrentFilenames(stylesheetPath)
   }
   
-  else if (warning) {
-    console.error(`Warning minifying ${key} : ${warning}`)
-    console.log('Copying file as-is...')
-    try { fs.copyFileSync(key, publicCssFilePath); } catch (err) {
-      console.log("Error Found:", err);
-    }
-  }
+  var output = new CleanCSS({ batch: true }).minify(files.map(file => path.join(stylesheetPath, file)));
+    
+  for (const key in output) {
   
-  else {
-    console.log(`Writing ${path.basename(publicCssFilePath)}`)
-    fs.writeFileSync(publicCssFilePath, styles, e => {
-      if (e) throw e;
-    });
+    let publicCssFilePath = path.join(staticStylesheetPath, path.basename(key))
+    let error = output[key].error;
+    let warning = output[key].warning;
+    let styles = output[key].styles;
+  
+    if (error) {
+      console.error(`Error minifying ${key} : ${error}`)
+      console.log('Copying file as-is...')
+      try { fs.copyFileSync(key, publicCssFilePath); } catch (err) {
+        console.log("Error Found:", err);
+      }
+      console.log(file + " was created successfully")
+    }
+    
+    else if (warning) {
+      console.error(`Warning minifying ${key} : ${warning}`)
+      console.log('Copying file as-is...')
+      try { fs.copyFileSync(key, publicCssFilePath); } catch (err) {
+        console.log("Error Found:", err);
+      }
+    }
+    
+    else {
+      console.log(`Writing ${path.basename(publicCssFilePath)}`)
+      fs.writeFileSync(publicCssFilePath, styles);
+    }
+  
   }
-
 }
 
 // Copy icons
-
-// Scouting for icons
-var icons = getCurrentFilenames(iconsPath)
-
-icons.forEach(icon => {
-  let iconPath = path.join(iconsPath, icon)
-  let staticIconPath
-  if (icon === 'favicon.ico') {
-    staticIconPath = path.join(staticPath, icon)
-  } else {
-    staticIconPath = path.join(staticIconsPath, icon)
-  }
+const genIcons = () => {
+  // Scouting for icons
+  var icons = getCurrentFilenames(iconsPath)
   
-  console.log(iconPath, staticIconPath)
-  try {
-    fs.copyFileSync(iconPath, staticIconPath);
-  } catch (err) {
-    console.log("Error Found:", err);
-  }
-})
-
-// Build and copy html files
-console.log(`\nBuilding, minifying and copying html files... (async)`)
-
-// https://github.com/kangax/html-minifier#options-quick-reference
-const minifyOptions = {
-  collapseInlineTagWhitespace: true,
-  collapseWhitespace: true,
-  html5: true
+  icons.forEach(icon => {
+    let iconPath = path.join(iconsPath, icon)
+    let staticIconPath
+    if (icon === 'favicon.ico') {
+      staticIconPath = path.join(staticPath, icon)
+    } else {
+      staticIconPath = path.join(staticIconsPath, icon)
+    }
+    
+    try {
+      fs.copyFileSync(iconPath, staticIconPath, fs.constants.COPYFILE_EXCL);
+      console.log(iconPath, 'was created successfully')
+    } catch (err) {
+      if (err.code === 'EEXIST') {
+        console.log(iconPath, 'already exists.');
+      } else {
+        console.error(err);
+      }
+    }
+  })
 }
 
-var homeFilePath = path.join(staticPath, homeFile) 
-var tutorialFilePath = path.join(staticPath, tutorialFile)
+// Build and copy html files
+const genHtml = async (file) => {
+  // console.log(`\nBuilding, minifying and copying html files... (async)`)
+  
+  // https://github.com/kangax/html-minifier#options-quick-reference
+  const minifyOptions = {
+    collapseInlineTagWhitespace: true,
+    collapseWhitespace: true,
+    html5: true
+  }
+  
+  if (file === HOME_FILE) {
+    var homeFilePath = path.join(staticPath, HOME_FILE) 
+    let page = await buildHomepage(["popularity", "release_date"])
+    var pageMin = minify(page, minifyOptions);
+    console.log(`Writing ${path.basename(HOME_FILE)}`)
+    fs.writeFileSync(homeFilePath, pageMin);
 
-buildHomepage(["popularity", "release_date"]).then((value) => {  
-  var result = minify(value, minifyOptions);
-  fs.writeFile(homeFilePath, result, e => {
-    if (e) throw e;
-    console.log(`Writing ${homeFile}`);
-  });
-})
+  }
+  
+}
 
-buildTutorial().then((value) => {  
-  var result = minify(value, minifyOptions);
-  fs.writeFile(tutorialFilePath, result, e => {
-    if (e) throw e;
-    console.log(`Writing ${tutorialFile}`);
-  });
-})
+const genHtmlSync = (file) => {
+  // console.log(`\nBuilding, minifying and copying html files... (async)`)
+  
+  // https://github.com/kangax/html-minifier#options-quick-reference
+  const minifyOptions = {
+    collapseInlineTagWhitespace: true,
+    collapseWhitespace: true,
+    html5: true
+  }
+  
+  if (file === TUTORIAL_FILE) {
+    var tutorialFilePath = path.join(staticPath, TUTORIAL_FILE)
+    let page = buildTutorial()
+    var pageMin = minify(page, minifyOptions);
+    console.log(`Writing ${path.basename(TUTORIAL_FILE)}`)
+    fs.writeFileSync(tutorialFilePath, pageMin);
+  }
 
+}
+
+module.exports = {
+  genCss,
+  genHtml,
+  genHtmlSync,
+  genIcons,
+  genTree
+}

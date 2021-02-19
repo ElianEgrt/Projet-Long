@@ -20,7 +20,7 @@ function fileAge(filePath) {
     var stats = fs.statSync(filePath);
     return Math.abs(new Date(stats.ctime) - Date.now());
   } catch (err) {
-    console.error(`${filePath} does not exist`);
+    // console.error(`${filePath} does not exist`);
     return undefined
   }
 
