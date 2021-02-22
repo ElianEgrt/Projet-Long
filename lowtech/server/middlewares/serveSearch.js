@@ -10,7 +10,7 @@ let serveSearch = async (req, res) => {
   let fileName = 'search.html'
   let filePath = path.join(staticPath, fileName)
 
-  let filmTitle = req.param('title')
+  let filmTitle = req.query['title']
 
   genHtml(fileName, { filmTitle }).then(() => res.sendFile(filePath))
 
