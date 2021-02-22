@@ -13,7 +13,7 @@ let serveFilm = async (req, res, next) => {
 
   // let filmName = req.params.filmFile // renvoie REMPLACER_PAR_VRAI_FILM (cf homepage.js)
   let filmNames = getCurrentFilenames(path.join(staticPath, '/assets/films'))
-  let filmName = filmNames[0]
+  let filmName = filmNames[1]
   let filmPath = `../assets/films/${filmName}`
 
   genHtml(fileName, { filmPath }).then(() => res.sendFile(filePath))

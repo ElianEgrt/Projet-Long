@@ -20,8 +20,8 @@ const homepage = films => `
 
     <div class="center-div">
       <div id="barreRecherche">
-        <form action="/search.html" id="search" method="get"/>
-          <input id="title" type="text"/>
+        <form action="/search" method="get">
+          <input name="title" id="title" type="text" placeholder="Nom du film"/>
           <input id="buttonSearch" type="submit" value="Rechercher"/>
         </form>
       </div>

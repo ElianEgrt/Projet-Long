@@ -8,6 +8,7 @@ const { getCurrentFilenames } = require('./utils')
 const buildHomepage = require('./home')
 const buildTutorial = require('./tutorial');
 const buildFilmPage = require('./film');
+const buildSearchPage = require('./search')
 
 // Local source files
 var stylesheetPath =          path.join(__dirname, '/stylesheets');
@@ -16,6 +17,7 @@ var filmsPath =               path.join(__dirname, '/films');
 var HOME_FILE = 'index.html'
 var TUTORIAL_FILE = 'tutorial.html'
 var FILM_FILE = 'film.html'
+var SEARCH_FILE = 'search.html'
 
 // Public folders
 var staticPath =              path.join(__dirname, '../public');
@@ -24,7 +26,7 @@ var staticFontsPath =         path.join(staticAssetsPath, '/fonts');
 var staticIconsPath =         path.join(staticAssetsPath, '/icons');
 var staticImagesPath =        path.join(staticAssetsPath, '/images');
 var staticStylesheetPath =    path.join(staticAssetsPath, '/stylesheets');
-var staticFilmsPath =    path.join(staticAssetsPath, '/films');
+var staticFilmsPath =         path.join(staticAssetsPath, '/films');
 
 var publicTree = [staticPath, staticAssetsPath, staticFontsPath, staticIconsPath, staticImagesPath, staticStylesheetPath, staticFilmsPath]
 
@@ -165,6 +167,14 @@ const genHtml = async (file, args = {}) => {
     // var pageMin = minify(page, minifyOptions);
     console.log(`Writing ${path.basename(FILM_FILE)}`)
     fs.writeFileSync(tutorialFilePath, page);
+  }
+
+  if (file === SEARCH_FILE) {
+    var searchFilePath = path.join(staticPath, SEARCH_FILE)
+    let page = await buildSearchPage(args.filmTitle)
+    // var pageMin = minify(page, minifyOptions);
+    console.log(`Writing ${path.basename(SEARCH_FILE)}`)
+    fs.writeFileSync(searchFilePath, page);
   }
   
 }
