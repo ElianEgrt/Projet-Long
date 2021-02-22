@@ -7,12 +7,15 @@ var minify = require('html-minifier').minify;
 const { getCurrentFilenames } = require('./utils')
 const buildHomepage = require('./home')
 const buildTutorial = require('./tutorial');
+const buildFilmPage = require('./film');
 
 // Local source files
 var stylesheetPath =          path.join(__dirname, '/stylesheets');
 var iconsPath =               path.join(__dirname, '/icons');
+var filmsPath =               path.join(__dirname, '/films');
 var HOME_FILE = 'index.html'
 var TUTORIAL_FILE = 'tutorial.html'
+var FILM_FILE = 'film.html'
 
 // Public folders
 var staticPath =              path.join(__dirname, '../public');
@@ -21,8 +24,9 @@ var staticFontsPath =         path.join(staticAssetsPath, '/fonts');
 var staticIconsPath =         path.join(staticAssetsPath, '/icons');
 var staticImagesPath =        path.join(staticAssetsPath, '/images');
 var staticStylesheetPath =    path.join(staticAssetsPath, '/stylesheets');
+var staticFilmsPath =    path.join(staticAssetsPath, '/films');
 
-var publicTree = [staticPath, staticAssetsPath, staticFontsPath, staticIconsPath, staticImagesPath, staticStylesheetPath]
+var publicTree = [staticPath, staticAssetsPath, staticFontsPath, staticIconsPath, staticImagesPath, staticStylesheetPath, staticFilmsPath]
 
 // Create public directory tree
 const genTree = () => {
@@ -103,10 +107,32 @@ const genIcons = () => {
     
     try {
       fs.copyFileSync(iconPath, staticIconPath, fs.constants.COPYFILE_EXCL);
-      console.log(iconPath, 'was created successfully')
+      console.log(staticIconPath, 'was created successfully')
     } catch (err) {
       if (err.code === 'EEXIST') {
-        console.log(iconPath, 'already exists.');
+        console.log(staticIconPath, 'already exists.');
+      } else {
+        console.error(err);
+      }
+    }
+  })
+}
+
+// Copy films
+const genFilms = () => {
+  // Scouting for films
+  var films = getCurrentFilenames(filmsPath)
+  
+  films.forEach((film, index) => {
+    let filmPath = path.join(filmsPath, film)
+    let staticFilmPath = path.join(staticFilmsPath, film)
+    
+    try {
+      fs.copyFileSync(filmPath, staticFilmPath, fs.constants.COPYFILE_EXCL);
+      console.log(staticFilmPath, 'was created successfully')
+    } catch (err) {
+      if (err.code === 'EEXIST') {
+        console.log(staticFilmPath, 'already exists.');
       } else {
         console.error(err);
       }
@@ -115,7 +141,7 @@ const genIcons = () => {
 }
 
 // Build and copy html files
-const genHtml = async (file) => {
+const genHtml = async (file, args = {}) => {
   // console.log(`\nBuilding, minifying and copying html files... (async)`)
   
   // https://github.com/kangax/html-minifier#options-quick-reference
@@ -131,7 +157,14 @@ const genHtml = async (file) => {
     var pageMin = minify(page, minifyOptions);
     console.log(`Writing ${path.basename(HOME_FILE)}`)
     fs.writeFileSync(homeFilePath, pageMin);
+  }
 
+  if (file === FILM_FILE && args.filmPath) {
+    var tutorialFilePath = path.join(staticPath, FILM_FILE)
+    let page = buildFilmPage(args.filmPath)
+    // var pageMin = minify(page, minifyOptions);
+    console.log(`Writing ${path.basename(FILM_FILE)}`)
+    fs.writeFileSync(tutorialFilePath, page);
   }
   
 }
@@ -153,7 +186,7 @@ const genHtmlSync = (file) => {
     console.log(`Writing ${path.basename(TUTORIAL_FILE)}`)
     fs.writeFileSync(tutorialFilePath, pageMin);
   }
-
+  
 }
 
 module.exports = {
@@ -161,5 +194,6 @@ module.exports = {
   genHtml,
   genHtmlSync,
   genIcons,
+  genFilms,
   genTree
 }

@@ -3,6 +3,7 @@ var path = require('path');
 
 const logger = require('./middlewares/logger')
 const serveHome = require('./middlewares/serveHome')
+const serveFilm = require('./middlewares/serveFilm')
 var compression = require('compression')
 
 const buildPublic = require('../src/build')
@@ -16,6 +17,8 @@ app.use(logger);        // log requests
 app.use(compression())  // compress all responses
 
 app.get('/', serveHome);
+// app.get('/watch/:filmFile', serveFilm);
+app.get('/watch', serveFilm);
 
 app.use(express.static(staticPath));
 

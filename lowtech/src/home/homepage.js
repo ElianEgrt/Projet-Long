@@ -40,9 +40,11 @@ const homepage = films => `
           .map(
             film => `
             <div class="film">
-              <img class="img_film"
-              src="https://image.tmdb.org/t/p/w200${film.poster_path}"
-              />
+              <a href="/watch">
+                <img class="img_film"
+                src="https://image.tmdb.org/t/p/w200${film.poster_path}"
+                />
+              </a>
               <ul class="carac_film">
                 <li> ${film.title} </li>
                 <li> Réalisateur </li>
