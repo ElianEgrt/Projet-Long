@@ -24,11 +24,13 @@ const search = (films, searchedTitle) => `
       ${films
         .map(film => ` 
           <div class="film">
-            <a href="/watch">
+            <div class="img_film_overlay">
               <img class="img_film"
               src="https://image.tmdb.org/t/p/w200${film.poster_path}"
               />
-            </a>
+              <a href="/watch"></a>
+            </div>
+
             <ul class="carac_film">
                 <li> ${film.title} </li>
                 <li> Réalisateur </li>

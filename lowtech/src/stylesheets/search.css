@@ -67,4 +67,21 @@
   
   .img_film {
     width: 182px;
+    height: 277.5px;
+  }
+
+  .img_film_overlay {
+    position: relative;
+  }
+  
+  .img_film_overlay a {
+    position: absolute;
+    display: block;
+    background: url(http://www.slatecube.com/images/play-btn.png);
+    height: 50px;
+    width: 50px;
+    top: 113.75px;
+    left: 66px;
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
   }
