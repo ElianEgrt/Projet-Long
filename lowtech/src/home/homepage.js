@@ -60,6 +60,14 @@ const homepage = films => `
       `)
       .join("")}        
     
+    <div id="pages">
+      <div class="center-div">
+        <form action="/" method="get">
+          <input name="prev" id="buttonPrevPage" type="submit" value="< Previous"/>
+          <input name="next" id="buttonNextPage" type="submit" value="Next >"/>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
 `;
