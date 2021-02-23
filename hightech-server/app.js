@@ -1,5 +1,4 @@
 const express = require('express');
-const path = require('path');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const cors = require('cors');
@@ -21,7 +20,6 @@ app.use(require('morgan')('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(session({ secret: 'hightech', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
-app.use(express.static(path.join(__dirname, '../hightech/build')));
 
 //Configure Mongoose
 mongoose.connect('mongodb://localhost/hightech', { useNewUrlParser: true, useUnifiedTopology: true });
@@ -33,29 +31,7 @@ require('./config/passport');
 app.use(require('./routes'));
 
 //Error handlers & middlewares
-if (!isProduction) {
-  app.use(errorHandler());
-  // app.use((err, req, res) => {
-  //   res.status(err.status || 500);
+if (!isProduction) app.use(errorHandler());
 
-  //   res.json({
-  //     errors: {
-  //       message: err.message,
-  //       error: err,
-  //     },
-  //   });
-  // });
-}
-
-// app.use((err, req, res) => {
-//   res.status(err.status || 500);
-
-//   res.json({
-//     errors: {
-//       message: err.message,
-//       error: {},
-//     },
-//   });
-// });
-
+// Serve app
 app.listen(8000, () => console.log('Server running on http://localhost:8000/'));
