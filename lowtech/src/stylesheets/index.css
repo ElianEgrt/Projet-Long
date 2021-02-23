@@ -53,12 +53,16 @@ body {
 }
 
 .grid_film {
+  border: solid 4px;
+  border-color: #663405;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: minmax(268px, auto);
 }
 
 .film {
+  border: solid 4px;
+  border-color: #663405;
   display: inline-flex;
   background: #d46b08;
 }

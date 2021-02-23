@@ -4,6 +4,7 @@ var path = require('path');
 const logger = require('./middlewares/logger')
 const serveHome = require('./middlewares/serveHome')
 const serveFilm = require('./middlewares/serveFilm')
+const serveSearch = require('./middlewares/serveSearch')
 var compression = require('compression')
 
 const buildPublic = require('../src/build')
@@ -19,6 +20,7 @@ app.use(compression())  // compress all responses
 app.get('/', serveHome);
 // app.get('/watch/:filmFile', serveFilm);
 app.get('/watch', serveFilm);
+app.get('/search', serveSearch);
 
 app.use(express.static(staticPath));
 
