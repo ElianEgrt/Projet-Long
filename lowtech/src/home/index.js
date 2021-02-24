@@ -11,24 +11,7 @@ const buildHomepage = async (categories, page) => {
   let films = []
   let currentDate = getCurrentDate()
 
-  if (page === "next") {
-    if (numPage[1] === 10) {
-      numPage[1] = 20
-    } else {
-      numPage[0] ++
-      numPage[1] = 10
-    }
-  } else if (page === "prev" && (numPage[0] > 1 | numPage[1] === 20)) {
-    if (numPage[1] === 10) {
-      numPage[0] -= 1
-      numPage[1] = 20
-    } else {
-      numPage[1] = 10
-    }
-  } else {
-    numPage.push(1)
-    numPage.push(10)
-  }
+  numPage = pageManaging(page, numPage)
 
   for (index in categories) {
 
@@ -65,8 +48,32 @@ function getCurrentDate() {
   return yyyy+"-"+mm+"-"+dd
 }
 
-function pageManaging (category, numPage) {
-// Pour gérer la disjonction de cas au-dessus
+function pageManaging (page, numPage) {
+  
+  if (page === "next") {
+  
+    if (numPage[1] === 10) {
+      numPage[1] = 20
+    } else {
+      numPage[0] ++
+      numPage[1] = 10
+    }
+  
+  } else if (page === "prev" && (numPage[0] > 1 | numPage[1] === 20)) {
+  
+    if (numPage[1] === 10) {
+      numPage[0] -= 1
+      numPage[1] = 20
+    } else {
+      numPage[1] = 10
+    }
+  
+  } else {
+    numPage.push(1)
+    numPage.push(10)
+  }
+
+  return numPage
 }
   
 
