@@ -1,4 +1,4 @@
-const filmPage = filmPath => `
+const filmPage = (filmPath, filmCaptionsPath) => `
 <!doctype html>
 <link href="../assets/stylesheets/film.css" rel="stylesheet">
 <html>
@@ -20,6 +20,7 @@ const filmPage = filmPath => `
     
     <video width="100%" controls autoplay>
       <source src="${filmPath}" type="video/mp4">
+      <track label="English" kind="captions" srclang="en" src="${filmCaptionsPath}" default>
     </video>
     
   </body>
