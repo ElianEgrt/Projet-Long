@@ -5,7 +5,8 @@ const homepage = require ('./homepage')
 
 // Fetch films
 // const filmsResponse = require("./seed")
-let pageURLlat, pageURLpopu
+let numPageLat = [] 
+let numPagePopu = []
 
 const buildHomepage = async (categories, page) => {
   let films = []
@@ -17,11 +18,22 @@ const buildHomepage = async (categories, page) => {
       real_cat = "Popular"
       
       if (page === "next") {
-        pageURLpopu += 1
-      } else if (page === "prev" && pageURLpopu > 1) {
-        pageURLpopu -= 1
+        if (numPagePopu[1] === 10) {
+          numPagePopu[1] = 20
+        } else {
+          numPagePopu[0] ++
+          numPagePopu[1] = 10
+        }
+      } else if (page === "prev" && (numPagePopu[0] > 1 | numPagePopu[1] === 20)) {
+        if (numPagePopu[1] === 10) {
+          numPagePopu[0] -= 1
+          numPagePopu[1] = 20
+        } else {
+          numPagePopu[1] = 10
+        }
       } else {
-        pageURLpopu = 1
+        numPagePopu.push(1)
+        numPagePopu.push(10)
       }
     }
 
@@ -29,11 +41,22 @@ const buildHomepage = async (categories, page) => {
       real_cat = "Latest"
       
       if (page === "next") {
-        pageURLlat -= 1
-      } else if (page === "prev" && pageURLlat < 500) {
-        pageURLlat += 1
+        if (numPageLat[1] === 10) {
+          numPageLat[0] --
+          numPageLat[1] = 20
+        } else {
+          numPageLat[1] = 10
+        }
+      } else if (page === "prev" && (numPageLat[0] < 500 | numPageLat[1] === 10)) {
+        if (numPageLat[1] === 10) {
+          numPageLat[1] = 20
+        } else {
+          numPageLat[0] ++
+          numPageLat[1] = 10
+        }
       } else {
-        pageURLlat = 500
+        numPageLat.push(500)
+        numPageLat.push(20)
       }
     }
 
@@ -41,12 +64,16 @@ const buildHomepage = async (categories, page) => {
 
     }
     
-    url = `https://api.themoviedb.org/3/discover/movie?api_key=${TOKEN}&language=fr&sort_by=${categories[index]}.desc&page=${categories[index] === "popularity" ? pageURLpopu : pageURLlat}`
+    let numPage, numPageDiv
+    numPage = categories[index] === "popularity" ? numPagePopu[0] : numPageLat[0]
+    numPageDiv = categories[index] === "popularity" ? numPagePopu[1] : numPageLat[1]
+    
+    url = `https://api.themoviedb.org/3/discover/movie?api_key=${TOKEN}&language=fr&sort_by=${categories[index]}.desc&page=${numPage}`
 
     try {
         let response = await fetch(url)           // wait for api fetch
         let responseJson = await response.json()  // wait for JSON parsing
-        films.push([real_cat, responseJson.results])
+        films.push([real_cat, responseJson.results.slice(numPageDiv - 10, numPageDiv)])
     } catch (error) {
         console.error(error);
     }
@@ -55,6 +82,10 @@ const buildHomepage = async (categories, page) => {
   return homepage(films)
 
 };
+
+function pageManaging (category, numPage) {
+// Pour gérer la disjonction de cas au-dessus
+}
   
 
 module.exports = buildHomepage;
