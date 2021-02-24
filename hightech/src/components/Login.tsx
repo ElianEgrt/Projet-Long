@@ -7,17 +7,38 @@ const LoginPage = styled.div`
 `;
 
 class Login extends React.Component {
-    static propTypes: {
-        setToken: PropTypes.func.isRequired;
+
+    static propTypes = {
+        setToken: PropTypes.func.isRequired
     };
+
+    async loginUser(credentials:any) {
+        return fetch('http://localhost:8080/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(credentials)
+        })
+        .then(data => data.json())
+    }
 
     render() {
         const [username, setUsername] = useState<string>();
-        const [passworld, setPassword] = useState<string>();
+        const [password, setPassword] = useState<string>();
+
+        const handleSubmit = async (e : any) => {
+            e.preventDefault();
+            const token = await this.loginUser({
+              username,
+              password
+            });
+        }
+
         return (
             <LoginPage>
                 <h1>Please Log In</h1>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <label>
                         <p>Username</p>
                         <input type="text" onChange={e => setUsername(e.target.value)}/>
