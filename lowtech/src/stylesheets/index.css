@@ -5,7 +5,7 @@
   text-align: center;
   font-size: xx-large;
   font-family: Impact;
-  color: black;
+  color: white;
 }
 
 #nav {
@@ -109,5 +109,6 @@ body {
 }
 
 #buttonNextPage {
-  width: 95.6333px;
+  width: auto;
+  height: auto;
 }
