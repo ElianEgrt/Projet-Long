@@ -2,45 +2,39 @@ import React from "react";
 
 import styled from "styled-components";
 import { MessageType } from "../containers/Chatbox";
+import { AiOutlineSend } from "react-icons/ai";
 
 const Container = styled.div`
-  background: lightblue;
   height: auto;
   padding: ${(props) => props.theme.metrics.extraSmallSize};
   text-align: center;
   justify-self: end;
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  border-top: solid 2px #a5a5a5;
 `;
 
 const MessageInput = styled.input`
-  background: lightblue;
-  height: auto;
+  height: 100%;
   padding: ${(props) => props.theme.metrics.extraSmallSize};
   text-align: center;
-  justify-self: end;
   display: flex;
   flex-direction: row;
+  margin: 0%;
+  height: auto;
+  border: none;
+  background-color: transparent;
+  outline: none;
 `;
 
-const SendButton = styled.button`
-  background-color: lightcyan;
-  color: white;
-  padding: 5px 15px;
-  border-radius: 5px;
-  outline: 0;
-  text-transform: uppercase;
-  margin: 10px 0px;
+const SendButton = styled.div`
+  color: #a5a5a5;
+  font-size: ${(props) => props.theme.metrics.largeSize};
   cursor: pointer;
-  box-shadow: 0px 2px 2px lightgray;
-  transition: ease background-color 250ms;
   &:hover {
-    background-color: cyan;
+    color: #000;
   }
-  &:disabled {
-    cursor: default;
-    opacity: 0.7;
-  }
+  transition: ease color 250ms;
 `;
 
 interface Props {
@@ -55,7 +49,7 @@ class Message extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      text: "Type your message here !",
+      text: "",
     };
   }
 
@@ -70,18 +64,24 @@ class Message extends React.Component<Props, State> {
       <Container>
         <MessageInput
           type="text"
-          value={this.state.text}
+          value={this.state.text === "" ? "" : this.state.text}
           onChange={this.handleInputChange}
+          placeholder="J'ai besoin d'aide pour..."
         />
         <SendButton
-          onClick={() =>
-            this.props.sendFunc({
-              message: this.state.text,
-              userSent: true,
-            })
-          }
+          onClick={() => {
+            if (this.state.text !== "") {
+              this.props.sendFunc({
+                message: this.state.text,
+                userSent: true,
+              });
+              this.setState({
+                text: "",
+              });
+            }
+          }}
         >
-          Send
+          <AiOutlineSend />
         </SendButton>
       </Container>
     );

@@ -1,16 +1,16 @@
 #titre {
   height: auto;
   padding: 0.2em;
-  background: #663405;
+  background:#2a403d;
   text-align: center;
   font-size: xx-large;
   font-family: Impact;
-  color: black;
+  color: white;
 }
 
 #nav {
   height: auto;
-  background: #d46b08;
+  background-color: rgb(0, 0, 0);
   padding: 0.5em;
   margin: 0;
 }
@@ -23,13 +23,14 @@
 #nav a {
   display: inline;
   list-style: none;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-size: large;
   margin-left: 5%;
 }
 
 body {
   margin: 0;
+  background-color: rgb(0, 0, 0);
 }
 
 .center-div
