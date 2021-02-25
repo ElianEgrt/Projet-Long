@@ -19,9 +19,8 @@ nav {
   margin: 0;
 }
 
-nav ul li {
-  display: inline;
-  position: relative;
+nav ul {
+  display: inline-flex;
 }
 
 nav a {
@@ -31,53 +30,70 @@ nav a {
   margin-left: 5%;
 }
 
+nav ul li {
+  display: inline;
+  position: relative;
+  margin-left: 50px;
+}
+
+.pref {
+  position: absolute;
+  right: 0;
+  margin-left: 0;
+}
+
+.dropbtn {
+  color: white;
+  border: none;
+  cursor: pointer;
+  background-color: black;
+  font-size: large;
+}
+
+.dropbtn::after{
+  content: "▼";
+}
+
+/* The container <div> - needed to position the dropdown content */
 .menuPrefDeroulant {
-  margin-left: 60%;
+  position: relative;
+  display: inline-block;
+  width: 220px;
 }
 
-.menuPrefDeroulant ul li {
-  display: block;
-}
-
-.menuPrefDeroulant a {
-  text-decoration: none;
-}
-
-.dessous {
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
   display: none;
-  background-color:white;
-  width: max-content;
-  padding-left: 0px;
-  position: fixed;
+  position: absolute;
+  background-color: black;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 
-.dessous li a:hover {
-  border-bottom: 4px solid black;
+.dropdown-content #blankCase {
+  height: 24px;
+  background-color: transparent;
 }
 
-nav > ul li:hover .dessous {
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
   display: block;
-}
-
-.dessous li {
-  text-align: left;
-}
-
-.dessous a {
-  border-bottom: none;
   font-size: medium;
-  padding: 5px;
-  display: block;
-  margin-left: 0%;
+  margin-left: 0;
 }
 
-.dessous a:hover{
-  border-bottom: none;
+.dropdown-content a:hover {
+  border-bottom: 4px solid white;
   background-color: rgba(200, 200, 200, 0.3);
 }
 
-.menuPrefDeroulant > a::after {
-  content:"▼";
+/* Show the dropdown menu on hover */
+.menuPrefDeroulant:hover .dropdown-content {
+  display: block;
 }
 
 .center-div

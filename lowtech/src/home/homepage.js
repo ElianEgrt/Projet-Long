@@ -16,14 +16,15 @@ const homepage = films => `
         <li><a href="/">Accueil</a></li>
         <li><a href="/tutorial.html">Tutoriel</a></li>
         
-        <li class="menuPrefDeroulant"><a href="#">Préférences &nbsp;</a>
-          <div class="forPosition">
-          <ul class="dessous">
-            <li><a href="/" value="actionFirst"> Action Movies First</a></li>
-            <li><a href="/" value="popularFirst"> Popular Movies First</a></li>
-          </ul>
+        
+        <li class="pref"><div class="menuPrefDeroulant">
+          <button class="dropbtn">Préférences &nbsp;</button>
+          <div class="dropdown-content">
+            <div id="blankCase"></div>
+            <a href="/" value="actionFirst">Action Movies First</a>
+            <a href="/" value="popularFirst">Popular Movies First</a>
           </div>
-        </li>
+        </div></li>
       </ul>
     </nav>
 
