@@ -23,7 +23,11 @@ let serveHome = async (req, res, next) => {
   else if (req.query["prev"]) {
     shouldGen = true
     page = "prev"
-  } 
+  }
+
+  else if (req.query["cookie"]) {
+    
+  }
 
   else {
     if (age) {

@@ -11,12 +11,21 @@ const homepage = films => `
     <div id="titre">
       Allo7né
     </div>
-    <div >
-      <ul id="nav">
+    <nav>
+      <ul>
         <li><a href="/">Accueil</a></li>
         <li><a href="/tutorial.html">Tutoriel</a></li>
+        
+        <li class="menuPrefDeroulant"><a href="#">Préférences &nbsp;</a>
+          <div class="forPosition">
+          <ul class="dessous">
+            <li><a href="/" value="actionFirst"> Action Movies First</a></li>
+            <li><a href="/" value="popularFirst"> Popular Movies First</a></li>
+          </ul>
+          </div>
+        </li>
       </ul>
-    </div>
+    </nav>
 
     <div class="center-div">
       <div id="barreRecherche">

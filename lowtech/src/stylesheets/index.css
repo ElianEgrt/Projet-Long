@@ -8,28 +8,76 @@
   color: white;
 }
 
-#nav {
+body {
+  margin: 0;
+}
+
+nav {
   height: auto;
   background: #d46b08;
   padding: 0.5em;
   margin: 0;
 }
 
-#nav li {
+nav ul li {
   display: inline;
-  list-style: none;
+  position: relative;
 }
 
-#nav a {
-  display: inline;
+nav a {
   list-style: none;
   color: rgb(0, 0, 0);
   font-size: large;
   margin-left: 5%;
 }
 
-body {
-  margin: 0;
+.menuPrefDeroulant {
+  margin-left: 60%;
+}
+
+.menuPrefDeroulant ul li {
+  display: block;
+}
+
+.menuPrefDeroulant a {
+  text-decoration: none;
+}
+
+.dessous {
+  display: none;
+  background-color:white;
+  width: max-content;
+  padding-left: 0px;
+  position: fixed;
+}
+
+.dessous li a:hover {
+  border-bottom: 4px solid black;
+}
+
+nav > ul li:hover .dessous {
+  display: block;
+}
+
+.dessous li {
+  text-align: left;
+}
+
+.dessous a {
+  border-bottom: none;
+  font-size: medium;
+  padding: 5px;
+  display: block;
+  margin-left: 0%;
+}
+
+.dessous a:hover{
+  border-bottom: none;
+  background-color: rgba(200, 200, 200, 0.3);
+}
+
+.menuPrefDeroulant > a::after {
+  content:"▼";
 }
 
 .center-div
@@ -103,7 +151,7 @@ body {
   background-repeat: no-repeat;
 }
 
-#pages{
+#pages {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
 }
