@@ -1,6 +1,7 @@
 const filmPage = (filmPath, filmCaptionsPath) => `
 <!doctype html>
-<link href="../assets/stylesheets/film.css" rel="stylesheet">
+<link href="./assets/stylesheets/film.css" rel="stylesheet">
+<link href="./assets/stylesheets/film.css" rel="stylesheet" media="print">
 <html>
   <head>
     <meta charset="utf-8">

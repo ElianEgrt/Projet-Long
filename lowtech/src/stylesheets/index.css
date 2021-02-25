@@ -4,7 +4,8 @@
   background:#2a403d;
   text-align: center;
   font-size: xx-large;
-  font-family: Impact;
+  font-family: Arial;
+  font-weight: bold;
   color: white;
 }
 
@@ -27,6 +28,7 @@ nav a {
   list-style: none;
   color: rgb(255, 255, 255);
   font-size: large;
+  font-family: Arial;
 }
 
 nav ul li {
@@ -47,6 +49,7 @@ nav ul li {
   cursor: pointer;
   background-color: black;
   font-size: large;
+  font-family: Arial;
 }
 
 .dropbtn::after{
@@ -134,7 +137,7 @@ nav ul li {
   border-radius: 0.5em;
   display: inline-flex;
   background-color: #CAE3E5;
-  height: 277.5px;
+  height: 300px;
 }
 
 .carac_film {
@@ -151,8 +154,8 @@ nav ul li {
 }
 
 .img_film {
-  width: 182px;
-  height: 277.5px;
+  width: 200px;
+  height: 300px;
 }
 
 .img_film_overlay {

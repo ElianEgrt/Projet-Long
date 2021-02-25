@@ -1,6 +1,7 @@
 const search = (films, searchedTitle) => `
 <!doctype html>
 <link href="./assets/stylesheets/search.css" rel="stylesheet">
+<link href="./assets/stylesheets/search.css" rel="stylesheet" media="print">
 <html>
   <head>
     <meta charset="utf-8">

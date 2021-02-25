@@ -1,6 +1,7 @@
 const homepage = films => `
 <!doctype html>
 <link href="./assets/stylesheets/index.css" rel="stylesheet">
+<link href="./assets/stylesheets/index.css" rel="stylesheet" media="print">
 <html>
   <head>
     <meta charset="utf-8">

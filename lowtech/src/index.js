@@ -162,19 +162,19 @@ const genHtml = async (file, args = {}) => {
   }
 
   if (file === FILM_FILE && args.filmPath && args.filmCaptionsPath) {
-    var tutorialFilePath = path.join(staticPath, FILM_FILE)
+    var filmFilePath = path.join(staticPath, FILM_FILE)
     let page = buildFilmPage(args.filmPath, args.filmCaptionsPath)
-    // var pageMin = minify(page, minifyOptions);
+    var pageMin = minify(page, minifyOptions);
     console.log(`Writing ${path.basename(FILM_FILE)}`)
-    fs.writeFileSync(tutorialFilePath, page);
+    fs.writeFileSync(filmFilePath, pageMin);
   }
 
   if (file === SEARCH_FILE) {
     var searchFilePath = path.join(staticPath, SEARCH_FILE)
     let page = await buildSearchPage(args.filmTitle)
-    // var pageMin = minify(page, minifyOptions);
+    var pageMin = minify(page, minifyOptions);
     console.log(`Writing ${path.basename(SEARCH_FILE)}`)
-    fs.writeFileSync(searchFilePath, page);
+    fs.writeFileSync(searchFilePath, pageMin);
   }
   
 }

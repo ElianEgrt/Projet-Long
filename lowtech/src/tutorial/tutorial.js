@@ -1,6 +1,7 @@
 const tutorial = () => `
 <!doctype html>
 <link href="./assets/stylesheets/tutorial.css" rel="stylesheet">
+<link href="./assets/stylesheets/tutorial.css" rel="stylesheet" media="print">
 <html>
   <head>
     <meta charset="utf-8">
