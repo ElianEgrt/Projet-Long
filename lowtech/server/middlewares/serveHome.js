@@ -34,9 +34,6 @@ let serveHome = async (req, res, next) => {
   }
 
   else {
-
-    let pref = cookie.getItem('pref')
-    console.log(pref)
     
     if (age) {
       if (age > 5 * 60 * 1000) {
