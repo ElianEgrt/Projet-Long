@@ -4,33 +4,100 @@
   background:#2a403d;
   text-align: center;
   font-size: xx-large;
-  font-family: Impact;
+  font-family: Arial;
+  font-weight: bold;
   color: white;
 }
 
-#nav {
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+nav {
   height: auto;
   background-color: rgb(0, 0, 0);
   padding: 0.5em;
   margin: 0;
 }
 
-#nav li {
-  display: inline;
-  list-style: none;
+nav ul {
+  display: inline-flex;
 }
 
-#nav a {
-  display: inline;
+nav a {
   list-style: none;
   color: rgb(255, 255, 255);
   font-size: large;
-  margin-left: 5%;
 }
 
-body {
-  margin: 0;
-  background-color: rgb(0, 0, 0);
+nav ul li {
+  display: inline;
+  position: relative;
+  margin-left: 50px;
+}
+
+.pref {
+  position: absolute;
+  right: 0;
+  margin-left: 0;
+}
+
+.dropbtn {
+  color: white;
+  border: none;
+  cursor: pointer;
+  background-color: black;
+  font-size: large;
+}
+
+.dropbtn::after{
+  content: "▼";
+}
+
+/* The container <div> - needed to position the dropdown content */
+.menuPrefDeroulant {
+  position: relative;
+  display: inline-block;
+  width: 220px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: black;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content #blankCase {
+  height: 22px;
+  background-color: transparent;
+}
+
+/* Links inside the dropdown */
+.dropdown-content input {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: medium;
+  margin-left: 0;
+  background-color: black;
+  width: 100%;
+  text-align: left;
+}
+
+.dropdown-content input:hover {
+  border-bottom: 4px solid white;
+  background-color: rgba(200, 200, 200, 0.3);
+}
+
+/* Show the dropdown menu on hover */
+.menuPrefDeroulant:hover .dropdown-content {
+  display: block;
 }
 
 .center-div
@@ -42,16 +109,26 @@ body {
 
 #barreRecherche{
   background:#2a403d;
-  margin-top:1em;
-  margin-bottom: 1em;
+  padding: 15px;
+}
+
+#barreRecherche label {
+  color: white;
+  padding-right: 10px;
   font-size: large;
+}
+
+.search {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: medium;
 }
 
 .categorie {
   font-size: x-large;
   font-weight: bold;
   height: auto;
-  padding-bottom: 0.5em;
+  padding-bottom: 1em;
   padding-right: 0.5em;
   padding-top: 1em;
   padding-left: 1.5em;
@@ -72,7 +149,7 @@ body {
   border-radius: 0.5em;
   display: inline-flex;
   background-color: #CAE3E5;
-  height: 277.5px;
+  height: 300px;
 }
 
 .carac_film {
@@ -89,8 +166,8 @@ body {
 }
 
 .img_film {
-  width: 182px;
-  height: 277.5px;
+  width: 200px;
+  height: 300px;
 }
 
 .img_film_overlay {
@@ -100,7 +177,7 @@ body {
 .img_film_overlay a {
   position: absolute;
   display: block;
-  background: url(http://www.slatecube.com/images/play-btn.png);
+  background: url(https://www.slatecube.com/images/play-btn.png);
   height: 50px;
   width: 50px;
   top: 113.75px;
@@ -109,12 +186,31 @@ body {
   background-repeat: no-repeat;
 }
 
-#pages{
+#managePages {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
+  background:#2a403d;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
 }
 
-#buttonNextPage {
-  width: auto;
-  height: auto;
+.buttonPage {
+  display: flex;
+}
+
+#prevButton {
+  padding-right: 10px;
+}
+
+#inButtonLeftPage {
+  padding : 10px;
+  font-size: medium;
+}
+
+#inButtonNextPage {
+  padding : 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: medium;
 }

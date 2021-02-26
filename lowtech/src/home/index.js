@@ -5,21 +5,18 @@ const homepage = require ('./homepage')
 
 // Fetch films
 // const filmsResponse = require("./seed")
-let numPage = []
 
-const buildHomepage = async (categories, page) => {
+const buildHomepage = async (categories, numPage) => {
   let films = []
   let currentDate = getCurrentDate()
 
-  numPage = pageManaging(page, numPage)
-
   for (index in categories) {
 
-    if (categories[index] === "Popular") {
+    if (categories[index] === "Populaire") {
       url = `https://api.themoviedb.org/3/discover/movie?api_key=${TOKEN}&sort_by=popularity.desc&page=${numPage[0]}`
     }
 
-    else if (categories[index] === "Latest") {
+    else if (categories[index] === "Récent") {
       url = `https://api.themoviedb.org/3/discover/movie?api_key=${TOKEN}&primary_release_date.gte=2020-06-01&primary_release_date.lte=${currentDate}&sort_by=primary_release_date.desc&page=${numPage[0]}`
     }
 
@@ -46,35 +43,6 @@ function getCurrentDate() {
   var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
   var yyyy = today.getFullYear();
   return yyyy+"-"+mm+"-"+dd
-}
-
-function pageManaging (page, numPage) {
-  
-  if (page === "next") {
-  
-    if (numPage[1] === 10) {
-      numPage[1] = 20
-    } else {
-      numPage[0] ++
-      numPage[1] = 10
-    }
-  
-  } else if (page === "prev" && (numPage[0] > 1 | numPage[1] === 20)) {
-  
-    if (numPage[1] === 10) {
-      numPage[0] -= 1
-      numPage[1] = 20
-    } else {
-      numPage[1] = 10
-    }
-  
-  } else {
-    numPage.push(1)
-    numPage.push(10)
-  }
-
-  return numPage
-}
-  
+} 
 
 module.exports = buildHomepage;

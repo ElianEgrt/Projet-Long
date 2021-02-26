@@ -4,41 +4,47 @@
   background:#2a403d;
   text-align: center;
   font-size: xx-large;
-  font-family: Impact;
+  font-family: Arial;
+  font-weight: bold;
   color: white;
 }
 
-#nav {
+body {
+  margin: 0;
+  background-color: rgb(0, 0, 0);
+  font-family: Arial;
+}
+
+nav {
   height: auto;
   background-color: rgb(0, 0, 0);
   padding: 0.5em;
   margin: 0;
 }
 
-#nav li {
-  display: inline;
-  list-style: none;
+nav ul {
+  display: inline-flex;
 }
 
-#nav a {
-  display: inline;
+nav a {
   list-style: none;
   color: rgb(255, 255, 255);
   font-size: large;
-  margin-left: 5%;
 }
 
-body {
-  margin: 0;
-  background-color: rgb(0, 0, 0);
+nav ul li {
+  display: inline;
+  position: relative;
+  margin-left: 50px;
 }
 
-#result_search {
-  font-size: large;
+h2 {
+  font-size: x-large;
   text-align: center;
   color: rgb(255, 255, 255);
   background:#2a403d;
   padding: 1em;
+  margin: 0;
 }
 
 .gridFilm {
@@ -74,14 +80,14 @@ body {
     height: 277.5px;
 }
 
-  .img_film_overlay {
+.img_film_overlay {
     position: relative;
 }
   
 .img_film_overlay a {
     position: absolute;
     display: block;
-    background: url(http://www.slatecube.com/images/play-btn.png);
+    background: url(https://www.slatecube.com/images/play-btn.png);
     height: 50px;
     width: 50px;
     top: 113.75px;
