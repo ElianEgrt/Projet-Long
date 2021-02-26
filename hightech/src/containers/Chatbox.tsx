@@ -81,7 +81,7 @@ class Chatbox extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      active: true,
+      active: false,
       messages: [
         { message: "Bonjour ! Comment puis-je vous aider ?", userSent: false },
       ],

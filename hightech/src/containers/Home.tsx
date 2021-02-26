@@ -2,7 +2,6 @@ import React from "react";
 import { discoverFilms, Film, SearchResponse } from "../api";
 import ListeFilm from "../components/ListeFilm";
 import { Loading } from "../components/Loading";
-import Navbar from "../components/Navbar";
 import BottomBar from "../components/BottomBar";
 
 interface State {
@@ -47,7 +46,6 @@ class Home extends React.Component<Props, State> {
   render() {
     return (
       <>
-        <Navbar />
         {this.state.loading ? (
           <Loading />
         ) : (
