@@ -1,3 +1,12 @@
+function getCurrentDate() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    return yyyy+"-"+mm+"-"+dd
+} 
+
+
 const TOKEN: String = "db901b15ecb34557e221c042836a2359";
 
 type Film = {
@@ -77,9 +86,22 @@ const getFilmsFromApi = async (id: number) => {
     }
 };
 
-const discoverFilms = async (page: number) => {
+const popularFilms = async (page: number) => {
     let url = `https://api.themoviedb.org/3/discover/movie?api_key=${TOKEN}&language=fr&sort_by=popularity.desc&page=${page}`
     
+    try {
+        let response = await fetch(url)
+        let responseJson = await response.json() as SearchResponse
+        return responseJson
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+const recentFilms = async (page: number) => {
+    const currentDate = getCurrentDate()
+    let url = `https://api.themoviedb.org/3/discover/movie?api_key=${TOKEN}&primary_release_date.gte=2020-06-01&primary_release_date.lte=${currentDate}&sort_by=primary_release_date.desc&page=${page}`
+
     try {
         let response = await fetch(url)
         let responseJson = await response.json() as SearchResponse
@@ -92,7 +114,8 @@ const discoverFilms = async (page: number) => {
 export {
     getFilmsFromApiWithSearchedText,
     getFilmsFromApi,
-    discoverFilms
+    popularFilms,
+    recentFilms
 };
 export type {
     SearchResponse,

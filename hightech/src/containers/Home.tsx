@@ -1,8 +1,8 @@
 import React from "react";
-import { discoverFilms, Film, SearchResponse } from "../api";
-import ListeFilm from "../components/ListeFilm";
+import { recentFilms, popularFilms, Film, SearchResponse } from "../api";
 import { Loading } from "../components/Loading";
 import BottomBar from "../components/BottomBar";
+import FilmCategory from "../components/FilmCategory";
 
 interface State {
   films: Film[];
@@ -23,9 +23,9 @@ class Home extends React.Component<Props, State> {
   private page: number = 0;
   private totalPages: number = 0;
 
-  private loadDiscoverFilms = async () => {
+  private loadFilms = async () => {
     if (this.page === 0) this.setState({ ...this.state, loading: true });
-    let response = (await discoverFilms(this.page + 1)) as SearchResponse;
+    let response = (await popularFilms(this.page + 1)) as SearchResponse;
     this.page = response.page;
     this.totalPages = response.total_pages;
     console.log(
@@ -40,7 +40,7 @@ class Home extends React.Component<Props, State> {
   };
 
   componentDidMount() {
-    this.loadDiscoverFilms();
+    this.loadFilms();
   }
 
   render() {
@@ -49,9 +49,12 @@ class Home extends React.Component<Props, State> {
         {this.state.loading ? (
           <Loading />
         ) : (
-          <ListeFilm films={this.state.films} />
+          <>
+            <FilmCategory category={"Récents"} films={this.state.films} />
+            <FilmCategory category={"Populaires"} films={this.state.films} />
+            <FilmCategory category={"Découvrir"} films={this.state.films} />
+          </>
         )}
-        <BottomBar />
       </>
     );
   }

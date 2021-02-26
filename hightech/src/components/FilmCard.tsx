@@ -7,11 +7,23 @@ import FilmCarac from "./FilmCarac";
 const Card = styled.div`
   background-color: ${(props) => props.theme.colors.secondaryColor};
   border-radius: ${(props) => props.theme.metrics.extraSmallSize};
-  display: inline-flex;
-  width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 32em;
+  height: 17em;
+  margin: 0 1em;
 `;
 
-
+const ImageContainer = styled.div`
+  display: flex;
+  align-items: center;
+  width: 40%;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+`;
 
 interface Props {
   key: number;
@@ -21,13 +33,13 @@ interface Props {
 class FilmCard extends React.Component<Props, {}> {
   render() {
     let film = this.props.value;
-    let key = this.props.key;
-    let carac = {title:film.title, popularity:film.popularity, release_date:film.release_date};
-    let posterPath = `https://image.tmdb.org/t/p/w200${film.poster_path}`;
+    let posterPath = `https://image.tmdb.org/t/p/w500${film.poster_path}`;
     return (
       <Card>
-        <img src={posterPath} alt="Film Poster" />
-        <FilmCarac carac={carac} />
+        <ImageContainer>
+          <img src={posterPath} alt="Film Poster" />
+        </ImageContainer>
+        <FilmCarac film={film} />
       </Card>
     );
   }

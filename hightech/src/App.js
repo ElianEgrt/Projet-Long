@@ -19,7 +19,6 @@ function App() {
     <Router>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Chatbox />
         <Navbar />
         <Switch>
           <Route path="/" exact component={Home} />
@@ -28,6 +27,7 @@ function App() {
           {/* <Route path='/default' render={() => <Redirect to= "/" />} /> */}
           {/* <Route component={NoMatch} /> */}
         </Switch>
+        <Chatbox />
       </ThemeProvider>
     </Router>
   );
