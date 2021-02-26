@@ -11,7 +11,7 @@ interface Props {
 class ListeFilm extends React.Component<Props, {}> {
   render() {
     return (
-      <>
+      <div>
         <div
           style={{
             display: "flex",
@@ -32,7 +32,7 @@ class ListeFilm extends React.Component<Props, {}> {
             <FilmCard key={film.id} value={film} />
           ))}
         </Slider>
-      </>
+      </div>
     );
   }
 }

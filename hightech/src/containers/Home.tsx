@@ -28,11 +28,6 @@ class Home extends React.Component<Props, State> {
     let response = (await popularFilms(this.page + 1)) as SearchResponse;
     this.page = response.page;
     this.totalPages = response.total_pages;
-    console.log(
-      "LOAD",
-      response.page,
-      response.results.map((e) => e.original_title)
-    );
     this.setState({
       films: [...this.state.films, ...response.results],
       loading: false,
@@ -45,17 +40,17 @@ class Home extends React.Component<Props, State> {
 
   render() {
     return (
-      <>
+      <div>
         {this.state.loading ? (
           <Loading />
         ) : (
-          <>
+          <div>
             <FilmCategory category={"Récents"} films={this.state.films} />
             <FilmCategory category={"Populaires"} films={this.state.films} />
             <FilmCategory category={"Découvrir"} films={this.state.films} />
-          </>
+          </div>
         )}
-      </>
+      </div>
     );
   }
 }
