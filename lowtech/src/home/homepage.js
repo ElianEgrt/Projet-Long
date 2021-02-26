@@ -11,7 +11,16 @@ const homepage = films => `
   <body>
     <header>
       <div id="titre">
-        Allo7né
+        <div class="center-div">
+          <div id="titreText">
+            Allo7né
+            <div class="tutorial" id="blank">
+              <div class="tutorial">
+                Une règle d'éco-conception disponible&nbsp;<a href="/tutorial.html#twelvethRule">ici</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <nav>
@@ -21,8 +30,15 @@ const homepage = films => `
           
           
           <li class="pref">
+            <div class="tutorial" id="blank">
+              <div class="tutorial">
+                Une règle d'éco-conception disponible&nbsp;<a href="/tutorial.html#eleventhRule">ici</a>
+              </div>
+            </div>
             <div class="menuPrefDeroulant">
-              <button class="dropbtn">Préférences &nbsp;</button>
+              <button class="dropbtn">
+                Préférences &nbsp;
+              </button>
               <div class="dropdown-content">
                 <div id="blankCase"></div>
                 <form action="/" method="get">
@@ -41,7 +57,7 @@ const homepage = films => `
         <div id="barreRecherche">
           <form action="/search" method="get">
             <label>Rechercher un film :&ensp;<input class="search" name="title" type="text" placeholder="Nom du film"/></label>
-            <input class="search" type="submit" value="Rechercher"/>
+            <input id="btnSearch" class="search" type="submit" value="Rechercher"/>
           </form>
         </div>
       </div>

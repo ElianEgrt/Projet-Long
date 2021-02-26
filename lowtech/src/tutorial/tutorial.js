@@ -11,7 +11,11 @@ const tutorial = () => `
   <body>
     <header>
       <div id="titre">
-        Allo7né
+        <div class="center-div">  
+          <div id="titreText">
+            Allo7né
+          </div>
+        </div>
       </div>
       <nav>
         <ul>
@@ -24,6 +28,64 @@ const tutorial = () => `
     </header>
     
     <main>
+      <div id="firstRule">
+        ZEZAAAA
+      </div>
+      <div id="secondRule">
+        ZEZAAAA
+      </div>
+      <div id="thirdRule">
+        ZEZAAAA
+      </div>
+      <div id="fourthRule">
+        ZEZAAAA
+      </div>
+      <div id="fifthRule">
+        ZEZAAAA
+      </div>
+      <div id="sixthRule">
+        ZEZAAAA
+      </div>
+      <div id="seventhRule">
+        ZEZAAAA
+      </div>
+      <div id="heighthRule">
+        ZEZAAAA
+      </div>
+      <div id="firstRule">
+        ZEZAAAA
+      </div>
+      <div id="ninethRule">
+        ZEZAAAA
+      </div>
+      <div id="tenthRule">
+        ZEZAAAA
+      </div>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <div id="eleventhRule">
+        ZEZAAAAPEEEEEEEEEEEp
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <div id="twelvethRule">
+        ZEZAAAABITEEEE
+      </div>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
     </main>
   </body>

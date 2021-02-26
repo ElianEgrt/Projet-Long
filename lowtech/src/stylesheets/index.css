@@ -1,17 +1,50 @@
-#titre {
-  height: auto;
-  padding: 0.2em;
-  background:#2a403d;
-  text-align: center;
-  font-size: xx-large;
-  font-family: Arial;
-  font-weight: bold;
-  color: white;
-}
-
 body {
   margin: 0;
   font-family: Arial;
+}
+
+.center-div {
+  background:#2a403d;
+  display: flex;
+  justify-content: center;
+}
+
+#titre {
+  height: 50px;
+  padding: 0.2em;
+  background:#2a403d;
+}
+
+#titreText {
+  text-align: center;
+  font-size: xx-large;
+  font-weight: bold;
+  color: white;
+  margin-top : 7px;
+  position: absolute;
+}
+
+.tutorial {
+  display: none;
+  position: absolute;
+  background-color: white;
+  font-size: medium;
+  font-weight: normal;
+  color: black;
+  left: 40%;
+  top: 0%;
+  width: 200px;
+  height: 33px;
+  padding: 10px;
+  text-align: center;
+}
+
+.tutorial a {
+  color: black
+}
+
+#titreText:hover .tutorial {
+  display: block;
 }
 
 nav {
@@ -39,8 +72,27 @@ nav ul li {
 
 .pref {
   position: absolute;
-  right: 0;
+  right: 2%;
   margin-left: 0;
+}
+
+#blank {
+  background-color: transparent;
+}
+
+nav .pref:hover .tutorial {
+  display: block;
+}
+
+nav .tutorial {
+  left: -52%;
+  top: -5%;
+}
+
+nav .pref .tutorial a {
+  color: black;
+  font-size: medium;
+  font-family: Arial;
 }
 
 .dropbtn {
@@ -88,6 +140,7 @@ nav ul li {
   background-color: black;
   width: 100%;
   text-align: left;
+  cursor: pointer;
 }
 
 .dropdown-content input:hover {
@@ -98,13 +151,6 @@ nav ul li {
 /* Show the dropdown menu on hover */
 .menuPrefDeroulant:hover .dropdown-content {
   display: block;
-}
-
-.center-div
-{
-  background:#2a403d;
-  display: flex;
-  justify-content: center;
 }
 
 #barreRecherche{
@@ -122,6 +168,10 @@ nav ul li {
   padding-top: 10px;
   padding-bottom: 10px;
   font-size: medium;
+}
+
+#btnSearch {
+  cursor: pointer;
 }
 
 .categorie {
@@ -206,6 +256,7 @@ nav ul li {
 #inButtonLeftPage {
   padding : 10px;
   font-size: medium;
+  cursor: pointer;
 }
 
 #inButtonNextPage {
@@ -213,4 +264,5 @@ nav ul li {
   padding-left: 20px;
   padding-right: 20px;
   font-size: medium;
+  cursor: pointer;
 }

@@ -11,7 +11,11 @@ const filmPage = (filmPath, filmCaptionsPath) => `
   <body>
     <header>
       <div id="titre">
-        Allo7né
+        <div class="center-div">
+          <div id="titreText">
+            Allo7né
+          </div>
+        </div>
       </div>
       <nav>
         <ul>
