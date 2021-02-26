@@ -22,8 +22,14 @@ app.use(bodyParser.json());
 app.use(session({ secret: 'hightech', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
 
 //Configure Mongoose
-mongoose.connect('mongodb://localhost/hightech', { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.set('debug', true);
+try {
+  mongoose.connect('mongodb://localhost/hightech', { useNewUrlParser: true, useUnifiedTopology: true });
+  mongoose.set('debug', true);
+} catch (error) {
+  // console.error(error)
+  console.error("No database detected, mongoose failed to connect.");
+}
+
 
 //Models & routes
 require('./models/Users');
