@@ -12,11 +12,11 @@ const buildHomepage = async (categories, numPage) => {
 
   for (index in categories) {
 
-    if (categories[index] === "Popular") {
+    if (categories[index] === "Populaire") {
       url = `https://api.themoviedb.org/3/discover/movie?api_key=${TOKEN}&sort_by=popularity.desc&page=${numPage[0]}`
     }
 
-    else if (categories[index] === "Latest") {
+    else if (categories[index] === "Récent") {
       url = `https://api.themoviedb.org/3/discover/movie?api_key=${TOKEN}&primary_release_date.gte=2020-06-01&primary_release_date.lte=${currentDate}&sort_by=primary_release_date.desc&page=${numPage[0]}`
     }
 

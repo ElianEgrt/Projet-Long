@@ -26,8 +26,8 @@ const homepage = films => `
               <div class="dropdown-content">
                 <div id="blankCase"></div>
                 <form action="/" method="get">
-                  <input name="pref" value="Latest Movies First" type="submit"/>
-                  <input name="pref" value="Popular Movies First" type="submit"/>
+                  <input name="pref" value="Films récents en premier" type="submit"/>
+                  <input name="pref" value="Films populaires en premier" type="submit"/>
                 </form>
               </div>
             </div>
@@ -82,12 +82,12 @@ const homepage = films => `
       <div id="managePages">
         <div class="buttonPage">
           <form id="prevButton" action="/" method="get">
-            <input name="page" id="inButtonLeftPage" type="submit" value="< Previous"/>
+            <input name="page" id="inButtonLeftPage" type="submit" value="< Précédent"/>
           </form>
         </div>
         <div class="buttonPage">
           <form action="/" method="get">
-            <input name="page" id="inButtonNextPage" type="submit" value="Next >"/>
+            <input name="page" id="inButtonNextPage" type="submit" value="Suivant >"/>
           </form>
         </div>
       </div>

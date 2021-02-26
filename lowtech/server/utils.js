@@ -28,7 +28,7 @@ function fileAge(filePath) {
 
 function pageManaging (whichPage, numPage) {
   
-  if (whichPage === "Next >") {
+  if (whichPage === "Suivant >") {
   
     if (numPage[1] === 10) {
       numPage[1] = 20
@@ -37,7 +37,7 @@ function pageManaging (whichPage, numPage) {
       numPage[1] = 10
     }
   
-  } else if (whichPage === "< Previous" && (numPage[0] > 1 | numPage[1] === 20)) {
+  } else if (whichPage === "< Précédent" && (numPage[0] > 1 | numPage[1] === 20)) {
   
     if (numPage[1] === 10) {
       numPage[0] -= 1

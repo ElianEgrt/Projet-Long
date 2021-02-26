@@ -14,23 +14,23 @@ let serveHome = async (req, res, next) => {
   let age = fileAge(filePath);
   let shouldGen = false
   
-  let categories = ["Popular", "Latest"]
+  let categories = ["Populaire", "Récent"]
   let whichPage = req.query["page"]
   let whichPref = req.query["pref"]
   numPage = pageManaging(whichPage, numPage)
 
   if (whichPage) {
     shouldGen = true
-    if (cookie.getItem('pref') === "Latest Movies First") {
-      categories = ["Latest", "Popular"]
+    if (cookie.getItem('pref') === "Films récents en premier") {
+      categories = ["Récent", "Populaire"]
     }
   }
 
   else if (whichPref) {
     shouldGen = true
     cookie.setItem('pref', whichPref)
-    if (whichPref === "Latest Movies First") {
-      categories = ["Latest", "Popular"]
+    if (whichPref === "Films récents en premier") {
+      categories = ["Récent", "Populaire"]
     }
   }
 
