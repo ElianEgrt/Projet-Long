@@ -112,6 +112,12 @@ nav ul li {
   padding: 15px;
 }
 
+#barreRecherche label {
+  color: white;
+  padding-right: 10px;
+  font-size: large;
+}
+
 .search {
   padding-top: 10px;
   padding-bottom: 10px;
