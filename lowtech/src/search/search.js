@@ -19,7 +19,7 @@ const search = (films, searchedTitle) => `
       </ul>
     </nav>
     
-    <h2>Results of your research : "${searchedTitle}"</h2>
+    <h2>Résultats de votre recherche : "${searchedTitle}"</h2>
 
     <div class="gridFilm">
       ${films

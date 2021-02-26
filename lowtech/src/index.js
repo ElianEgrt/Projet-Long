@@ -155,7 +155,7 @@ const genHtml = async (file, args = {}) => {
   
   if (file === HOME_FILE) {
     var homeFilePath = path.join(staticPath, HOME_FILE) 
-    let page = await buildHomepage(args.categories, args.whichPage)
+    let page = await buildHomepage(args.categories, args.numPage)
     var pageMin = minify(page, minifyOptions);
     console.log(`Writing ${path.basename(HOME_FILE)}`)
     fs.writeFileSync(homeFilePath, pageMin);
