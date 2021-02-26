@@ -5,6 +5,10 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const errorHandler = require('errorhandler');
 
+const path = require('path');
+const staticPath = path.join(__dirname, '../hightech/build')
+
+
 //Configure mongoose's promise to global promise
 mongoose.promise = global.Promise;
 
@@ -35,6 +39,10 @@ try {
 require('./models/Users');
 require('./config/passport');
 app.use(require('./routes'));
+app.use(express.static(staticPath));
+
+console.log(staticPath)
+app.get('*', (req, res) => {res.sendFile(path.join(staticPath, '/index.html'))});
 
 //Error handlers & middlewares
 if (!isProduction) app.use(errorHandler());

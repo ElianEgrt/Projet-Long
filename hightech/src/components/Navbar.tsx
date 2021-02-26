@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import styled from "styled-components";
 import { HiOutlineHome } from "react-icons/hi";
@@ -42,9 +43,9 @@ const ButtonIconStyled = styled.div`
 const ButtonIcon = (Icon: IconType, route: string) => {
   return (
     <ButtonIconStyled>
-      <a href={route}>
+      <Link to={route}>
         <Icon />
-      </a>
+      </Link>
     </ButtonIconStyled>
   );
 };
