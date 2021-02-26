@@ -12,12 +12,12 @@ const filmPage = (filmPath, filmCaptionsPath) => `
     <div id="titre">
       Allo7né
     </div>
-    <div >
-      <ul id="nav">
+    <nav>
+      <ul>
         <li><a href="/">Accueil</a></li>
         <li><a href="/tutorial.html">Tutoriel</a></li>
       </ul>
-    </div>
+    </nav>
     
     <video width="100%" controls autoplay>
       <source src="${filmPath}" type="video/mp4">

@@ -32,8 +32,8 @@ const homepage = films => `
     <div class="center-div">
       <div id="barreRecherche">
         <form action="/search" method="get">
-          <input name="title" id="title" type="text" placeholder="Nom du film"/>
-          <input id="buttonSearch" type="submit" value="Rechercher"/>
+          <input class="search" name="title" type="text" placeholder="Nom du film"/>
+          <input class="search" type="submit" value="Rechercher"/>
         </form>
       </div>
     </div>
@@ -71,14 +71,19 @@ const homepage = films => `
       `)
       .join("")}        
     
-    <div id="pages">
-      <div class="center-div">
+    <div id="managePages">
+      <div class="buttonPage">
+        <form id="prevButton" action="/" method="get">
+          <input name="prev" id="inButtonLeftPage" type="submit" value="< Previous"/>
+        </form>
+      </div>
+      <div class="buttonPage">
         <form action="/" method="get">
-          <input name="prev" class="buttonPage" type="submit" value="< Previous"/>
-          <input name="next" class="buttonPage" type="submit" value="Next >"/>
+          <input name="next" id="inButtonNextPage" type="submit" value="Next >"/>
         </form>
       </div>
     </div>
+
   </body>
 </html>
 `;

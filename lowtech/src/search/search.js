@@ -12,12 +12,12 @@ const search = (films, searchedTitle) => `
     <div id="titre">
       Allo7né
     </div>
-    <div >
-      <ul id="nav">
+    <nav>
+      <ul>
         <li><a href="/">Accueil</a></li>
         <li><a href="/tutorial.html">Tutoriel</a></li>
       </ul>
-    </div>
+    </nav>
     
     <h2>Results of your research : "${searchedTitle}"</h2>
 

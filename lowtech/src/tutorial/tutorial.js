@@ -12,12 +12,12 @@ const tutorial = () => `
     <div id="titre">
       Allo7né
     </div>
-    <div >
-      <ul id="nav">
+    <nav >
+      <ul>
         <li><a href="/">Accueil</a></li>
         <li><a href="/tutorial.html">Tutoriel</a></li>
       </ul>
-    </div>
+    </nav>
     
     <h3>Tutorial Page</h3>
     
