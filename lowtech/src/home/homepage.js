@@ -12,20 +12,25 @@ const homepage = films => `
     <div id="titre">
       Allo7né
     </div>
+
     <nav>
       <ul>
         <li><a href="/">Accueil</a></li>
         <li><a href="/tutorial.html">Tutoriel</a></li>
         
         
-        <li class="pref"><div class="menuPrefDeroulant">
-          <button class="dropbtn">Préférences &nbsp;</button>
-          <div class="dropdown-content">
-            <div id="blankCase"></div>
-            <a href="/" value="actionFirst">Action Movies First</a>
-            <a href="/" value="popularFirst">Popular Movies First</a>
+        <li class="pref">
+          <div class="menuPrefDeroulant">
+            <button class="dropbtn">Préférences &nbsp;</button>
+            <div class="dropdown-content">
+              <div id="blankCase"></div>
+              <form action="/" method="get">
+                <input name="pref" value="Latest Movies First" type="submit"/>
+                <input name="pref" value="Popular Movies First" type="submit"/>
+              </form>
+            </div>
           </div>
-        </div></li>
+        </li>
       </ul>
     </nav>
 
@@ -74,12 +79,12 @@ const homepage = films => `
     <div id="managePages">
       <div class="buttonPage">
         <form id="prevButton" action="/" method="get">
-          <input name="prev" id="inButtonLeftPage" type="submit" value="< Previous"/>
+          <input name="page" id="inButtonLeftPage" type="submit" value="< Previous"/>
         </form>
       </div>
       <div class="buttonPage">
         <form action="/" method="get">
-          <input name="next" id="inButtonNextPage" type="submit" value="Next >"/>
+          <input name="page" id="inButtonNextPage" type="submit" value="Next >"/>
         </form>
       </div>
     </div>

@@ -7,11 +7,11 @@ const homepage = require ('./homepage')
 // const filmsResponse = require("./seed")
 let numPage = []
 
-const buildHomepage = async (categories, page) => {
+const buildHomepage = async (categories, whichPage) => {
   let films = []
   let currentDate = getCurrentDate()
 
-  numPage = pageManaging(page, numPage)
+  numPage = pageManaging(whichPage, numPage)
 
   for (index in categories) {
 
@@ -48,9 +48,9 @@ function getCurrentDate() {
   return yyyy+"-"+mm+"-"+dd
 }
 
-function pageManaging (page, numPage) {
+function pageManaging (whichPage, numPage) {
   
-  if (page === "next") {
+  if (whichPage === "Next >") {
   
     if (numPage[1] === 10) {
       numPage[1] = 20
@@ -59,7 +59,7 @@ function pageManaging (page, numPage) {
       numPage[1] = 10
     }
   
-  } else if (page === "prev" && (numPage[0] > 1 | numPage[1] === 20)) {
+  } else if (whichPage === "< Previous" && (numPage[0] > 1 | numPage[1] === 20)) {
   
     if (numPage[1] === 10) {
       numPage[0] -= 1

@@ -1,7 +1,7 @@
 var path = require('path');
+var cookie = require('localStorage')
 const { fileAge } = require('../utils')
 const { genHtml } = require('../../src/index')
-
 
 // Check file age
 let serveHome = async (req, res, next) => {
@@ -13,23 +13,31 @@ let serveHome = async (req, res, next) => {
   let filePath = path.join(staticPath, fileName)
   let age = fileAge(filePath);
   let shouldGen = false
-  let page = ""
+  let categories = ["Popular", "Latest"]
+  
+  let whichPage = req.query["page"]
+  let whichPref = req.query["pref"]
 
-  if (req.query["next"]) {
+  if (whichPage) {
     shouldGen = true
-    page = "next"
+    if (cookie.getItem('pref') === "Latest Movies First") {
+      categories = ["Latest", "Popular"]
+    }
   }
 
-  else if (req.query["prev"]) {
+  else if (whichPref) {
     shouldGen = true
-    page = "prev"
-  }
-
-  else if (req.query["cookie"]) {
-    
+    cookie.setItem('pref', whichPref)
+    if (whichPref === "Latest Movies First") {
+      categories = ["Latest", "Popular"]
+    }
   }
 
   else {
+
+    let pref = cookie.getItem('pref')
+    console.log(pref)
+    
     if (age) {
       if (age > 5 * 60 * 1000) {
         console.log(`${fileName} is too old, re-building it.`)
@@ -44,7 +52,7 @@ let serveHome = async (req, res, next) => {
   }
 
   if (shouldGen) {
-    genHtml(fileName, { page }).then(() => res.sendFile(filePath))
+    genHtml(fileName, { categories, whichPage }).then(() => res.sendFile(filePath))
   } else {
     next()
   }
