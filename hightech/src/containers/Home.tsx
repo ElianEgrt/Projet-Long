@@ -1,7 +1,5 @@
 import React from "react";
 import { recentFilms, popularFilms, Film, SearchResponse } from "../api";
-import { Loading } from "../components/Loading";
-import BottomBar from "../components/BottomBar";
 import FilmCategory from "../components/FilmCategory";
 
 interface State {

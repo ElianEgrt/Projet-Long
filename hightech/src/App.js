@@ -13,6 +13,7 @@ import Chatbox from "./containers/Chatbox";
 import Tutorial from "./containers/Tutorial";
 import Navbar from "./components/Navbar";
 import theme from "./styles";
+import Cookie from "./components/Cookie";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           {/* <Route component={NoMatch} /> */}
         </Switch>
         <Chatbox />
+        <Cookie />
       </ThemeProvider>
     </Router>
   );
