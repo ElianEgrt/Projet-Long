@@ -215,6 +215,10 @@ nav .pref .tutorial a {
   max-width: 100%;
 }
 
+.carac_film li .date_note_film{
+  display: inline;
+}
+
 .img_film {
   width: 200px;
   height: 300px;
@@ -268,6 +272,7 @@ nav .pref .tutorial a {
 }
 
 .date_note_film {
+  display: inline;
   font-weight: bold;
   font-size: 1em;
 }
@@ -277,6 +282,10 @@ nav .pref .tutorial a {
 }
 
 .overview_film {
+  margin-top:0.5em;
   opacity:50%;
   font-size: 1em;
+  overflow-y: scroll;
+  max-height: 200px;
+  
 }

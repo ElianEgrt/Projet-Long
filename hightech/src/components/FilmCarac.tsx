@@ -21,13 +21,6 @@ const Meta = styled.div`
   margin-bottom: ${(props) => props.theme.metrics.extraSmallSize};
   font-size: 1em;
   font-weight: bold;
-  display: flex;
-  justify-content: space-around;
-  .popularity {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
 `;
 
 const Text = styled.div`
