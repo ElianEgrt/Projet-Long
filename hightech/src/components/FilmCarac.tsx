@@ -16,11 +16,16 @@ const Title = styled.div`
   margin-bottom: ${(props) => props.theme.metrics.extraSmallSize};
 `;
 
-
 const Meta = styled.div`
   margin-bottom: ${(props) => props.theme.metrics.extraSmallSize};
   font-size: 1em;
   font-weight: bold;
+  display: inline-flex;
+  justify-content: space-around;
+  .popularity {
+    display: inline-flex;
+    align-items: center;
+  }
 `;
 
 const Text = styled.div`
