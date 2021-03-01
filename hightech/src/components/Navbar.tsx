@@ -11,26 +11,27 @@ import { IconType } from "react-icons";
 const NBar = styled.div`
   background: ${(props) => props.theme.colors.backgroundColor};
   width: auto;
-  height: ${(props) => props.theme.metrics.extraLargeSize};
-  padding: ${(props) => props.theme.metrics.mediumSize};
-  margin-bottom: 0;
-  display: flex;
-  flex-direction: row;
+  
+  display: block;
   align-items: center;
+  
+`;
+
+const NBut = styled.div`
+  background-color: black;
+  display: inline-flex;
   justify-content: space-between;
-  .buttons {
-    width: 7em;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
+  width: 100%;
+  padding: 0.5em;
 `;
 
 const TitleText = styled.div`
   font-size: ${(props) => props.theme.metrics.extraLargeSize};
   color: white;
   justify-self: flex-end;
+  text-align:center;
+  vertical-align: middle;
+  padding:0.2em;
 `;
 
 const ButtonIconStyled = styled.div`
@@ -38,6 +39,9 @@ const ButtonIconStyled = styled.div`
   a {
     color: white;
   }
+  display: inline;
+  margin-right:2em;
+  margin-left:2em;
 `;
 
 const ButtonIcon = (Icon: IconType, route: string) => {
@@ -55,15 +59,17 @@ interface Props {}
 const Navbar = (props: Props) => {
   return (
     <NBar>
-      <div className="buttons">
-        {ButtonIcon(HiOutlineHome, "/")}
-        {ButtonIcon(BsBook, "/tutorial")}
-      </div>
       <TitleText>Allo7né</TitleText>
-      <div className="buttons">
-        {ButtonIcon(IoSettingsOutline, "/")}
-        {ButtonIcon(FaUserCircle, "/")}
-      </div>
+      <NBut>
+        <div className="buttons">
+          {ButtonIcon(HiOutlineHome, "/")}
+          {ButtonIcon(BsBook, "/tutorial")}
+        </div>
+        <div className="buttons">
+          {ButtonIcon(IoSettingsOutline, "/")}
+          {ButtonIcon(FaUserCircle, "/")}
+        </div>
+      </NBut>
     </NBar>
   );
 };
