@@ -17,6 +17,7 @@ const CategoryHeader = styled.div`
   padding-left: 1em;
   margin-bottom: 0.5em;
   font-size: 2em;
+  font-weight: bold;
 `;
 
 interface Props {

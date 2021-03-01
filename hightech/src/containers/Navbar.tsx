@@ -11,18 +11,27 @@ import { IconType } from "react-icons";
 const NBar = styled.div`
   background: ${(props) => props.theme.colors.backgroundColor};
   width: auto;
-
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  height: 17%;
 `;
 
 const NBut = styled.div`
   background-color: black;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: auto;
-  padding: 0.5em;
+  align-items: center;
+  .buttons {
+    color: white;
+    display: flex;
+    flex-direction: row;
+  }
 `;
 
 const TitleText = styled.div`
@@ -39,9 +48,11 @@ const ButtonIconStyled = styled.div`
   a {
     color: white;
   }
-  display: inline;
-  margin-right: 2em;
-  margin-left: 2em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 1em;
+  margin-left: 1em;
 `;
 
 const ButtonIcon = (Icon: IconType, route: string) => {
@@ -67,7 +78,7 @@ const Navbar = (props: Props) => {
         </div>
         <div className="buttons">
           {ButtonIcon(IoSettingsOutline, "/")}
-          {ButtonIcon(FaUserCircle, "/")}
+          {ButtonIcon(FaUserCircle, "/profile")}
         </div>
       </NBut>
     </NBar>

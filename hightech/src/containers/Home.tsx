@@ -55,7 +55,7 @@ class Home extends React.Component<Props, State> {
       currentPage
     )) as SearchResponse;
     let allPopular: Film[] = allPopularResponse.results;
-    this.totalPopularPages = Math.floor(allPopularResponse.total_pages / 10);
+    this.totalPopularPages = Math.floor(allPopularResponse.total_pages / 100);
 
     while (this.totalPopularPages !== currentPage) {
       currentPage = currentPage + 1;

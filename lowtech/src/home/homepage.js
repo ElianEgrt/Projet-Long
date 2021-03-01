@@ -85,10 +85,16 @@ const homepage = films => `
                 </div>
 
                 <ul class="carac_film">
-                  <li> ${film.title} </li>
-                  <li> Réalisateur </li>
-                  <li> Genre </li>
-                  <li> Synopsis </li>
+                  <div class="titre_film">
+                    <li> ${film.title} </li>
+                  <div/>
+                  <div class="date_note_film">
+                    <li> ${film.release_date} </li>
+                    <li> ${film.vote_average}/10 </li>
+                  <div/>
+                  <div class="overview_film">
+                    <li> ${film.overview} </li>
+                  <div/>
                 </ul>
               </div>
             `)

@@ -12,25 +12,24 @@ const CaracContainer = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 20px;
+  font-size: 1.3em;
   margin-bottom: ${(props) => props.theme.metrics.extraSmallSize};
 `;
 
 const Meta = styled.div`
   margin-bottom: ${(props) => props.theme.metrics.extraSmallSize};
-  font-size: 17px;
+  font-size: 1em;
   font-weight: bold;
-  display: flex;
+  display: inline-flex;
   justify-content: space-around;
   .popularity {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
   }
 `;
 
 const Text = styled.div`
-  font-size: 15px;
+  font-size: 1em;
   opacity: 50%;
   overflow-y: scroll;
 `;
