@@ -57,9 +57,10 @@ const tutorial = () => `
       <b><h3>Prendre en compte le volet éthique ainsi que l'accessibilité sur notre interface H/M</h3></b>
       Gestion d’accessibilité :
       <ul>
-        <li id="1">Malvoyants : augmentation des contrastes, tailles de police + DOC DE CAROLE</li>
-        <li id="2">Malvoyants/Aveugles : compatibilité avec l'extension Chrome "Screen Reader" qui permet de lire les pages web</li>
-        <li id="captions">Sourds : proposition de sous-titres sur les vidéos (":" en bas à droite du lecteur) + DOC DE CAROLE</li>
+        <li id="fontContrastIncrease">Malvoyants : augmentation des contrastes et de la taille de police</li>
+        <li id="screenReader">Malvoyants/Aveugles : compatibilité avec l'extension Chrome "Screen Reader" qui permet de lire les pages web</li>
+        <li id="captions">Sourds : proposition de sous-titres sur les vidéos (":" en bas à droite du lecteur)</li>
+        <li>Personnes possédant un handicap physique ou moteur : design fait pour une navigation au clavier à l'aide de la touche TAB</li>
       </ul>
       <div id="secondRule">
         Volet éthique, notamment dans la gestion des données personnelles : 
@@ -83,6 +84,21 @@ const tutorial = () => `
       <h2 id="intro2">
        La liste des bonnes pratiques (tirées des "115 bonnes pratiques") mises en place sur ce site web
       </h2>
+
+      <ul>
+        <li>(n°3) Fluidifier le processus : nombre de pages web proposées faible pour ainsi réduire le temps passé par l'utilisateur sur le site et donc l'impact environnemental + réduire le nombre de sauts possibles depuis la racine (page d'accueil) = uniquement 1 possible</li>
+        <li>(n°4) Préférer la saisie assistée à l'autocomplétion : écriture en fond dans le cadre de saisie pour indiquer le champ à renseigner plutôt que des propositions qui terminent le début du mot tapé
+        <li>(n°5) Favoriser un design simple, épuré adapté au web : utilisation de HTML5/CSS3 uniquement, côté client
+        <li>(n°6) Créer un site responsive : le site adapte sa résolution à tout appareil que l’utilisateur pourrait utiliser pour le consulter
+        <li>(n°9) Limiter le nombre de requêtes HTTP par page web pour ne pas monopoliser les ressources du serveur : 1 requête = 1 page HTML statique
+        <li>(n°11 & 13) Choisir les technologies les plus adaptées & Favoriser les pages statiques : utilisation de HTML5 / CSS3 uniquement, côté client + code JavaScript exécuté côté serveur
+        
+        <li>(n°32) Externaliser les CSS et JavaScript : les codes CSS et JavaScript ne sont pas mêlés au code HTML des pages
+        <li>(n°39) Éviter les animations Javascript / CSS coûteuses
+        <li>(n°40) N'utilisez que les portions indispensables des librairies Javascript et frameworks CSS : 0 framework CSS utilisé & un minimum de bibliothèques JavaScript
+        <li>(n°46) Supprimer les balises images dont l’attribut SRC est vide
+        <li>(n°77 & 83) Minifier les fichiers CSS & Compresser la sortie HTML : les fichiers HTML et CSS renvoyés au client ne possèdent aucun saut de ligne et uniquement les espaces nécessaires
+      </ul>
       
     </main>
   </body>
