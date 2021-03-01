@@ -6,14 +6,16 @@ import {
 } from "react-router-dom";
 
 import { ThemeProvider } from "styled-components";
-import GlobalStyle from "./styles/globalStyles";
+import GlobalStyle  from "./styles/globalStyles";
+import theme        from "./styles";
 
-import Home from "./containers/Home";
-import Chatbox from "./containers/Chatbox";
-import Tutorial from "./containers/Tutorial";
-import Navbar from "./components/Navbar";
-import theme from "./styles";
-import Cookie from "./components/Cookie";
+import Home         from "./containers/Home";
+import Chatbox      from "./containers/Chatbox";
+import Tutorial     from "./containers/Tutorial";
+import UserProfile  from "./containers/UserProfile"
+import Navbar       from "./containers/Navbar";
+
+import Cookie   from "./components/Cookie";
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/tutorial" component={Tutorial} /> 
+          <Route path="/profile" component={UserProfile} /> 
           {/* <Route path="/sample" render={routerProps => <Sample {...routerProps} sampleProp={"sample"}/>} />
           {/* <Route path='/default' render={() => <Redirect to= "/" />} /> */}
           {/* <Route component={NoMatch} /> */}
