@@ -11,14 +11,14 @@ let serveFilm = async (req, res, next) => {
   let fileName = 'film.html'
   let filePath = path.join(staticPath, fileName)
 
-  // let filmName = req.params.filmFile // renvoie REMPLACER_PAR_VRAI_FILM (cf homepage.js)
+  let filmNameOrigin = req.query["title"] // On utiliserait cela pour filmName si on utilisait pas une vidéo par défaut
   let filmNames = getCurrentFilenames(path.join(staticPath, '/assets/films'))
   let filmName = filmNames[1]
   let filmCaptions = filmNames[2]
   let filmPath = `../assets/films/${filmName}`
   let filmCaptionsPath = `../assets/films/${filmCaptions}`
 
-  genHtml(fileName, { filmPath, filmCaptionsPath }).then(() => res.sendFile(filePath))
+  genHtml(fileName, { filmPath, filmCaptionsPath, filmNameOrigin }).then(() => res.sendFile(filePath))
 
 }
 

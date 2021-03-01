@@ -1,8 +1,9 @@
 var path = require('path');
-const { genHtml } = require('../../src/index')
+const { genHtml } = require('../../src/index');
+const serveHome = require('./serveHome');
 
 // Check file age
-let serveSearch = async (req, res) => {
+let serveSearch = async (req, res, next) => {
 
   // path to static files
   var staticPath = path.join(__dirname, '../../public');
@@ -11,9 +12,12 @@ let serveSearch = async (req, res) => {
   let filePath = path.join(staticPath, fileName)
 
   let filmTitle = req.query['title']
-
-  genHtml(fileName, { filmTitle }).then(() => res.sendFile(filePath))
-
+  if (filmTitle) {
+    genHtml(fileName, { filmTitle }).then(() => res.sendFile(filePath))
+  } else {
+    res.sendFile(path.join(staticPath, 'index.html'))
+  }
+  
 }
 
 module.exports = serveSearch;

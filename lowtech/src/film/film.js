@@ -1,4 +1,4 @@
-const filmPage = (filmPath, filmCaptionsPath) => `
+const filmPage = (filmPath, filmCaptionsPath, filmNameOrigin) => `
 <!doctype html>
 <link href="./assets/stylesheets/film.css" rel="stylesheet">
 <link href="./assets/stylesheets/film.css" rel="stylesheet" media="print">
@@ -26,10 +26,20 @@ const filmPage = (filmPath, filmCaptionsPath) => `
     </header>
     
     <main>
-      <video width="100%" controls autoplay>
-        <source src="${filmPath}" type="video/mp4">
-        <track label="English" kind="captions" srclang="en" src="${filmCaptionsPath}" default>
-      </video>
+      <h2>Votre vidéo : ${filmNameOrigin}</h2>
+      <div id="video">
+        <div class="center-div"> 
+          <div id="pourTuto">
+            <div class="tutorial">
+              Une règle d'éco-conception disponible&nbsp;<a href="/tutorial.html#captions">ici</a>
+            </div>
+          </div>
+        </div>
+        <video width="100%" controls autoplay>
+          <source src="${filmPath}" type="video/mp4">
+          <track label="English" kind="captions" srclang="en" src="${filmCaptionsPath}" default>
+        </video>
+      </div>
     </main>
   </body>
 </html>

@@ -16,7 +16,7 @@ const homepage = films => `
             Allo7né
             <div class="tutorial" id="blank">
               <div class="tutorial">
-                Une règle d'éco-conception disponible&nbsp;<a href="/tutorial.html#twelvethRule">ici</a>
+                Une règle d'éco-conception disponible&nbsp;<a href="/tutorial.html#firstRule">ici</a>
               </div>
             </div>
           </div>
@@ -32,7 +32,7 @@ const homepage = films => `
           <li class="pref">
             <div class="tutorial" id="blank">
               <div class="tutorial">
-                Une règle d'éco-conception disponible&nbsp;<a href="/tutorial.html#eleventhRule">ici</a>
+                Une règle d'éco-conception disponible&nbsp;<a href="/tutorial.html#thirdRule">ici</a>
               </div>
             </div>
             <div class="menuPrefDeroulant">
@@ -79,7 +79,9 @@ const homepage = films => `
                   <img alt="Poster non disponible dans la base de données" class="img_film"
                   src="https://image.tmdb.org/t/p/w200${film.poster_path}"
                   />
-                  <a href="/watch"></a>
+                  <form action="/watch">
+                    <input name="title" value="${film.title}" type="submit"></a>
+                  </form>
                 </div>
 
                 <ul class="carac_film">
@@ -96,6 +98,13 @@ const homepage = films => `
         .join("")}        
       
       <div id="managePages">
+        <div class=center-div>
+          <div id="pourTuto">
+            <div class="tutorial" id="second">
+              Une règle d'éco-conception disponible&nbsp;<a href="/tutorial.html#page">ici</a>
+            </div>
+          </div>
+        </div>
         <div class="buttonPage">
           <form id="prevButton" action="/" method="get">
             <input name="page" id="inButtonLeftPage" type="submit" value="< Précédent"/>

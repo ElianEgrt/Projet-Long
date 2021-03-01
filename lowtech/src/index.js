@@ -161,9 +161,9 @@ const genHtml = async (file, args = {}) => {
     fs.writeFileSync(homeFilePath, pageMin);
   }
 
-  if (file === FILM_FILE && args.filmPath && args.filmCaptionsPath) {
+  if (file === FILM_FILE && args.filmPath && args.filmCaptionsPath && args.filmNameOrigin) {
     var filmFilePath = path.join(staticPath, FILM_FILE)
-    let page = buildFilmPage(args.filmPath, args.filmCaptionsPath)
+    let page = buildFilmPage(args.filmPath, args.filmCaptionsPath, args.filmNameOrigin)
     var pageMin = minify(page, minifyOptions);
     console.log(`Writing ${path.basename(FILM_FILE)}`)
     fs.writeFileSync(filmFilePath, pageMin);

@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  background-color: rgb(0, 0, 0);
   font-family: Arial;
+  color: black;
 }
 
 .center-div {
@@ -48,20 +48,41 @@ nav ul li {
   margin-left: 50px;
 }
 
-#eleventhRule {
-  color: white;
+main {
+  margin: 10%;
+  margin-top: 2%;
+  margin-left: 15%;
+  line-height: 1.5
 }
 
-#eleventhRule:target {
-  background-color: white;
-  color: black;
+h2 {
+  text-align: center;
 }
 
-#twelvethRule {
-  color: white;
+#firstRule:target {
+  background-color: rgba(0, 128, 0, 0.383);
 }
 
-#twelvethRule:target {
-  background-color: white;
-  color: black;
+#noMargBot {
+  margin-bottom: 0;
+}
+
+#noMargTop {
+  margin-top: 0;
+}
+
+#secondRule:target {
+  background-color: rgba(0, 128, 0, 0.383);
+}
+
+#page:target {
+  background-color: rgba(0, 128, 0, 0.383);
+}
+
+#captions:target {
+  background-color: rgba(0, 128, 0, 0.383);
+}
+
+#intro2 {
+  margin-top: 5%;
 }

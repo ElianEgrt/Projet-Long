@@ -224,7 +224,7 @@ nav .pref .tutorial a {
   position: relative;
 }
 
-.img_film_overlay a {
+.img_film_overlay input {
   position: absolute;
   display: block;
   background: url(https://www.slatecube.com/images/play-btn.png);
@@ -234,6 +234,9 @@ nav .pref .tutorial a {
   left: 66px;
   background-size: 50px 50px;
   background-repeat: no-repeat;
+  color: transparent;
+  border: 0;
+  cursor: pointer;
 }
 
 #managePages {
@@ -243,6 +246,27 @@ nav .pref .tutorial a {
   display: flex;
   justify-content: center;
   padding: 15px;
+}
+
+#managePages .center-div {
+  height: 0;
+  width: 0;
+  position: absolute;
+}
+
+#pourTuto {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+}
+
+#managePages:hover .tutorial {
+  display: block;
+}
+
+#pourTuto .tutorial {
+  top: -350%;
+  border: solid 1px black;
 }
 
 .buttonPage {

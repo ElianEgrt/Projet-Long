@@ -2,12 +2,13 @@ body {
   margin: 0;
   background-color: rgb(0, 0, 0);
   font-family: Arial;
+  color: white;
 }
 
 .center-div {
-  background:#2a403d;
   display: flex;
   justify-content: center;
+  height: 70px;
 }
 
 #titre {
@@ -47,4 +48,39 @@ nav ul li {
   display: inline;
   position: relative;
   margin-left: 50px;
+}
+
+h2 {
+  font-size: x-large;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  background:#2a403d;
+  padding: 1em;
+  margin: 0;
+}
+
+#pourTuto {
+  margin-top: 2%;
+  position: absolute;
+}
+
+.tutorial {
+  display: none;
+  position: static;
+  background-color: white;
+  font-size: medium;
+  font-weight: normal;
+  color: black;
+  width: 200px;
+  height: 33px;
+  padding: 10px;
+  text-align: center;
+}
+
+.tutorial a {
+  color: black;
+}
+
+#video:hover .tutorial {
+  display: block;
 }

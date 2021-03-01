@@ -2,9 +2,9 @@ const filmPage = require ('./film')
 
 // Fetch films
 // const filmsResponse = require("./seed")
-const buildFilmPage = (filmPath, filmCaptionsPath) => {
+const buildFilmPage = (filmPath, filmCaptionsPath, filmNameOrigin) => {
     
-  return filmPage(filmPath, filmCaptionsPath)
+  return filmPage(filmPath, filmCaptionsPath, filmNameOrigin)
 
 };
   

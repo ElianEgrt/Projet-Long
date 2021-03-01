@@ -4,7 +4,6 @@ body {
 }
 
 .center-div {
-  background:#2a403d;
   display: flex;
   justify-content: center;
 }
