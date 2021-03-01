@@ -23,6 +23,7 @@ interface Props {
   category: string;
   films: Film[];
   type: "list" | "slider";
+  loading: boolean;
 }
 
 const FilmCategory = (props: Props) => {
@@ -31,8 +32,12 @@ const FilmCategory = (props: Props) => {
       <CategoryHeader>
         <div>{props.category}</div>
       </CategoryHeader>
-      {props.type === "slider" && <FilmSlider films={props.films} />}
-      {props.type === "list" && <FilmList films={props.films} />}
+      {props.type === "slider" && (
+        <FilmSlider films={props.films} loading={props.loading} />
+      )}
+      {props.type === "list" && (
+        <FilmList films={props.films} loading={props.loading} />
+      )}
     </Wrapper>
   );
 };

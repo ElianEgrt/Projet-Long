@@ -1,40 +1,56 @@
 import React from "react";
+import styled from "styled-components";
 
 import { Film } from "../api";
 import FilmCard from "./FilmCard";
+import { Loading } from "./Loading";
 import Slider from "./Slider";
 
 interface Props {
   films: Film[];
+  loading: boolean;
 }
 
-class FilmSlider extends React.Component<Props, {}> {
-  render() {
-    return (
-      <div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        />
-        <Slider
-          options={{
-            accessibility: true,
-            contain: true,
-            prevNextButtons: false,
-            pageDots: false,
-            wrapAround: true,
-            resize: false,
-          }}
-        >
-          {this.props.films.map((film) => (
-            <FilmCard key={film.id} value={film} />
-          ))}
-        </Slider>
-      </div>
-    );
-  }
-}
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const FilmSlider = (props: Props) => {
+  const renderSlider = () => (
+    <>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      />
+      <Slider
+        options={{
+          accessibility: true,
+          percentPosition: true,
+          contain: true,
+          resize: false,
+        }}
+      >
+        {props.films.map((film) => (
+          <FilmCard key={film.id} value={film} />
+        ))}
+      </Slider>
+    </>
+  );
+
+  return (
+    <>
+      {props.loading ? (
+        <Wrapper>
+          <Loading />
+        </Wrapper>
+      ) : (
+        renderSlider()
+      )}
+    </>
+  );
+};
 
 export default FilmSlider;
