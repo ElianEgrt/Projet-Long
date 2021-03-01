@@ -8,7 +8,7 @@ interface Props {
   films: Film[];
 }
 
-class ListeFilm extends React.Component<Props, {}> {
+class FilmSlider extends React.Component<Props, {}> {
   render() {
     return (
       <div>
@@ -37,4 +37,4 @@ class ListeFilm extends React.Component<Props, {}> {
   }
 }
 
-export default ListeFilm;
+export default FilmSlider;

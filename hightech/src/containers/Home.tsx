@@ -5,7 +5,8 @@ import BottomBar from "../components/BottomBar";
 import FilmCategory from "../components/FilmCategory";
 
 interface State {
-  films: Film[];
+  popularFilms: Film[];
+  recentFilms: Film[];
   loading: boolean;
 }
 
@@ -15,21 +16,33 @@ class Home extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      films: [],
+      popularFilms: [],
+      recentFilms: [],
       loading: true,
     };
   }
 
-  private page: number = 0;
-  private totalPages: number = 0;
+  private popularPage: number = 0;
+  private recentPage: number = 0;
+  private totalPopularPages: number = 0;
+  private totalRecentPage: number = 0;
 
   private loadFilms = async () => {
-    if (this.page === 0) this.setState({ ...this.state, loading: true });
-    let response = (await popularFilms(this.page + 1)) as SearchResponse;
-    this.page = response.page;
-    this.totalPages = response.total_pages;
+    if (this.popularPage === 0 || this.recentPage === 0)
+      this.setState({ ...this.state, loading: true });
+    let popularResponse = (await popularFilms(
+      this.popularPage + 1
+    )) as SearchResponse;
+    let recentResponse = (await recentFilms(
+      this.recentPage + 1
+    )) as SearchResponse;
+    this.popularPage = popularResponse.page;
+    this.recentPage = recentResponse.page;
+    this.totalPopularPages = popularResponse.total_pages;
+    this.totalRecentPage = recentResponse.total_pages;
     this.setState({
-      films: [...this.state.films, ...response.results],
+      recentFilms: [...this.state.recentFilms, ...recentResponse.results],
+      popularFilms: [...this.state.popularFilms, ...popularResponse.results],
       loading: false,
     });
   };
@@ -45,9 +58,21 @@ class Home extends React.Component<Props, State> {
           <Loading />
         ) : (
           <div>
-            <FilmCategory category={"Récents"} films={this.state.films} />
-            <FilmCategory category={"Populaires"} films={this.state.films} />
-            <FilmCategory category={"Découvrir"} films={this.state.films} />
+            <FilmCategory
+              category={"Récents"}
+              type={"slider"}
+              films={this.state.recentFilms}
+            />
+            <FilmCategory
+              category={"Populaires"}
+              type={"slider"}
+              films={this.state.popularFilms}
+            />
+            <FilmCategory
+              category={"Découvrir"}
+              type={"list"}
+              films={this.state.popularFilms}
+            />
           </div>
         )}
       </div>

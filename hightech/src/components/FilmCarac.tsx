@@ -8,7 +8,7 @@ const CaracContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: ${(p) => p.theme.metrics.smallSize};
-  width: 60%;
+  width: 50%;
 `;
 
 const Title = styled.div`

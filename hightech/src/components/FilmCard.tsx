@@ -10,15 +10,15 @@ const Card = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 32em;
+  width: 25em;
   height: 17em;
-  margin: 0 1em;
+  margin: 1em;
 `;
 
 const ImageContainer = styled.div`
   display: flex;
   align-items: center;
-  width: 40%;
+  width: 50%;
   overflow: hidden;
   img {
     width: 100%;

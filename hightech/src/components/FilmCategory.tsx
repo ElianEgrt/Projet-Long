@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import ListeFilm from "./ListeFilm";
+import FilmSlider from "./FilmSlider";
+import FilmList from "./FilmList";
 import { Film } from "../api";
 
 const Wrapper = styled.div`
@@ -21,6 +22,7 @@ const CategoryHeader = styled.div`
 interface Props {
   category: string;
   films: Film[];
+  type: "list" | "slider";
 }
 
 const FilmCategory = (props: Props) => {
@@ -29,7 +31,8 @@ const FilmCategory = (props: Props) => {
       <CategoryHeader>
         <div>{props.category}</div>
       </CategoryHeader>
-      <ListeFilm films={props.films} />
+      {props.type === "slider" && <FilmSlider films={props.films} />}
+      {props.type === "list" && <FilmList films={props.films} />}
     </Wrapper>
   );
 };
