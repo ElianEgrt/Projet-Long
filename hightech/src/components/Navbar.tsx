@@ -11,17 +11,17 @@ import { IconType } from "react-icons";
 const NBar = styled.div`
   background: ${(props) => props.theme.colors.backgroundColor};
   width: auto;
-  
+
   display: block;
   align-items: center;
-  
 `;
 
 const NBut = styled.div`
   background-color: black;
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  width: 100%;
+  width: auto;
   padding: 0.5em;
 `;
 
@@ -29,9 +29,9 @@ const TitleText = styled.div`
   font-size: ${(props) => props.theme.metrics.extraLargeSize};
   color: white;
   justify-self: flex-end;
-  text-align:center;
+  text-align: center;
   vertical-align: middle;
-  padding:0.2em;
+  padding: 0.2em;
 `;
 
 const ButtonIconStyled = styled.div`
@@ -40,8 +40,8 @@ const ButtonIconStyled = styled.div`
     color: white;
   }
   display: inline;
-  margin-right:2em;
-  margin-left:2em;
+  margin-right: 2em;
+  margin-left: 2em;
 `;
 
 const ButtonIcon = (Icon: IconType, route: string) => {
