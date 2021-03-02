@@ -83,6 +83,10 @@ h2 {
   background-color: rgba(0, 128, 0, 0.383);
 }
 
+#fontContrastIncrease:target {
+  background-color: rgba(0, 128, 0, 0.383);
+}
+
 #intro2 {
   margin-top: 5%;
 }

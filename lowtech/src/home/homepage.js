@@ -27,6 +27,11 @@ const homepage = (films, cssFile) => `
             <label for="checkVisImp">Changer les contrastes et les tailles de police</label>
             <input class="forPointer" type="submit" value="OK">
           </form>
+          <div class="tutorial" id="blank">
+            <div class="tutorial">
+              Une règle d'éco-conception à afficher&nbsp;<a href="/tutorial#fontContrastIncrease">ici</a>
+            </div>
+          </div>
         </div>
       </div>
 

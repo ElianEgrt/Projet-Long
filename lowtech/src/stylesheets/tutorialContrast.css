@@ -85,6 +85,10 @@ body {
   #captions:target {
     background-color: rgba(0, 128, 0);
   }
+
+  #fontContrastIncrease:target {
+    background-color: rgba(0, 128, 0);
+  }
   
   #intro2 {
     margin-top: 5%;

@@ -31,7 +31,7 @@ body {
   font-size: medium;
   font-weight: normal;
   color: black;
-  left: 40%;
+  left: -70%;
   top: 0%;
   width: 200px;
   height: 33px;
@@ -51,7 +51,11 @@ body {
   color: white;
   position: absolute;
   right: 0;
-  padding: 1%;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-top: 0.5%;
+  z-index: 1000;
+  margin-top: 7px;
 }
 
 #visuallyImpaired label {
@@ -60,6 +64,18 @@ body {
 
 #visuallyImpaired .forPointer {
   cursor: pointer;
+}
+
+#visuallyImpaired:hover .tutorial {
+  display: block;
+}
+
+#visuallyImpaired .tutorial {
+  left: -33%;
+}
+
+#visuallyImpaired #blank {
+  z-index: -1000;
 }
 
 nav {
