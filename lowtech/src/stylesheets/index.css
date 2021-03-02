@@ -323,6 +323,7 @@ nav .pref .tutorial a {
   opacity:50%;
   font-size: 1em;
   overflow-y: scroll;
-  max-height: 200px;
+  max-height: 8em;
+  overflow:auto;
   
 }
