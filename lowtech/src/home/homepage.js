@@ -16,7 +16,7 @@ const homepage = (films, cssFile) => `
             Allo7né
             <div class="tutorial" id="blank">
               <div class="tutorial">
-                Une règle d'éco-conception disponible&nbsp;<a href="/tutorial#firstRule">ici</a>
+                Une règle d'éco-conception à afficher&nbsp;<a href="/tutorial#firstRule">ici</a>
               </div>
             </div>
           </div>
@@ -39,7 +39,7 @@ const homepage = (films, cssFile) => `
           <li class="pref">
             <div class="tutorial" id="blank">
               <div class="tutorial">
-                Une règle d'éco-conception disponible&nbsp;<a href="/tutorial#secondRule">ici</a>
+                Une règle d'éco-conception à afficher&nbsp;<a href="/tutorial#secondRule">ici</a>
               </div>
             </div>
             <div class="menuPrefDeroulant">
@@ -114,7 +114,7 @@ const homepage = (films, cssFile) => `
         <div class=center-div>
           <div id="pourTuto">
             <div class="tutorial" id="second">
-              Une règle d'éco-conception disponible&nbsp;<a href="/tutorial#page">ici</a>
+              Une règle d'éco-conception à afficher&nbsp;<a href="/tutorial#page">ici</a>
             </div>
           </div>
         </div>

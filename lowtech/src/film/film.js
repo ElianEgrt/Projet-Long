@@ -31,7 +31,7 @@ const filmPage = (filmPath, filmCaptionsPath, filmNameOrigin, cssFile) => `
         <div class="center-div"> 
           <div id="pourTuto">
             <div class="tutorial">
-              Une règle d'éco-conception disponible&nbsp;<a href="/tutorial#captions">ici</a>
+              Une règle d'éco-conception à afficher&nbsp;<a href="/tutorial#captions">ici</a>
             </div>
           </div>
         </div>
