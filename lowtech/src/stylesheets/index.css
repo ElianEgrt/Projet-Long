@@ -305,14 +305,15 @@ nav .pref .tutorial a {
 
 .titre_film {
   font-size:1.3em;
+  max-height:100%;
+  overflow-y: scroll;
+  overflow: auto;
+
 }
 
 .overview_film {
   margin-top:0.5em;
   opacity:50%;
   font-size: 1em;
-  overflow-y: scroll;
   max-height: 8em;
-  overflow:auto;
-  
 }
