@@ -1,6 +1,6 @@
 var path = require('path');
 const { genHtml } = require('../../src/index');
-const serveHome = require('./serveHome');
+var cookie = require('localStorage')
 
 // Check file age
 let serveSearch = async (req, res, next) => {
@@ -8,7 +8,8 @@ let serveSearch = async (req, res, next) => {
   // path to static files
   var staticPath = path.join(__dirname, '../../public');
 
-  let fileName = 'search.html'
+  let fileName
+  cookie.getItem('contrast') === 'on' ? fileName = 'searchContrast.html' : fileName = 'search.html'
   let filePath = path.join(staticPath, fileName)
 
   let filmTitle = req.query['title']

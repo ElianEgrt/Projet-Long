@@ -1,7 +1,7 @@
-const filmPage = (filmPath, filmCaptionsPath, filmNameOrigin) => `
+const filmPage = (filmPath, filmCaptionsPath, filmNameOrigin, cssFile) => `
 <!doctype html>
-<link href="./assets/stylesheets/film.css" rel="stylesheet">
-<link href="./assets/stylesheets/film.css" rel="stylesheet" media="print">
+<link href="./assets/stylesheets/${cssFile}" rel="stylesheet">
+<link href="./assets/stylesheets/${cssFile}" rel="stylesheet" media="print">
 <html lang="fr">
   <head>
     <meta charset="utf-8">
@@ -20,7 +20,7 @@ const filmPage = (filmPath, filmCaptionsPath, filmNameOrigin) => `
       <nav>
         <ul>
           <li><a href="/">Accueil</a></li>
-          <li><a href="/tutorial.html">Tutoriel</a></li>
+          <li><a href="/tutorial">Tutoriel</a></li>
         </ul>
       </nav>
     </header>
@@ -31,7 +31,7 @@ const filmPage = (filmPath, filmCaptionsPath, filmNameOrigin) => `
         <div class="center-div"> 
           <div id="pourTuto">
             <div class="tutorial">
-              Une règle d'éco-conception disponible&nbsp;<a href="/tutorial.html#captions">ici</a>
+              Une règle d'éco-conception disponible&nbsp;<a href="/tutorial#captions">ici</a>
             </div>
           </div>
         </div>

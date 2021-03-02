@@ -54,8 +54,12 @@ body {
   padding: 1%;
 }
 
-label {
+#visuallyImpaired label {
   padding: 10px;
+}
+
+#visuallyImpaired .forPointer {
+  cursor: pointer;
 }
 
 nav {

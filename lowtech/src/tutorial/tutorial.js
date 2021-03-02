@@ -1,7 +1,7 @@
-const tutorial = () => `
+const tutorial = (cssFile) => `
 <!doctype html>
-<link href="./assets/stylesheets/tutorial.css" rel="stylesheet">
-<link href="./assets/stylesheets/tutorial.css" rel="stylesheet" media="print">
+<link href="./assets/stylesheets/${cssFile}" rel="stylesheet">
+<link href="./assets/stylesheets/${cssFile}" rel="stylesheet" media="print">
 <html lang="fr">
   <head>
     <meta charset="utf-8">
@@ -20,7 +20,7 @@ const tutorial = () => `
       <nav>
         <ul>
           <li><a href="/">Accueil</a></li>
-          <li><a href="/tutorial.html">Tutoriel</a></li>
+          <li><a href="/tutorial">Tutoriel</a></li>
         </ul>
       </nav>
       

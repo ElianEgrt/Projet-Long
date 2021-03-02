@@ -75,7 +75,6 @@ function whichContrast(visuallyImpaired) {
 
 module.exports = {
   msToTime,
-  fileAge,
   pageManaging,
   whichContrast
 }

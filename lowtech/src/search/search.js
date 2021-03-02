@@ -1,7 +1,7 @@
-const search = (films, searchedTitle) => `
+const search = (films, searchedTitle, cssFile) => `
 <!doctype html>
-<link href="./assets/stylesheets/search.css" rel="stylesheet">
-<link href="./assets/stylesheets/search.css" rel="stylesheet" media="print">
+<link href="./assets/stylesheets/${cssFile}" rel="stylesheet">
+<link href="./assets/stylesheets/${cssFile}" rel="stylesheet" media="print">
 <html lang="fr">
   <head>
     <meta charset="utf-8">
@@ -20,11 +20,11 @@ const search = (films, searchedTitle) => `
       <nav>
         <ul>
           <li><a href="/">Accueil</a></li>
-          <li><a href="/tutorial.html">Tutoriel</a></li>
+          <li><a href="/tutorial">Tutoriel</a></li>
         </ul>
       </nav>
       
-      <h2>Résultats de votre recherche : "${searchedTitle}"</h2>
+      <h2>Résultats pour votre recherche : "${searchedTitle}"</h2>
     </header>
 
     <main>

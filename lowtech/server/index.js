@@ -5,6 +5,7 @@ const logger = require('./middlewares/logger')
 const serveHome = require('./middlewares/serveHome')
 const serveFilm = require('./middlewares/serveFilm')
 const serveSearch = require('./middlewares/serveSearch')
+const serveTutorial = require('./middlewares/serveTutorial')
 var compression = require('compression')
 
 const buildPublic = require('../src/build')
@@ -21,6 +22,7 @@ app.get('/', serveHome);
 // app.get('/watch/:filmFile', serveFilm);
 app.get('/watch', serveFilm);
 app.get('/search', serveSearch);
+app.get('/tutorial', serveTutorial);
 
 app.use(express.static(staticPath));
 

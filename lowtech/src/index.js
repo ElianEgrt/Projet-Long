@@ -17,8 +17,11 @@ var filmsPath =               path.join(__dirname, '/films');
 var HOME_FILE = 'index.html'
 var HOME_FILE_CONTRAST = 'indexContrast.html'
 var TUTORIAL_FILE = 'tutorial.html'
+var TUTORIAL_CONTRAST_FILE = 'tutorialContrast.html'
 var FILM_FILE = 'film.html'
+var FILM_FILE_CONTRAST = 'filmContrast.html'
 var SEARCH_FILE = 'search.html'
+var SEARCH_FILE_CONTRAST = 'searchContrast.html'
 
 // Public folders
 var staticPath =              path.join(__dirname, '../public');
@@ -162,19 +165,19 @@ const genHtml = async (file, args = {}) => {
     fs.writeFileSync(homeFilePath, pageMin);
   }
 
-  if (file === FILM_FILE && args.filmPath && args.filmCaptionsPath && args.filmNameOrigin) {
-    var filmFilePath = path.join(staticPath, FILM_FILE)
-    let page = buildFilmPage(args.filmPath, args.filmCaptionsPath, args.filmNameOrigin)
+  if ((file === FILM_FILE | file === FILM_FILE_CONTRAST) && args.filmPath && args.filmCaptionsPath && args.filmNameOrigin) {
+    var filmFilePath = path.join(staticPath, file)
+    let page = buildFilmPage(file, args.filmPath, args.filmCaptionsPath, args.filmNameOrigin)
     var pageMin = minify(page, minifyOptions);
-    console.log(`Writing ${path.basename(FILM_FILE)}`)
+    console.log(`Writing ${path.basename(file)}`)
     fs.writeFileSync(filmFilePath, pageMin);
   }
 
-  if (file === SEARCH_FILE) {
-    var searchFilePath = path.join(staticPath, SEARCH_FILE)
-    let page = await buildSearchPage(args.filmTitle)
+  if (file === SEARCH_FILE | file === SEARCH_FILE_CONTRAST) {
+    var searchFilePath = path.join(staticPath, file)
+    let page = await buildSearchPage(file, args.filmTitle)
     var pageMin = minify(page, minifyOptions);
-    console.log(`Writing ${path.basename(SEARCH_FILE)}`)
+    console.log(`Writing ${path.basename(file)}`)
     fs.writeFileSync(searchFilePath, pageMin);
   }
   
@@ -190,11 +193,11 @@ const genHtmlSync = (file) => {
     html5: true
   }
   
-  if (file === TUTORIAL_FILE) {
-    var tutorialFilePath = path.join(staticPath, TUTORIAL_FILE)
-    let page = buildTutorial()
+  if (file === TUTORIAL_FILE | file === TUTORIAL_CONTRAST_FILE) {
+    var tutorialFilePath = path.join(staticPath, file)
+    let page = buildTutorial(file)
     var pageMin = minify(page, minifyOptions);
-    console.log(`Writing ${path.basename(TUTORIAL_FILE)}`)
+    console.log(`Writing ${path.basename(file)}`)
     fs.writeFileSync(tutorialFilePath, pageMin);
   }
   

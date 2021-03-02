@@ -1,14 +1,16 @@
 var path = require('path');
 const { genHtml } = require('../../src/index')
 const { getCurrentFilenames } = require('../../src/utils')
+var cookie = require('localStorage')
 
 // Check file age
-let serveFilm = async (req, res, next) => {
+let serveFilm = async (req, res) => {
 
   // path to static files
   var staticPath = path.join(__dirname, '../../public');
 
-  let fileName = 'film.html'
+  let fileName
+  cookie.getItem('contrast') === 'on' ? fileName = 'filmContrast.html' : fileName = 'film.html'
   let filePath = path.join(staticPath, fileName)
 
   let filmNameOrigin = req.query["title"] // On utiliserait cela pour filmName si on utilisait pas une vidéo par défaut

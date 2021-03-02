@@ -16,16 +16,16 @@ const homepage = (films, cssFile) => `
             Allo7né
             <div class="tutorial" id="blank">
               <div class="tutorial">
-                Une règle d'éco-conception disponible&nbsp;<a href="/tutorial.html#firstRule">ici</a>
+                Une règle d'éco-conception disponible&nbsp;<a href="/tutorial#firstRule">ici</a>
               </div>
             </div>
           </div>
         </div>
         <div id="visuallyImpaired">
           <form action="/" method="get">
-            <input type="checkbox" id="checkVisImp" name="contrast" value="true">
+            <input type="checkbox" id="checkVisImp" class="forPointer" name="contrast" value="true">
             <label for="checkVisImp">Changer les contrastes et les tailles de police</label>
-            <input type="submit" value="OK">
+            <input class="forPointer" type="submit" value="OK">
           </form>
         </div>
       </div>
@@ -33,13 +33,13 @@ const homepage = (films, cssFile) => `
       <nav>
         <ul>
           <li><a href="/">Accueil</a></li>
-          <li><a href="/tutorial.html">Tutoriel</a></li>
+          <li><a href="/tutorial">Tutoriel</a></li>
           
           
           <li class="pref">
             <div class="tutorial" id="blank">
               <div class="tutorial">
-                Une règle d'éco-conception disponible&nbsp;<a href="/tutorial.html#secondRule">ici</a>
+                Une règle d'éco-conception disponible&nbsp;<a href="/tutorial#secondRule">ici</a>
               </div>
             </div>
             <div class="menuPrefDeroulant">
@@ -114,7 +114,7 @@ const homepage = (films, cssFile) => `
         <div class=center-div>
           <div id="pourTuto">
             <div class="tutorial" id="second">
-              Une règle d'éco-conception disponible&nbsp;<a href="/tutorial.html#page">ici</a>
+              Une règle d'éco-conception disponible&nbsp;<a href="/tutorial#page">ici</a>
             </div>
           </div>
         </div>
