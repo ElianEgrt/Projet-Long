@@ -17,7 +17,6 @@ const Container = styled.div`
 const MessageInput = styled.input`
   height: 100%;
   padding: ${(props) => props.theme.metrics.extraSmallSize};
-  text-align: center;
   display: flex;
   flex-direction: row;
   margin: 0%;
