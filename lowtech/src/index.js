@@ -15,6 +15,7 @@ var stylesheetPath =          path.join(__dirname, '/stylesheets');
 var iconsPath =               path.join(__dirname, '/icons');
 var filmsPath =               path.join(__dirname, '/films');
 var HOME_FILE = 'index.html'
+var HOME_FILE_CONTRAST = 'indexContrast.html'
 var TUTORIAL_FILE = 'tutorial.html'
 var FILM_FILE = 'film.html'
 var SEARCH_FILE = 'search.html'
@@ -153,11 +154,11 @@ const genHtml = async (file, args = {}) => {
     html5: true
   }
   
-  if (file === HOME_FILE) {
-    var homeFilePath = path.join(staticPath, HOME_FILE) 
-    let page = await buildHomepage(args.categories, args.numPage)
+  if (file === HOME_FILE | file === HOME_FILE_CONTRAST) {
+    var homeFilePath = path.join(staticPath, file) 
+    let page = await buildHomepage(file, args.categories, args.numPage)
     var pageMin = minify(page, minifyOptions);
-    console.log(`Writing ${path.basename(HOME_FILE)}`)
+    console.log(`Writing ${path.basename(file)}`)
     fs.writeFileSync(homeFilePath, pageMin);
   }
 

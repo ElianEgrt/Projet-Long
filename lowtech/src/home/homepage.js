@@ -1,7 +1,7 @@
-const homepage = films => `
+const homepage = (films, cssFile) => `
 <!doctype html>
-<link href="./assets/stylesheets/index.css" rel="stylesheet">
-<link href="./assets/stylesheets/index.css" rel="stylesheet" media="print">
+<link href="./assets/stylesheets/${cssFile}" rel="stylesheet">
+<link href="./assets/stylesheets/${cssFile}" rel="stylesheet" media="print">
 <html lang="fr">
   <head>
     <meta charset="utf-8">
@@ -21,6 +21,13 @@ const homepage = films => `
             </div>
           </div>
         </div>
+        <div id="visuallyImpaired">
+          <form action="/" method="get">
+            <input type="checkbox" id="checkVisImp" name="contrast" value="true">
+            <label for="checkVisImp">Changer les contrastes et les tailles de police</label>
+            <input type="submit" value="OK">
+          </form>
+        </div>
       </div>
 
       <nav>
@@ -32,7 +39,7 @@ const homepage = films => `
           <li class="pref">
             <div class="tutorial" id="blank">
               <div class="tutorial">
-                Une règle d'éco-conception disponible&nbsp;<a href="/tutorial.html#thirdRule">ici</a>
+                Une règle d'éco-conception disponible&nbsp;<a href="/tutorial.html#secondRule">ici</a>
               </div>
             </div>
             <div class="menuPrefDeroulant">

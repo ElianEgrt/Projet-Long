@@ -26,7 +26,7 @@ const filmPage = (filmPath, filmCaptionsPath, filmNameOrigin) => `
     </header>
     
     <main>
-      <h2>Votre vidéo : ${filmNameOrigin}</h2>
+      <h2>Votre film : ${filmNameOrigin}</h2>
       <div id="video">
         <div class="center-div"> 
           <div id="pourTuto">

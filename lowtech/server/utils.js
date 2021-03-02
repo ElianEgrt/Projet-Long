@@ -1,4 +1,5 @@
-const fs = require('fs')
+const fs = require('fs');
+var path = require('path');
 
 function msToTime(duration) {
   var milliseconds = parseInt((duration % 1000) / 100),
@@ -27,7 +28,7 @@ function fileAge(filePath) {
 }
 
 function pageManaging (whichPage, numPage) {
-  
+
   if (whichPage === "Suivant >") {
   
     if (numPage[1] === 10) {
@@ -46,16 +47,35 @@ function pageManaging (whichPage, numPage) {
       numPage[1] = 10
     }
   
-  } else {
-    numPage.push(1)
-    numPage.push(10)
   }
 
   return numPage
 }
 
+function whichContrast(visuallyImpaired) {
+  var staticPath = path.join(__dirname, '../public');
+  let fileName
+  visuallyImpaired ? fileName = 'indexContrast.html' : fileName = 'index.html'
+  let filePath = path.join(staticPath, fileName)
+  let age = fileAge(filePath);
+
+  if (age) {
+    if (age > 5 * 60 * 1000) {
+      console.log(`${fileName} is too old, re-building it.`)
+    } else {
+      console.log(`${fileName} is still fresh enough.`)
+      return [false, fileName]
+    }
+  } else {
+    console.log(`${fileName} doesn't exist yet, building it.`)
+  }
+
+  return [true, fileName]
+}
+
 module.exports = {
   msToTime,
   fileAge,
-  pageManaging
+  pageManaging,
+  whichContrast
 }
