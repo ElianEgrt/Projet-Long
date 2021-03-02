@@ -47,6 +47,17 @@ body {
   display: block;
 }
 
+#visuallyImpaired {
+  color: white;
+  position: absolute;
+  right: 0;
+  padding: 1%;
+}
+
+label {
+  padding: 10px;
+}
+
 nav {
   height: auto;
   background-color: rgb(0, 0, 0);
