@@ -36,15 +36,21 @@ const search = (films, searchedTitle, cssFile) => `
                 <img alt="Poster non disponible dans la base de données" class="img_film"
                 src="https://image.tmdb.org/t/p/w200${film.poster_path}"
                 />
-                <a href="/watch"></a>
+               <a href="/watch"></a>
               </div>
-
+ 
               <ul class="carac_film">
-                  <li> ${film.title} </li>
-                  <li> Réalisateur </li>
-                  <li> Genre </li>
-                  <li> Synopsis </li>
-              </ul>
+                  <div class="titre_film">
+                    <li> ${film.title} </li>
+                  <div/>
+                  <div class="date_note_film">
+                    <li> ${film.release_date} </li>
+                    <li> ${film.vote_average}/10 </li>
+                  <div/>
+                  <div class="overview_film">
+                    <li> ${film.overview} </li>
+                  <div/>
+                </ul>
             </div>
           `)
           .join("")}
