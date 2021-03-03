@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 
 import { FaUserCircle } from "react-icons/fa";
 import { IoCaretForward } from "react-icons/io5";
+
+import { AuthContext } from "../../context";
 
 const LeftWrapper = styled.div`
   margin-right: 2em;
@@ -32,6 +34,20 @@ const LeftMenuItem = styled.div<{ active: boolean }>`
   }
   background-color: ${(p) =>
     p.active ? "rgba(0, 0, 0, 0.070)" : "transparent"};
+`;
+
+const LeftMenuDisconnect = styled.div`
+  font-size: 20px;
+  padding: 0.5em;
+  justify-self: flex-end;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.055);
+  }
 `;
 
 const LeftProfileWrapper = styled.div`
@@ -76,6 +92,7 @@ const LeftMenu = (props: {
   route: string;
   setRoute: React.Dispatch<React.SetStateAction<string>>;
 }) => {
+  const authContext = useContext(AuthContext);
   return (
     <LeftWrapper>
       <LeftMenuWrapper>
@@ -89,6 +106,9 @@ const LeftMenu = (props: {
         </LeftProfileWrapper>
         {MenuLink("Mes informations", "/me", props.route, props.setRoute)}
         {MenuLink("Mes films", "/films", props.route, props.setRoute)}
+        <LeftMenuDisconnect onClick={() => authContext.logout()}>
+          Disconnect
+        </LeftMenuDisconnect>
       </LeftMenuWrapper>
     </LeftWrapper>
   );
