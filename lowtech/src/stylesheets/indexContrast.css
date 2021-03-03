@@ -74,7 +74,10 @@ body {
   }
   
   #visuallyImpaired .tutorial {
-    left: -33%;
+    left: -24%;
+    width: 60%;
+    height: 110%;
+    padding: 2%;
   }
 
   #visuallyImpaired #blank {
@@ -253,7 +256,7 @@ body {
     overflow: auto;
     padding-left: 0;
     margin-top: 0;
-    padding-right: 1em;
+    padding-right: 0.5em;
   }
   
   .carac_film li {
