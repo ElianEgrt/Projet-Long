@@ -1,17 +1,4 @@
-import React from "react";
 import styled from "styled-components";
-
-const Card = styled.div`
-  background-color: ${(props) => props.theme.colors.secondaryColor};
-  border-radius: ${(props) => props.theme.metrics.extraSmallSize};
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 25em;
-  height: 17em;
-  margin: 1em;
-`;
 
 const Spinner = styled.div`
   .lds-dual-ring {
@@ -40,10 +27,10 @@ const Spinner = styled.div`
   }
 `;
 
-export const Loading = () => (
-  <Card>
-    <Spinner>
-      <div className="lds-dual-ring"></div>
-    </Spinner>
-  </Card>
+const LoadingSpinner = () => (
+  <Spinner>
+    <div className="lds-dual-ring"></div>
+  </Spinner>
 );
+
+export default LoadingSpinner;

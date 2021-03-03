@@ -31,8 +31,11 @@ import {
 function App() {
   const [token, setToken] = useState<TokenType>(null);
   const [error, setError] = useState<ErrorType>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const login: AuthContextType["login"] = async (user: UserInfoType) => {
+    setLoading(true);
+    setError(null);
     const requestOptions = {
       method: "POST",
       body: JSON.stringify(user),
@@ -41,20 +44,26 @@ function App() {
         "Content-Type": "application/json",
       },
     };
-    let response = await fetch(
-      "http://localhost:8000/api/users/login",
-      requestOptions
-    );
-    const data = await response.json();
-    console.log(data);
-
-    if (data.errors) {
-      setError(data.errors);
-    } else if (!data.user) {
-      setError("could_not_log_in");
-    } else {
-      setError(null);
-      setToken(data.user.token);
+    try {
+      let response = await fetch(
+        "http://localhost:8000/api/users/login",
+        requestOptions
+      );
+      const data = await response.json();
+      setLoading(false);
+      console.log(data);
+      if (data.errors) {
+        setError(data.errors);
+      } else if (!data.user) {
+        setError("could_not_log_in");
+      } else {
+        setError(null);
+        setToken(data.user.token);
+      }
+    } catch (e) {
+      setLoading(false);
+      console.error(e);
+      setError("failed_to_fetch");
     }
   };
 
@@ -93,6 +102,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <AuthContext.Provider
           value={{
+            loading: loading,
             token: token,
             error: error,
             register: register,

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
+import LoadingSpinner from "../components/LoadingSpinner";
 import { AuthContext, UserInfoType } from "../context";
 
 const RegisterPage = styled.div``;
@@ -58,6 +59,7 @@ const Register = (props: Props) => {
             />
           </p>
         </label>
+        {authContext.loading && <LoadingSpinner />}
         {authContext.error && authContext.error}
         <div>
           <button type="submit">Register</button>

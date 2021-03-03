@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { Film } from "../api";
 import FilmCard from "./FilmCard";
-import { Loading } from "./Loading";
+import { Loading } from "./LoadingCard";
 import Slider from "./Slider";
 
 interface Props {

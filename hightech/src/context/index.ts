@@ -8,9 +8,16 @@ export type UserInfoType = {
   password: string;
 }
 
-export type ErrorType = null | "could_not_register" | "could_not_log_in" | "email_is_required" | "password_is_required" 
+export type ErrorType =
+  | null
+  | "could_not_register"
+  | "could_not_log_in"
+  | "email_is_required"
+  | "password_is_required" 
+  | "failed_to_fetch" 
 
 export type AuthContextType = {
+  loading: boolean,
   token: TokenType,
   error: ErrorType,
   login: (user: UserInfoType) => void,
@@ -19,6 +26,7 @@ export type AuthContextType = {
 }
 
 export const AuthContext = createContext<AuthContextType>({
+  loading: false,
   token: null,
   error: null,
   login: (user: UserInfoType) => "",

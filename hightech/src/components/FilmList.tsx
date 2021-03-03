@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Film } from "../api";
 import FilmCard from "./FilmCard";
 
-import { Loading } from "./Loading";
+import { Loading } from "./LoadingCard";
 
 interface Props {
   films: Film[];
