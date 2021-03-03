@@ -74,7 +74,10 @@ body {
   }
   
   #visuallyImpaired .tutorial {
-    left: -33%;
+    left: -24%;
+    width: 60%;
+    height: 110%;
+    padding: 2%;
   }
 
   #visuallyImpaired #blank {
@@ -244,12 +247,16 @@ body {
     width: 100%;
     margin: 0;
     padding: 1em;
+    padding-right: 0;
   }
 
   .carac_film {
     max-height: 100%;
     overflow-y: scroll;
     overflow: auto;
+    padding-left: 0;
+    margin-top: 0;
+    padding-right: 0.5em;
   }
   
   .carac_film li {
@@ -275,8 +282,8 @@ body {
   }
   
   .img_film {
-    width: 200px;
-    height: 300px;
+    width: auto;
+    height: auto;
   }
   
   .img_film_overlay {
@@ -289,8 +296,8 @@ body {
     background: url(https://www.slatecube.com/images/play-btn.png);
     height: 50px;
     width: 50px;
-    top: 113.75px;
-    left: 66px;
+    top: 125px;
+    left: 75px;
     background-size: 50px 50px;
     background-repeat: no-repeat;
     color: transparent;
