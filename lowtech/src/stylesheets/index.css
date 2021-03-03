@@ -240,6 +240,7 @@ nav .pref .tutorial a {
   width: 100%;
   margin: 0;
   padding: 1em;
+  padding-right: 0;
 }
 
 .carac_film {
@@ -248,6 +249,7 @@ nav .pref .tutorial a {
   overflow: auto;
   padding-left: 0;
   margin-top: 0;
+  padding-right: 1em;
 }
 
 .carac_film li {
@@ -268,13 +270,14 @@ nav .pref .tutorial a {
 
 .overview_film {
   margin-top:0.5em;
-  opacity:50%;
+  opacity:60%;
   font-size: 1em;
+  text-align: justify;
 }
 
 .img_film {
-  width: 200px;
-  height: 300px;
+  width: auto;
+  height: auto;
 }
 
 .img_film_overlay {
@@ -287,8 +290,8 @@ nav .pref .tutorial a {
   background: url(https://www.slatecube.com/images/play-btn.png);
   height: 50px;
   width: 50px;
-  top: 113.75px;
-  left: 66px;
+  top: 125px;
+  left: 75px;
   background-size: 50px 50px;
   background-repeat: no-repeat;
   color: transparent;
