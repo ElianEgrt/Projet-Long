@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -120,7 +120,7 @@ function App() {
                 <Route exact path="/home" component={Home} />
                 <Route exact path="/tutorial" component={Tutorial} />
                 <Route exact path="/profile" component={UserProfile} />
-                <Route exact_path="/play" component={Player} />
+                <Route exact path="/play" component={Player} />
               </>
             ) : (
               <>
