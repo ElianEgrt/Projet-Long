@@ -1,19 +1,16 @@
 import styled from "styled-components";
 
-const Spinner = styled.div`
+const Spinner = styled.div<{ size: string; border: string }>`
   .lds-dual-ring {
-    display: inline-block;
-    width: 80px;
-    height: 80px;
+    display: flex;
   }
   .lds-dual-ring:after {
     content: " ";
     display: block;
-    width: 64px;
-    height: 64px;
-    margin: 8px;
+    width: ${(p) => p.size};
+    height: ${(p) => p.size};
     border-radius: 50%;
-    border: 6px solid #000000;
+    border: ${(p) => p.border} solid #000000;
     border-color: #000000 transparent #000 transparent;
     animation: lds-dual-ring 1.2s linear infinite;
   }
@@ -27,8 +24,8 @@ const Spinner = styled.div`
   }
 `;
 
-const LoadingSpinner = () => (
-  <Spinner>
+const LoadingSpinner = (props: { size: string; border: string }) => (
+  <Spinner size={props.size} border={props.border}>
     <div className="lds-dual-ring"></div>
   </Spinner>
 );

@@ -5,8 +5,10 @@ import styled from "styled-components";
 import { HiOutlineHome } from "react-icons/hi";
 import { FaUserCircle } from "react-icons/fa";
 import { IoSettingsOutline } from "react-icons/io5";
+import { GoSignIn } from "react-icons/go";
 import { BsBook } from "react-icons/bs";
 import { IconType } from "react-icons";
+import { BiLogIn } from "react-icons/bi";
 import { AuthContext } from "../context";
 
 const NBar = styled.div`
@@ -57,11 +59,18 @@ const ButtonIconStyled = styled.div`
   margin-left: 1em;
 `;
 
-const ButtonIcon = (Icon: IconType, route: string) => {
+const ButtonIcon = (
+  Icon: IconType,
+  route: string,
+  textRight?: string,
+  textLeft?: string
+) => {
   return (
     <ButtonIconStyled>
       <Link to={route}>
+        {textLeft}
         <Icon />
+        {textRight}
       </Link>
     </ButtonIconStyled>
   );
@@ -87,12 +96,12 @@ const Navbar = (props: {}) => {
         ) : (
           <>
             <div className="buttons">
-              {ButtonIcon(FaUserCircle, "/login")}
+              {ButtonIcon(BiLogIn, "/login")}
               Log in
             </div>
             <div className="buttons">
               Register
-              {ButtonIcon(IoSettingsOutline, "/register")}
+              {ButtonIcon(GoSignIn, "/register")}
             </div>
           </>
         )}

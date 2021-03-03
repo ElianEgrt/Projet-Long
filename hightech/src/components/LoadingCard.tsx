@@ -43,6 +43,6 @@ const Spinner = styled.div`
 
 export const Loading = () => (
   <Card>
-    <LoadingSpinner />
+    <LoadingSpinner size="64px" border="6px" />
   </Card>
 );
