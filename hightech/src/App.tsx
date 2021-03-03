@@ -17,6 +17,7 @@ import UserProfile from "./containers/UserProfile";
 import Navbar from "./containers/Navbar";
 import Login from "./containers/Login";
 import Register from "./containers/Register";
+import Player from "./containers/Player";
 
 import Cookie from "./components/Cookie";
 
@@ -119,6 +120,7 @@ function App() {
                 <Route exact path="/home" component={Home} />
                 <Route exact path="/tutorial" component={Tutorial} />
                 <Route exact path="/profile" component={UserProfile} />
+                <Route exact_path="/play" component={Player} />
               </>
             ) : (
               <>

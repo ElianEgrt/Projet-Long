@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import styled from "styled-components";
 import { Film } from "../api";
@@ -23,7 +24,26 @@ const ImageContainer = styled.div`
   img {
     width: 100%;
   }
+  a {
+    cursor: pointer;
+  }
 `;
+
+const PlayMovieStyled = styled.div`
+  a {
+    cursor: pointer;
+  }
+`;
+
+const PlayMovie = (posterPath: string, route: string) => {
+  return (
+    <PlayMovieStyled>
+      <Link to={route}>
+        <img src={posterPath} alt="Film Poster" />
+      </Link>
+    </PlayMovieStyled>
+  );
+};
 
 interface Props {
   key: number;
@@ -37,7 +57,7 @@ class FilmCard extends React.Component<Props, {}> {
     return (
       <Card>
         <ImageContainer>
-          <img src={posterPath} alt="Film Poster" />
+            {PlayMovie(posterPath, "/play")}
         </ImageContainer>
         <FilmCarac film={film} />
       </Card>
