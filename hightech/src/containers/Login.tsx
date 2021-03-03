@@ -3,7 +3,13 @@ import styled from "styled-components";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { AuthContext, UserInfoType } from "../context";
 
-const LoginPage = styled.div``;
+const Wrapper = styled.div`
+  background-color: ${(p) => p.theme.colors.secondaryColor};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3em;
+`;
 
 // Declaring props type
 interface Props {
@@ -36,7 +42,7 @@ const Login = (props: Props) => {
   return (
     // fake username, just for fun
     // TODO: Log in button
-    <LoginPage>
+    <Wrapper>
       <h1>Log in now !</h1>
       <form onSubmit={handleSubmit}>
         <label>
@@ -44,7 +50,7 @@ const Login = (props: Props) => {
             <input
               type="text"
               placeholder="Email"
-              value={user.email || undefined}
+              value={user.email}
               onChange={handleEmail}
             />
           </p>
@@ -54,7 +60,7 @@ const Login = (props: Props) => {
             <input
               type="password"
               placeholder="Password"
-              value={user.password || undefined}
+              value={user.password}
               onChange={handlePwd}
             />
           </p>
@@ -65,7 +71,7 @@ const Login = (props: Props) => {
           <button type="submit">Sign in</button>
         </div>
       </form>
-    </LoginPage>
+    </Wrapper>
   );
 };
 

@@ -14,6 +14,7 @@ export type ErrorType =
   | "could_not_log_in"
   | "email_is_required"
   | "password_is_required" 
+  | "email_or_password_is_invalid" 
   | "failed_to_fetch" 
 
 export type AuthContextType = {
