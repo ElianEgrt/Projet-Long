@@ -66,8 +66,6 @@ const Register = (props: Props) => {
   };
 
   return (
-    // fake username, just for fun
-    // TODO: Log in button
     <Wrapper>
       <RegisterWrapper>
         <RegisterTitle>Register now!</RegisterTitle>

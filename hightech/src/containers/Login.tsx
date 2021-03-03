@@ -66,8 +66,6 @@ const Login = (props: Props) => {
   };
 
   return (
-    // fake username, just for fun
-    // TODO: Log in button
     <Wrapper>
       <LoginWrapper>
         <LoginTitle>Log in now !</LoginTitle>

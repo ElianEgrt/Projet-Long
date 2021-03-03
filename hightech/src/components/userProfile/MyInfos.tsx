@@ -3,6 +3,12 @@ import styled from "styled-components";
 
 import { AiFillEdit } from "react-icons/ai";
 
+import { Input } from "@material-ui/core";
+import { Button } from "@material-ui/core";
+import InputLabel from "@material-ui/core/InputLabel";
+import Select from "@material-ui/core/Select";
+import TextField from "@material-ui/core/TextField";
+
 const RightWrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.123);
   border-radius: ${(props) => props.theme.metrics.extraSmallSize};
@@ -21,27 +27,33 @@ const Title = styled.div`
   font-size: 40px;
   padding-bottom: 10px;
   border-bottom: 3px groove;
-  margin-bottom: 1em;
+  margin-bottom: 20px;
 `;
 
 const TitleIcon = styled.div`
   margin-right: 1em;
 `;
 
-const Formulaire = styled.div`
-  display : flex-block;
+const LoginForm = styled.form`
+  max-height: 100%;
+  position: relative;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  .field {
+    margin-bottom: 2em;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    div,
+    input {
+      width: 100%;
+    }
+  }
 `;
-
-const Label = styled.div`
-  margin-right: 1em;
-`;
-
-const Input = styled.div`
-  margin-bottom: 1em;
-  max-width:fit-content%;
-`;
-
-
 
 const MyInfos = () => {
   return (
@@ -52,70 +64,62 @@ const MyInfos = () => {
         </TitleIcon>
         Editer mon profil.
       </Title>
-      <Formulaire>
-      <form>
-        <Label>
-        <label htmlFor="fname">    Prénom : </label>
-        </Label>
-        <Input>
-        <input type="text" id="fname" name="fname"  />
-        </Input>
-        <Label>
-        <label htmlFor="lname">    Nom :  </label>
-        </Label>
-        <Input>
-        <input type="text" id="lname" name="lname" />
-        </Input>
-        <Label>
-        <label htmlFor="gender">    Genre : </label>
-        </Label>
-        <Input>
-        <input list="gender" type="text" id="locale" name="locale"/>
-        </Input>
-        <datalist id="gender"> 
-          <option value="Femme" />
-          <option value="Homme" />
-        </datalist>
-        <Label>
-        <label htmlFor="locale">    Date de naissance :  </label>
-        </Label>
-        <Input>
-        <input type="date" id="locale" name="locale" />
-        </Input>
-        <Label>
-        <label htmlFor="locale">    Langue :  </label>
-        </Label>
-        <Input>
-        <input list="langue" type="text" id="locale" name="locale" />
-        </Input>
-        <datalist id="langue"> 
-          <option value="FR" />
-          <option value="EN" />
-          <option value="IT" />
-          <option value="DE" />
-          <option value="US" />
-          <option value="ES" />
-        </datalist>
-        <Label>
-        <label htmlFor="locale">    Nombre d'enfant(s) à charge :  </label>
-        </Label>
-        <Input>
-        <input type="number" min="0" id="locale" name="locale" />
-        </Input>
-        <Label>
-        <label htmlFor="email" >    Email :  </label>
-        </Label>
-        <Input>
-        <input type="email" id="email" name="email" />
-        </Input>
-        <Label>
-        <label htmlFor="password">    Mot de passe :  </label>
-        </Label>
-        <Input>
-        <input type="password" id="password" name="password" />
-        </Input>
-      </form>
-      </Formulaire>
+      <LoginForm>
+        <div className="field">
+          <InputLabel htmlFor="gender">Nom</InputLabel>
+          <Input type="text" id="fname" name="fname" />
+        </div>
+        <div className="field">
+          <InputLabel htmlFor="gender">Prénom</InputLabel>
+          <Input type="text" id="lname" name="lname" />
+        </div>
+        <div className="field">
+          <InputLabel htmlFor="gender">Genre</InputLabel>
+          <Select>
+            <option aria-label="None" value="" />
+            <option value="Femme">Femme</option>
+            <option value="Homme">Homme</option>
+          </Select>
+        </div>
+        <div className="field">
+          <InputLabel htmlFor="gender">Date de naissance :</InputLabel>
+          <TextField
+            id="date"
+            type="date"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+        </div>
+        <div className="field">
+          <InputLabel htmlFor="locale">Langue préférée</InputLabel>
+          <Select>
+            <option aria-label="None" value="" />
+            <option value={"fr"}>France</option>
+            <option value={"en-us"}>U.S.A</option>
+            <option value={"es"}>Espagne</option>
+          </Select>
+        </div>
+        <div className="field">
+          <InputLabel htmlFor="email">Adresse email</InputLabel>
+          <Input type="email" id="email" name="email" />
+        </div>
+        <div className="field">
+          <InputLabel htmlFor="password">Mot de passe :</InputLabel>
+          <Input type="password" id="password" name="password" />
+        </div>
+        <div className="field">
+          <Button
+            size="large"
+            variant="outlined"
+            fullWidth={true}
+            type="submit"
+            startIcon={<AiFillEdit />}
+          >
+            Edit
+          </Button>
+        </div>
+      </LoginForm>
     </RightWrapper>
   );
 };
