@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 
 
 export type TokenType = string | null
@@ -33,3 +33,25 @@ export const AuthContext = createContext<AuthContextType>({
   register: (user: UserInfoType) => "",
   logout: () => {}
 });
+
+export const useToken = () => {
+  const getToken = (): TokenType => {
+    const token = sessionStorage.getItem("token");
+    return token;
+  };
+
+  const [token, setToken] = useState(getToken());
+
+  const saveToken = (userToken: TokenType) => {
+    userToken
+      ? sessionStorage.setItem("token", JSON.stringify(userToken))
+      : sessionStorage.removeItem("token");
+    setToken(userToken)
+  };
+
+  return {
+    setToken: saveToken,
+    token
+  }
+  
+}

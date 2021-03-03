@@ -24,12 +24,12 @@ import {
   AuthContext,
   AuthContextType,
   UserInfoType,
-  TokenType,
   ErrorType,
+  useToken,
 } from "./context";
 
 function App() {
-  const [token, setToken] = useState<TokenType>(null);
+  const { token, setToken } = useToken();
   const [error, setError] = useState<ErrorType>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
