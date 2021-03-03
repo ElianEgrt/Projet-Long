@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
@@ -7,6 +7,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { IoSettingsOutline } from "react-icons/io5";
 import { BsBook } from "react-icons/bs";
 import { IconType } from "react-icons";
+import { AuthContext } from "../context";
 
 const NBar = styled.div`
   background: ${(props) => props.theme.colors.backgroundColor};
@@ -31,6 +32,7 @@ const NBut = styled.div`
     color: white;
     display: flex;
     flex-direction: row;
+    align-items: center;
   }
 `;
 
@@ -65,21 +67,35 @@ const ButtonIcon = (Icon: IconType, route: string) => {
   );
 };
 
-interface Props {}
-
-const Navbar = (props: Props) => {
+const Navbar = (props: {}) => {
+  const authContext = useContext(AuthContext);
   return (
     <NBar>
       <TitleText>Allo7né</TitleText>
       <NBut>
-        <div className="buttons">
-          {ButtonIcon(HiOutlineHome, "/")}
-          {ButtonIcon(BsBook, "/tutorial")}
-        </div>
-        <div className="buttons">
-          {ButtonIcon(IoSettingsOutline, "/")}
-          {ButtonIcon(FaUserCircle, "/profile")}
-        </div>
+        {authContext.token ? (
+          <>
+            <div className="buttons">
+              {ButtonIcon(HiOutlineHome, "/home")}
+              {ButtonIcon(BsBook, "/tutorial")}
+            </div>
+            <div className="buttons">
+              {ButtonIcon(IoSettingsOutline, "/home")}
+              {ButtonIcon(FaUserCircle, "/profile")}
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="buttons">
+              {ButtonIcon(FaUserCircle, "/login")}
+              Log in
+            </div>
+            <div className="buttons">
+              Register
+              {ButtonIcon(IoSettingsOutline, "/register")}
+            </div>
+          </>
+        )}
       </NBut>
     </NBar>
   );
