@@ -46,14 +46,14 @@ function App() {
     };
     try {
       let response = await fetch(
-        "http://localhost:8000/api/users/login",
+        "http://chanch.freeboxos.fr:12121/api/users/login",
         requestOptions
       );
       const data = await response.json();
       setLoading(false);
       console.log(data);
-      if (data.errors) {
-        setError(data.errors);
+      if (data.error) {
+        setError(data.error);
       } else if (!data.user) {
         setError("could_not_log_in");
       } else {
@@ -77,14 +77,14 @@ function App() {
       },
     };
     let response = await fetch(
-      "http://localhost:8000/api/users/register",
+      "http://chanch.freeboxos.fr:12121/api/users/register",
       requestOptions
     );
     const data = await response.json();
     console.log(data);
 
-    if (data.errors) {
-      setError(data.errors);
+    if (data.error) {
+      setError(data.error);
     } else if (!data.user) {
       setError("could_not_register");
     } else {
