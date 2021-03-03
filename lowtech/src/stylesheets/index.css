@@ -235,11 +235,17 @@ nav .pref .tutorial a {
   height: 300px;
 }
 
-.carac_film {
+.carac_film_container {
   height: auto;
   width: 100%;
   margin: 0;
   padding: 1em;
+}
+
+.carac_film {
+  max-height: 100%;
+  overflow-y: scroll;
+  overflow: auto;
 }
 
 .carac_film li {
@@ -248,8 +254,20 @@ nav .pref .tutorial a {
   max-width: 100%;
 }
 
-.carac_film li .date_note_film{
+.date_note_film {
   display: inline;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.titre_film {
+  font-size:1.3em;
+}
+
+.overview_film {
+  margin-top:0.5em;
+  opacity:50%;
+  font-size: 1em;
 }
 
 .img_film {
@@ -326,25 +344,4 @@ nav .pref .tutorial a {
   padding-right: 20px;
   font-size: medium;
   cursor: pointer;
-}
-
-.date_note_film {
-  display: inline;
-  font-weight: bold;
-  font-size: 1em;
-}
-
-.titre_film {
-  font-size:1.3em;
-  max-height:100%;
-  overflow-y: scroll;
-  overflow: auto;
-
-}
-
-.overview_film {
-  margin-top:0.5em;
-  opacity:50%;
-  font-size: 1em;
-  max-height: 8em;
 }
