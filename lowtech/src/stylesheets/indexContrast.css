@@ -250,6 +250,8 @@ body {
     max-height: 100%;
     overflow-y: scroll;
     overflow: auto;
+    padding-left: 0;
+    margin-top: 0;
   }
   
   .carac_film li {
