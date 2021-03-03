@@ -4,7 +4,7 @@ import { createContext, useState } from 'react';
 export type TokenType = string | null
 
 export type UserInfoType = {
-  email: string;
+  username: string;
   password: string;
 }
 
@@ -12,9 +12,9 @@ export type ErrorType =
   | null
   | "could_not_register"
   | "could_not_log_in"
-  | "email_is_required"
+  | "username_is_required"
   | "password_is_required" 
-  | "email_or_password_is_invalid" 
+  | "username_or_password_is_invalid" 
   | "failed_to_fetch" 
 
 export type AuthContextType = {

@@ -45,20 +45,20 @@ interface Props {
 const Register = (props: Props) => {
   const authContext = useContext(AuthContext);
   const [user, setUser] = useState<UserInfoType>({
-    email: "",
+    username: "",
     password: "",
   });
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     authContext.register({
-      email: user.email,
+      username: user.username,
       password: user.password,
     });
   };
 
   const handleEmail = (e: { target: { value: string } }) => {
-    setUser({ ...user, email: e.target.value });
+    setUser({ ...user, username: e.target.value });
   };
 
   const handlePwd = (e: { target: { value: string } }) => {
@@ -73,8 +73,8 @@ const Register = (props: Props) => {
           <label>
             <Input
               type="text"
-              placeholder="Email"
-              value={user.email}
+              placeholder="Username"
+              value={user.username}
               onChange={handleEmail}
             />
           </label>

@@ -5,14 +5,13 @@ const LocalStrategy = require('passport-local');
 const Users = mongoose.model('Users');
 
 passport.use(new LocalStrategy({
-  usernameField: 'email',
+  usernameField: 'username',
   passwordField: 'password',
-}, (email, password, done) => {
-  console.log(email, password)
-  Users.findOne({ email })
+}, (username, password, done) => {
+  Users.findOne({ username })
     .then((user) => {
       if(!user || !user.validatePassword(password)) {
-        return done(null, false, { error: "email_or_password_is_invalid"});
+        return done(null, false, { error: "username_or_password_is_invalid"});
       }
 
       return done(null, user);
