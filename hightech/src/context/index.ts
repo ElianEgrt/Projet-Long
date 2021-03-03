@@ -1,12 +1,15 @@
 import { createContext, useState } from 'react';
 
 
-export type TokenType = string | null
-
 export type UserInfoType = {
   username: string;
-  password: string;
+  films?: string[];
+  password?: string;
+  id?: string
 }
+
+export type TokenType = string | null
+
 
 export type ErrorType =
   | null
@@ -19,20 +22,26 @@ export type ErrorType =
 
 export type AuthContextType = {
   loading: boolean,
+  userInfo: UserInfoType | null,
   token: TokenType,
   error: ErrorType,
   login: (user: UserInfoType) => void,
   register: (user: UserInfoType) => void,
-  logout: () => void
+  logout: () => void,
+  addFilm: (film: string, id: string, token: string) => void,
+  removeFilm: (film: string, id: string, token: string) => void
 }
 
 export const AuthContext = createContext<AuthContextType>({
   loading: false,
   token: null,
+  userInfo: null,
   error: null,
   login: (user: UserInfoType) => "",
   register: (user: UserInfoType) => "",
-  logout: () => {}
+  logout: () => {},
+  addFilm: (film: string, id: string, token: string) => {},
+  removeFilm: (film: string, id: string, token: string) => {}
 });
 
 export const useToken = () => {
@@ -53,6 +62,32 @@ export const useToken = () => {
   return {
     setToken: saveToken,
     token
+  }
+  
+}
+
+export const useUserInfo = () => {
+  const getUserInfo = (): UserInfoType | null  => {
+    const userInfo = sessionStorage.getItem("user_info");
+    if (userInfo !== null) {
+      return JSON.parse(userInfo as string);
+    } else {
+      return null
+    }
+  };
+
+  const [userInfo, setUserInfo] = useState(getUserInfo());
+
+  const saveUserInfo = (userInfo: UserInfoType | null ) => {
+    userInfo
+      ? sessionStorage.setItem("user_info", JSON.stringify(userInfo))
+      : sessionStorage.removeItem("user_info");
+      setUserInfo(userInfo)
+  };
+
+  return {
+    setUserInfo: saveUserInfo,
+    userInfo
   }
   
 }

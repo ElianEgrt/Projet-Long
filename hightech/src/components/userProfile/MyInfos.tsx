@@ -113,7 +113,6 @@ const MyInfos = () => {
             size="large"
             variant="outlined"
             fullWidth={true}
-            type="submit"
             startIcon={<AiFillEdit />}
           >
             Edit

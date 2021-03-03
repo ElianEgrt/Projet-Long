@@ -27,10 +27,12 @@ import {
   UserInfoType,
   ErrorType,
   useToken,
+  useUserInfo,
 } from "./context";
 
 function App() {
   const { token, setToken } = useToken();
+  const { userInfo, setUserInfo } = useUserInfo();
   const [error, setError] = useState<ErrorType>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -60,11 +62,79 @@ function App() {
       } else {
         setError(null);
         setToken(data.user.token);
+        setUserInfo({
+          username: data.user.username,
+          films: data.user.films,
+          id: data.user._id,
+        });
       }
     } catch (e) {
       setLoading(false);
       console.error(e);
       setError("failed_to_fetch");
+    }
+  };
+
+  const addFilm: AuthContextType["addFilm"] = async (
+    film: string,
+    id: string,
+    token: string
+  ) => {
+    const requestOptions = {
+      method: "POST",
+      body: JSON.stringify({ id: id, film: film }),
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      let response = await fetch(
+        "http://chanch.freeboxos.fr:12121/api/users/current",
+        requestOptions
+      );
+      const data = await response.json();
+      console.log(data);
+      setUserInfo({
+        username: data.user.username,
+        films: data.user.films,
+        id: data.user._id,
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const removeFilm: AuthContextType["addFilm"] = async (
+    film: string,
+    id: string,
+    token: string
+  ) => {
+    const requestOptions = {
+      method: "DELETE",
+      body: JSON.stringify({ id: id, film: film }),
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      let response = await fetch(
+        "http://chanch.freeboxos.fr:12121/api/users/current",
+        requestOptions
+      );
+      const data = await response.json();
+      setLoading(false);
+      console.log(data);
+      setUserInfo({
+        username: data.user.username,
+        films: data.user.films,
+        id: data.user._id,
+      });
+    } catch (e) {
+      console.error(e);
     }
   };
 
@@ -91,6 +161,11 @@ function App() {
     } else {
       setError(null);
       setToken(data.user.token);
+      setUserInfo({
+        username: data.user.username,
+        films: data.user.films,
+        id: data.user._id,
+      });
     }
   };
 
@@ -105,10 +180,13 @@ function App() {
           value={{
             loading: loading,
             token: token,
+            userInfo: userInfo,
             error: error,
             register: register,
             login: login,
             logout: logout,
+            addFilm: addFilm,
+            removeFilm: removeFilm,
           }}
         >
           <GlobalStyle />

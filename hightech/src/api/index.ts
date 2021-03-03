@@ -74,7 +74,7 @@ const getFilmsFromApiWithSearchedText = async (text: String, page: number) => {
     }
 };
 
-const getFilmsFromApi = async (id: number) => {
+const getFilmsFromApi = async (id: number | string) => {
     let url = `https://api.themoviedb.org/3/movie/${id}?api_key=${TOKEN}&language=fr`
     
     try {
@@ -84,6 +84,20 @@ const getFilmsFromApi = async (id: number) => {
     } catch (error) {
         console.error(error);
     }
+};
+
+const getAll = async (ids: string[]) => {
+    const films: IdResponse[] = []
+    const iterations = ids.length;
+    let currentIndex = 0
+
+    while (currentIndex !== iterations) {
+        let response = await getFilmsFromApi(ids[currentIndex]) as IdResponse
+        films.push(response);
+        currentIndex = currentIndex + 1;
+    }
+
+    return films
 };
 
 const popularFilms = async (page: number) => {
@@ -111,11 +125,13 @@ const recentFilms = async (page: number) => {
     }
 };
 
+
 export {
     getFilmsFromApiWithSearchedText,
     getFilmsFromApi,
     popularFilms,
-    recentFilms
+    recentFilms,
+    getAll
 };
 export type {
     SearchResponse,

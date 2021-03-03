@@ -101,7 +101,7 @@ const LeftMenu = (props: {
             <FaUserCircle />
           </LeftProfileIcon>
           <LeftProfileName>
-            <p>props.user.name</p>
+            <p>{authContext.userInfo?.username}</p>
           </LeftProfileName>
         </LeftProfileWrapper>
         {MenuLink("Mes informations", "/me", props.route, props.setRoute)}

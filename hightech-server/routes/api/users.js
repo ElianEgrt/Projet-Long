@@ -29,6 +29,40 @@ router.post('/register', auth.optional, (req, res, next) => {
 });
 
 //POST login route (optional, everyone has access)
+router.post('/current', auth.required, (req, res, next) => {
+  const { body } = req;
+  const id = body.id;
+  const film = body.film;
+  return Users.findById(id)
+    .then((user) => {
+      if(!user) {
+        return res.sendStatus(400);
+      }
+
+      user.addFilm(film)
+
+      return res.json({ user: user.toAuthJSON() });
+    });
+});
+
+//POST login route (optional, everyone has access)
+router.delete('/current', auth.required, (req, res, next) => {
+  const { body } = req;
+  const id = body.id;
+  const film = body.film;
+  return Users.findById(id)
+    .then((user) => {
+      if(!user) {
+        return res.sendStatus(400);
+      }
+
+      user.removeFilm(film)
+
+      return res.json({ user: user.toAuthJSON() });
+    });
+});
+
+//POST login route (optional, everyone has access)
 router.post('/login', auth.optional, (req, res, next) => {
   const { body: user } = req;
 
