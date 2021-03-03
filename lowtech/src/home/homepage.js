@@ -1,7 +1,7 @@
-const homepage = films => `
+const homepage = (films, cssFile) => `
 <!doctype html>
-<link href="./assets/stylesheets/index.css" rel="stylesheet">
-<link href="./assets/stylesheets/index.css" rel="stylesheet" media="print">
+<link href="./assets/stylesheets/${cssFile}" rel="stylesheet">
+<link href="./assets/stylesheets/${cssFile}" rel="stylesheet" media="print">
 <html lang="fr">
   <head>
     <meta charset="utf-8">
@@ -16,8 +16,20 @@ const homepage = films => `
             Allo7né
             <div class="tutorial" id="blank">
               <div class="tutorial">
-                Une règle d'éco-conception disponible&nbsp;<a href="/tutorial.html#firstRule">ici</a>
+                Une règle d'éco-conception à afficher&nbsp;<a href="/tutorial#firstRule">ici</a>
               </div>
+            </div>
+          </div>
+        </div>
+        <div id="visuallyImpaired">
+          <form action="/" method="get">
+            <input type="checkbox" id="checkVisImp" class="forPointer" name="contrast" value="true">
+            <label for="checkVisImp">Changer les contrastes et les tailles de police</label>
+            <input class="forPointer" type="submit" value="OK">
+          </form>
+          <div class="tutorial" id="blank">
+            <div class="tutorial">
+              Une règle d'éco-conception à afficher&nbsp;<a href="/tutorial#fontContrastIncrease">ici</a>
             </div>
           </div>
         </div>
@@ -26,13 +38,13 @@ const homepage = films => `
       <nav>
         <ul>
           <li><a href="/">Accueil</a></li>
-          <li><a href="/tutorial.html">Tutoriel</a></li>
+          <li><a href="/tutorial">Tutoriel</a></li>
           
           
           <li class="pref">
             <div class="tutorial" id="blank">
               <div class="tutorial">
-                Une règle d'éco-conception disponible&nbsp;<a href="/tutorial.html#thirdRule">ici</a>
+                Une règle d'éco-conception à afficher&nbsp;<a href="/tutorial#secondRule">ici</a>
               </div>
             </div>
             <div class="menuPrefDeroulant">
@@ -84,17 +96,13 @@ const homepage = films => `
                   </form>
                 </div>
 
-                <ul class="carac_film">
-                  <div class="titre_film">
-                    <li> ${film.title} </li>
-                  <div/>
-                  <div class="date_note_film">
-                    <li> ${film.release_date} </li>
-                    <li> ${film.vote_average}/10 </li>
-                  <div/>
-                  <div class="overview_film">
-                    <li> ${film.overview} </li>
-                  <div/>
+                <ul class="carac_film_container">
+                  <div class="carac_film">
+                    <li class="titre_film">${film.title}</li>
+                    <li class="date_note_film">${film.release_date}</li>
+                    <li class="date_note_film">${film.vote_average}/10</li>
+                    <li class="overview_film">${film.overview}</li>
+                  </div>
                 </ul>
               </div>
             `)
@@ -107,7 +115,7 @@ const homepage = films => `
         <div class=center-div>
           <div id="pourTuto">
             <div class="tutorial" id="second">
-              Une règle d'éco-conception disponible&nbsp;<a href="/tutorial.html#page">ici</a>
+              Une règle d'éco-conception à afficher&nbsp;<a href="/tutorial#page">ici</a>
             </div>
           </div>
         </div>

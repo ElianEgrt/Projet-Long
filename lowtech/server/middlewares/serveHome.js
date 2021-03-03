@@ -1,60 +1,79 @@
 var path = require('path');
 var cookie = require('localStorage')
-const { fileAge, pageManaging } = require('../utils')
+const { whichContrast, pageManaging } = require('../utils')
 const { genHtml } = require('../../src/index')
 
-let numPage = []
+let numPage = [1, 10]
 
-let serveHome = async (req, res, next) => {
+let serveHome = async (req, res) => {
 
-  // path to static files
+  let fileName, filePath;
+  let shouldGen = false;
   var staticPath = path.join(__dirname, '../../public');
-  let fileName = 'index.html'
-  let filePath = path.join(staticPath, fileName)
-  let age = fileAge(filePath);
-  let shouldGen = false
   
   let categories = ["Populaire", "Récent"]
   let whichPage = req.query["page"]
   let whichPref = req.query["pref"]
-  numPage = pageManaging(whichPage, numPage)
+  let visuallyImpaired = req.query["contrast"]
 
   if (whichPage) {
+    numPage = pageManaging(whichPage, numPage)
     shouldGen = true
     if (cookie.getItem('pref') === "Films récents en premier") {
       categories = ["Récent", "Populaire"]
     }
+    [fileName, filePath] = contrastOrNot(staticPath)
   }
 
   else if (whichPref) {
+    numPage = pageManaging(whichPage, numPage)
     shouldGen = true
     cookie.setItem('pref', whichPref)
     if (whichPref === "Films récents en premier") {
       categories = ["Récent", "Populaire"]
     }
+    [fileName, filePath] = contrastOrNot(staticPath)
   }
 
   else {
-    // Check file age to know if we have to generate it again or not
-    if (age) {
-      if (age > 5 * 60 * 1000) {
-        console.log(`${fileName} is too old, re-building it.`)
-        shouldGen = true
-      } else {
-        console.log(`${fileName} is still fresh enough.`)
-      }
-    } else {
-      console.log(`${fileName} doesn't exist yet, building it.`)
-      shouldGen = true
+    if (cookie.getItem('pref') === "Films récents en premier") {
+      categories = ["Récent", "Populaire"]
     }
+
+    shouldGen = true
+    if (visuallyImpaired && cookie.getItem('contrast') === "on") {
+      cookie.setItem('contrast', "off")
+      fileName = 'index.html'
+    } else if (visuallyImpaired) {
+      cookie.setItem('contrast', "on")
+      fileName = 'indexContrast.html'
+    } else if (cookie.getItem('contrast') === "on") {
+      [shouldGen, fileName] = whichContrast(true)
+    } else {
+      [shouldGen, fileName] = whichContrast(visuallyImpaired)
+    }
+    
+    filePath = path.join(staticPath, fileName)
+
   }
 
   if (shouldGen) {
     genHtml(fileName, { categories, numPage }).then(() => res.sendFile(filePath))
   } else {
-    next()
+    res.sendFile(filePath)
   }
 
+}
+
+function contrastOrNot(staticPath) {
+  if (cookie.getItem('contrast') === "on") {
+    fileName = 'indexContrast.html';
+    filePath = path.join(staticPath, fileName)
+  } else {
+    fileName = 'index.html';
+    filePath = path.join(staticPath, fileName)
+  }
+  return [fileName, filePath]
 }
 
 module.exports = serveHome;

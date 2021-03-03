@@ -3,7 +3,7 @@ const fs = require("fs");
 const fetch = require("node-fetch");
 const TOKEN = "db901b15ecb34557e221c042836a2359";
 
-const buildSearchPage = async (searchedTitle) => {
+const buildSearchPage = async (file, searchedTitle) => {
 
   let url = `https://api.themoviedb.org/3/search/movie?api_key=${TOKEN}&query=${searchedTitle}`
   
@@ -16,7 +16,10 @@ const buildSearchPage = async (searchedTitle) => {
     console.error(error);
   }
 
-  return search(film, searchedTitle)
+  let cssFile
+  file === "search.html" ? cssFile = "search.css" : cssFile = "searchContrast.css"
+
+  return search(film, searchedTitle, cssFile)
 
 };
   

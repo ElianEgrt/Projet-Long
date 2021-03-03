@@ -6,7 +6,7 @@ const homepage = require ('./homepage')
 // Fetch films
 // const filmsResponse = require("./seed")
 
-const buildHomepage = async (categories, numPage) => {
+const buildHomepage = async (file, categories, numPage) => {
   let films = []
   let currentDate = getCurrentDate()
 
@@ -33,7 +33,10 @@ const buildHomepage = async (categories, numPage) => {
     }
   }
 
-  return homepage(films)
+  let cssFile
+  file === "index.html" ? cssFile = "index.css" : cssFile = "indexContrast.css"
+
+  return homepage(films, cssFile)
 
 };
 

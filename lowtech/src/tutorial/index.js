@@ -1,9 +1,11 @@
 const tutorial = require ('./tutorial')
 
-const buildTutorial = () => {
+const buildTutorial = (file) => {
 
-  
-  return tutorial()
+  let cssFile
+  file === 'tutorial.html' ? cssFile = 'tutorial.css' : cssFile = 'tutorialContrast.css'
+
+  return tutorial(cssFile)
 
 };
   
