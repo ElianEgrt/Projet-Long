@@ -41,18 +41,14 @@ const search = (films, searchedTitle, cssFile) => `
                 </form>
               </div>
  
-              <ul class="carac_film">
-                  <div class="titre_film">
-                    <li> ${film.title} </li>
-                  <div/>
-                  <div class="date_note_film">
-                    <li> ${film.release_date} </li>
-                    <li> ${film.vote_average}/10 </li>
-                  <div/>
-                  <div class="overview_film">
-                    <li> ${film.overview} </li>
-                  <div/>
-                </ul>
+              <ul class="carac_film_container">
+                <div class="carac_film">
+                  <li class="titre_film">${film.title}</li>
+                  <li class="date_note_film">${film.release_date}</li>
+                  <li class="date_note_film">${film.vote_average}/10</li>
+                  <li class="overview_film">${film.overview}</li>
+                </div>
+              </ul>
             </div>
           `)
           .join("")}

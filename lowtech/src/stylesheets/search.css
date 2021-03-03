@@ -59,7 +59,7 @@ h2 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(268px, auto);
-    gap: 1em;
+    gap: 2em;
     margin-top: 1em;
 }
 
@@ -70,17 +70,39 @@ h2 {
   height: 300px;
 }
 
-.carac_film {
+.carac_film_container {
     height: auto;
     width: 100%;
     margin: 0;
     padding: 1em;
+}
+
+.carac_film {
+  max-height: 100%;
+  overflow-y: scroll;
+  overflow: auto;
 }
   
 .carac_film li {
     display: block;
     list-style: none;
     max-width: 100%;
+}
+
+.date_note_film {
+  display: inline;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.titre_film {
+  font-size: 1.3em;
+}
+
+.overview_film {
+  margin-top: 0.5em;
+  opacity: 50%;
+  font-size: 1em;
 }
   
 .img_film {
@@ -105,25 +127,4 @@ h2 {
   color: transparent;
   border: 0;
   cursor: pointer;
-}
-
-.date_note_film {
-  display: inline;
-  font-weight: bold;
-  font-size: 1em;
-}
-
-.titre_film {
-  font-size:1.3em;
-  max-height:100%;
-  overflow-y: scroll;
-  overflow: auto;
-
-}
-
-.overview_film {
-  margin-top:0.5em;
-  opacity:50%;
-  font-size: 1em;
-  max-height: 8em;
 }
