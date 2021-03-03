@@ -36,7 +36,9 @@ const search = (films, searchedTitle, cssFile) => `
                 <img alt="Poster non disponible dans la base de données" class="img_film"
                 src="https://image.tmdb.org/t/p/w200${film.poster_path}"
                 />
-               <a href="/watch"></a>
+                <form action="/watch">
+                  <input name="title" value="${film.title}" type="submit"></a>
+                </form>
               </div>
  
               <ul class="carac_film">

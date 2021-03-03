@@ -67,7 +67,7 @@ body {
   .film {
     border-radius: 0.5em;
     display: inline-flex;
-    height: 277.5px;
+    height: 300px;
     border: solid;
   }
   
@@ -85,15 +85,15 @@ body {
   }
     
   .img_film {
-      width: 182px;
-      height: 277.5px;
+      width: 200px;
+      height: 300px;
   }
   
   .img_film_overlay {
       position: relative;
   }
     
-  .img_film_overlay a {
+  .img_film_overlay input {
       position: absolute;
       display: block;
       background: url(https://www.slatecube.com/images/play-btn.png);
@@ -103,7 +103,11 @@ body {
       left: 66px;
       background-size: 50px 50px;
       background-repeat: no-repeat;
+      color: transparent;
+      border: 0;
+      cursor: pointer;
   }
+
   .date_note_film {
     display: inline;
     font-weight: bold;
@@ -120,7 +124,7 @@ body {
   
   .overview_film {
     margin-top:0.5em;
-    opacity:50%;
+    opacity:100%;
     font-size: 1em;
     max-height: 8em;
   }
