@@ -21,6 +21,8 @@ import Player from "./containers/Player";
 
 import Cookie from "./components/Cookie";
 
+import { withRouter } from "react-router-dom";
+
 import {
   AuthContext,
   AuthContextType,
@@ -29,6 +31,8 @@ import {
   useToken,
   useUserInfo,
 } from "./context";
+
+const ChatboxWithRoute = withRouter((props) => <Chatbox {...props} />);
 
 function App() {
   const { token, setToken } = useToken();
@@ -208,7 +212,7 @@ function App() {
               </>
             )}
           </Switch>
-          <Chatbox />
+          <ChatboxWithRoute />
           <Cookie />
         </AuthContext.Provider>
       </ThemeProvider>

@@ -5,6 +5,7 @@ import SendMessageForm from "../components/SendMessageForm";
 import { SiProbot } from "react-icons/si";
 import ChatHeader from "../components/ChatHeader";
 import { IconContext } from "react-icons";
+import { RouteComponentProps } from "react-router-dom";
 
 const Container = styled.div`
   background-color: ${(props) => props.theme.colors.secondaryColor};
@@ -74,7 +75,9 @@ interface State {
   active: boolean;
 }
 
-interface Props {}
+interface Props {
+  location?: any;
+}
 
 class Chatbox extends React.Component<Props, State> {
   messagesEnd: any;
@@ -114,40 +117,48 @@ class Chatbox extends React.Component<Props, State> {
   };
 
   render() {
-    return this.state.active ? (
-      <Container>
-        <ChatHeader minimizeFunc={this.handleActive} />
-        <ConversationContainer>
-          {this.state.messages.map((message) => (
-            <Message message={message} />
-          ))}
-          <div
-            style={{ float: "left", clear: "both" }}
-            ref={(el) => {
-              this.messagesEnd = el;
-            }}
-          ></div>
-        </ConversationContainer>
-        <SendMessageForm sendFunc={this.sendMessageFunc} />
-      </Container>
-    ) : (
-      <MinimizedContainer
-        onClick={() => {
-          this.handleActive();
-        }}
-      >
-        <MinimizedMessageContainer>
-          <Message message={{ message: "Besoin d'aide ?", userSent: false }} />
-        </MinimizedMessageContainer>
-        <MinimizedInnerContainer>
-          <IconContext.Provider value={{ size: "4em" }}>
-            <div>
-              <SiProbot />
-            </div>
-          </IconContext.Provider>
-        </MinimizedInnerContainer>
-      </MinimizedContainer>
-    );
+    const location = this.props.location.pathname;
+
+    if (location === "/play") {
+      return <></>;
+    } else {
+      return this.state.active ? (
+        <Container>
+          <ChatHeader minimizeFunc={this.handleActive} />
+          <ConversationContainer>
+            {this.state.messages.map((message) => (
+              <Message message={message} />
+            ))}
+            <div
+              style={{ float: "left", clear: "both" }}
+              ref={(el) => {
+                this.messagesEnd = el;
+              }}
+            ></div>
+          </ConversationContainer>
+          <SendMessageForm sendFunc={this.sendMessageFunc} />
+        </Container>
+      ) : (
+        <MinimizedContainer
+          onClick={() => {
+            this.handleActive();
+          }}
+        >
+          <MinimizedMessageContainer>
+            <Message
+              message={{ message: "Besoin d'aide ?", userSent: false }}
+            />
+          </MinimizedMessageContainer>
+          <MinimizedInnerContainer>
+            <IconContext.Provider value={{ size: "4em" }}>
+              <div>
+                <SiProbot />
+              </div>
+            </IconContext.Provider>
+          </MinimizedInnerContainer>
+        </MinimizedContainer>
+      );
+    }
   }
 }
 
