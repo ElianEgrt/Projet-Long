@@ -24,14 +24,6 @@ class Player extends React.Component {
             "https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm",
         },
       ],
-      subtitles: [
-        {
-          language: "en",
-          url: "https://peng666.github.io/react-awesome-player/en.vtt",
-          label: "en-US",
-        },
-      ],
-      defaultSubtitle: "en",
     },
   };
   loadeddata() {

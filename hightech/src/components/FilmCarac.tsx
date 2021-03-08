@@ -30,7 +30,7 @@ const Meta = styled.div`
 
 const Text = styled.div`
   font-size: 1em;
-  opacity: 60%;
+  opacity: 0.5;
   overflow-y: scroll;
 `;
 
