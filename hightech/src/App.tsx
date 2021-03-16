@@ -53,7 +53,7 @@ function App() {
     };
     try {
       let response = await fetch(
-        "http://chanch.freeboxos.fr:12121/api/users/login",
+        "http://localhost:8000/api/users/login",
         requestOptions
       );
       const data = await response.json();
@@ -95,7 +95,7 @@ function App() {
     };
     try {
       let response = await fetch(
-        "http://chanch.freeboxos.fr:12121/api/users/current",
+        "http://localhost:8000/api/users/current",
         requestOptions
       );
       const data = await response.json();
@@ -126,7 +126,7 @@ function App() {
     };
     try {
       let response = await fetch(
-        "http://chanch.freeboxos.fr:12121/api/users/current",
+        "http://localhost:8000/api/users/current",
         requestOptions
       );
       const data = await response.json();
@@ -152,7 +152,7 @@ function App() {
       },
     };
     let response = await fetch(
-      "http://chanch.freeboxos.fr:12121/api/users/register",
+      "http://localhost:8000/api/users/register",
       requestOptions
     );
     const data = await response.json();
