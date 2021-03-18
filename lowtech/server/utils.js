@@ -1,5 +1,6 @@
 const fs = require('fs');
 var path = require('path');
+var cookie = require('localStorage')
 
 function msToTime(duration) {
   var milliseconds = parseInt((duration % 1000) / 100),
@@ -52,7 +53,7 @@ function pageManaging (whichPage, numPage) {
   return numPage
 }
 
-function whichContrast(visuallyImpaired) {
+function homepageBuildingOrNot(visuallyImpaired) {
   var staticPath = path.join(__dirname, '../public');
   let fileName
   visuallyImpaired ? fileName = 'indexContrast.html' : fileName = 'index.html'
@@ -73,8 +74,22 @@ function whichContrast(visuallyImpaired) {
   return [true, fileName]
 }
 
+function fileContrastedOrNot(staticPath) {
+  if (cookie.getItem('contrast') === "on") {
+    fileName = 'indexContrast.html';
+    filePath = path.join(staticPath, fileName)
+  
+  } else {
+    fileName = 'index.html';
+    filePath = path.join(staticPath, fileName)
+  }
+
+  return [fileName, filePath]
+}
+
 module.exports = {
   msToTime,
   pageManaging,
-  whichContrast
+  homepageBuildingOrNot,
+  fileContrastedOrNot
 }

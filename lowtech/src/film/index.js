@@ -1,7 +1,5 @@
 const filmPage = require ('./film')
 
-// Fetch films
-// const filmsResponse = require("./seed")
 const buildFilmPage = (file, filmPath, filmCaptionsPath, filmNameOrigin) => {
   
   let cssFile

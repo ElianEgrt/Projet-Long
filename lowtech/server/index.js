@@ -19,7 +19,6 @@ app.use(logger);        // log requests
 app.use(compression())  // compress all responses
 
 app.get('/', serveHome);
-// app.get('/watch/:filmFile', serveFilm);
 app.get('/watch', serveFilm);
 app.get('/search', serveSearch);
 app.get('/tutorial', serveTutorial);

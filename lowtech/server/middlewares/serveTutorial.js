@@ -1,7 +1,6 @@
 var path = require('path');
 var cookie = require('localStorage')
 
-// Check file age
 let serveTutorial = async (req, res) => {
 
   // path to static files

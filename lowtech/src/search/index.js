@@ -1,5 +1,4 @@
 const search = require ('./search')
-const fs = require("fs");
 const fetch = require("node-fetch");
 const TOKEN = "db901b15ecb34557e221c042836a2359";
 

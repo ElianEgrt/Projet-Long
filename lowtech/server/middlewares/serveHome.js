@@ -1,8 +1,9 @@
 var path = require('path');
 var cookie = require('localStorage')
-const { whichContrast, pageManaging } = require('../utils')
+const { pageManaging, homepageBuildingOrNot, fileContrastedOrNot } = require('../utils')
 const { genHtml } = require('../../src/index')
 
+// Managing which page to display (based on a page number system)
 let numPage = [1, 10]
 
 let serveHome = async (req, res) => {
@@ -11,9 +12,13 @@ let serveHome = async (req, res) => {
   let shouldGen = false;
   var staticPath = path.join(__dirname, '../../public');
   
+  // Categories displayed on the homepage
   let categories = ["Populaire", "Récent"]
+  // To address the request of the next or previous page, we recover the query
   let whichPage = req.query["page"]
+  // To address the request to change preferences, we recover the query
   let whichPref = req.query["pref"]
+  // To address the request to change font size & contrast, we recover the query
   let visuallyImpaired = req.query["contrast"]
 
   if (whichPage) {
@@ -22,7 +27,7 @@ let serveHome = async (req, res) => {
     if (cookie.getItem('pref') === "Films récents en premier") {
       categories = ["Récent", "Populaire"]
     }
-    [fileName, filePath] = contrastOrNot(staticPath)
+    [fileName, filePath] = fileContrastedOrNot(staticPath)
   }
 
   else if (whichPref) {
@@ -32,7 +37,7 @@ let serveHome = async (req, res) => {
     if (whichPref === "Films récents en premier") {
       categories = ["Récent", "Populaire"]
     }
-    [fileName, filePath] = contrastOrNot(staticPath)
+    [fileName, filePath] = fileContrastedOrNot(staticPath)
   }
 
   else {
@@ -44,13 +49,16 @@ let serveHome = async (req, res) => {
     if (visuallyImpaired && cookie.getItem('contrast') === "on") {
       cookie.setItem('contrast', "off")
       fileName = 'index.html'
+      
     } else if (visuallyImpaired) {
       cookie.setItem('contrast', "on")
       fileName = 'indexContrast.html'
+    
     } else if (cookie.getItem('contrast') === "on") {
-      [shouldGen, fileName] = whichContrast(true)
+      [shouldGen, fileName] = homepageBuildingOrNot(true)
+    
     } else {
-      [shouldGen, fileName] = whichContrast(visuallyImpaired)
+      [shouldGen, fileName] = homepageBuildingOrNot(visuallyImpaired)
     }
     
     filePath = path.join(staticPath, fileName)
@@ -63,17 +71,6 @@ let serveHome = async (req, res) => {
     res.sendFile(filePath)
   }
 
-}
-
-function contrastOrNot(staticPath) {
-  if (cookie.getItem('contrast') === "on") {
-    fileName = 'indexContrast.html';
-    filePath = path.join(staticPath, fileName)
-  } else {
-    fileName = 'index.html';
-    filePath = path.join(staticPath, fileName)
-  }
-  return [fileName, filePath]
 }
 
 module.exports = serveHome;

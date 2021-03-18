@@ -1,10 +1,6 @@
-const fs = require("fs");
 const fetch = require("node-fetch");
 const TOKEN = "db901b15ecb34557e221c042836a2359";
 const homepage = require ('./homepage')
-
-// Fetch films
-// const filmsResponse = require("./seed")
 
 const buildHomepage = async (file, categories, numPage) => {
   let films = []
@@ -20,9 +16,7 @@ const buildHomepage = async (file, categories, numPage) => {
       url = `https://api.themoviedb.org/3/discover/movie?api_key=${TOKEN}&primary_release_date.gte=2020-06-01&primary_release_date.lte=${currentDate}&sort_by=primary_release_date.desc&page=${numPage[0]}`
     }
 
-    else {
-
-    }
+    // Add some "else if" if you want more categories or movies displayed
     
     try {
         let response = await fetch(url)           // wait for api fetch

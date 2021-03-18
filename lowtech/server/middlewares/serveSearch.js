@@ -2,7 +2,6 @@ var path = require('path');
 const { genHtml } = require('../../src/index');
 var cookie = require('localStorage')
 
-// Check file age
 let serveSearch = async (req, res, next) => {
 
   // path to static files
