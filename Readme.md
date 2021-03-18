@@ -65,7 +65,7 @@ const buildPublic = require("../src/build");
 
 This build the `public` folder which contains all _.html_ and _.css_ files to run our website.
 
-In addition, to manage the dynamical side of our website, an asynchronous function (`javascript genHtml` specified in `src/index.js`) is called each time the website user asks for a dynamical content (to generate the html files according to this request and store them in the `public` folder).
+In addition, to manage the dynamical side of our website, an asynchronous function (```javascript genHtml``` specified in `src/index.js`) is called each time the website user asks for a dynamical content (to generate the html files according to this request and store them in the `public` folder).
 
 Express simply serve all these files located in the `public` folder.
 
