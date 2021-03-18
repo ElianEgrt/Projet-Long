@@ -72,3 +72,21 @@ app.use(express.static("../public"));
 ```
 
 ## Hightech
+
+Our goal here was to load the browser with a lot of processing work, since end devices have the most ecological impact. A client-side rendering framework was the obvious way to go, and because one of us already had done some apps with ReactJS, this is what we went with.
+
+React is actually pretty simple to learn and there are a lot libraries with custom components to help you do complex things. For the rest of this section we'll assume you have basic knowledge of how React works. If it's not the case, [here is a where you need to start](reactjs.org/docs/getting-started.html).
+
+Our `src/App.tsx` file is the entry to the project. Here, we use [`react-router-dom`](https://reactrouter.com/web/) to navigate through our single page app (_SPA_).
+
+```jsx
+// src/App.tsx
+
+return (
+  <Redirect exact from="/" to="/home" />
+  <Route exact path="/home" component={Home} />
+  <Route exact path="/tutorial" component={Tutorial} />
+  <Route exact path="/profile" component={UserProfile} />
+  <Route exact path="/play" component={Player} />
+)
+```
