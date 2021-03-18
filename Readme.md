@@ -32,8 +32,8 @@ In order to run the `hightech` website, you will need a local (or distant) mongo
 
 - Open a terminal in the following locations :
   - `./lowtech` and run `npm i && npm start`
-  - `./hightech` and run `npm run build`
-  - `./hightech-server` and run `npm start`
+  - `./hightech` and run `npm i && npm run build`
+  - `./hightech-server` and run `npm i && npm start`
 
 If everything runs smoothly, you will be able to use the `lowtech` website at [localhost:3000](localhost:3000) and the `hightech` at [localhost:8000](localhost:8000).
 
@@ -47,13 +47,14 @@ If you want to re-use our code or if you are just curious about more technical i
 
 Our goal here was to match as close as possible a static website. Static pages don't involve any processing power from the server nor the device, which was obviously the goal for an eco-friendly page.
 
+# Server
 We went with a NodeJS server (using express) in order to compensate for the lack of front-end javascript we wanted to avoid.
 
 <p align="center">
     <img src="images/lowtech-server.png" alt="Logo" height="200">
 </p>
 
-On startup, the server asks the sources to build themselves once.
+On startup, the server asks the static sources to build themselves once.
 
 ```javascript
 // server/index.js
@@ -63,7 +64,9 @@ const buildPublic = require("../src/build");
 
 This build the `public` folder which contains all _.html_ and _.css_ files to run our website.
 
-Express then simply serve these files.
+In addition, to manage the dynamical side of our website, an asynchronous function (```javascript genHtml``` specified in `src/index.js`) is called each time the  website user asks for a dynamical content (to generate the html files according to this request and store them in the `public` folder).
+
+Express simply serve all these files located in the `public` folder.
 
 ```javascript
 // server/index.js
@@ -71,22 +74,8 @@ Express then simply serve these files.
 app.use(express.static("../public"));
 ```
 
+# Movies
+To recover the information on movies, we used the online API _The Movie Database API_ available [here](https://developers.themoviedb.org/3/getting-started/introduction).
+To simplify our project (to avoid a database management in particular), we decided not to store the whole movies (video files) available on the api. We only stored a unique movie on server.
+
 ## Hightech
-
-Our goal here was to load the browser with a lot of processing work, since end devices have the most ecological impact. A client-side rendering framework was the obvious way to go, and because one of us already had done some apps with ReactJS, this is what we went with.
-
-React is actually pretty simple to learn and there are a lot libraries with custom components to help you do complex things. For the rest of this section we'll assume you have basic knowledge of how React works. If it's not the case, [here is a where you need to start](reactjs.org/docs/getting-started.html).
-
-Our `src/App.tsx` file is the entry to the project. Here, we use [`react-router-dom`](https://reactrouter.com/web/) to navigate through our single page app (_SPA_).
-
-```jsx
-// src/App.tsx
-
-return (
-  <Redirect exact from="/" to="/home" />
-  <Route exact path="/home" component={Home} />
-  <Route exact path="/tutorial" component={Tutorial} />
-  <Route exact path="/profile" component={UserProfile} />
-  <Route exact path="/play" component={Player} />
-)
-```
