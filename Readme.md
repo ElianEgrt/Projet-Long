@@ -65,9 +65,11 @@ const buildPublic = require("../src/build");
 
 This build the `public` folder which contains all _.html_ and _.css_ files to run our website.
 
-In addition, to manage the dynamical side of our website, an asynchronous function (`genHtml` specified in `src/index.js`) is called each time the website user asks for a dynamical content (to generate the html files according to this request and store them in the `public` folder).
+In addition, to manage the dynamical side of the homepage, an asynchronous function (`genHtml` specified in `src/index.js`) is called each time the website user asks for a dynamical content (preferences, high font size and contrast mode, search bar & page navigation), to generate the html files according to this request and store them in the `public` folder.
 
-Express simply serves all these files located in the `public` folder.
+All the homepage dynamical content is implemented and managed thanks to the HTML ```html <form>```. It allows to use GET requests along with parameters, that are then recovered in `serveFilm.js`, `serveHome.js` & `serveSearch.js` located in `server/middlewares/` folder.
+
+Finally, Express simply serves the HTML and CSS files located in the `public` folder.
 
 ```javascript
 // server/index.js
@@ -79,7 +81,10 @@ app.use(express.static("../public"));
 
 To recover the information on movies, we used the online API _The Movie Database API_ available [here](https://developers.themoviedb.org/3/getting-started/introduction).
 
-To simplify our project (to avoid a database management in particular), we decided not to store the whole movies (video files) available on the api. We only stored a unique movie on server.
+To simplify our project (to avoid a database management in particular), we decided not to store the whole movies (video files) available on the api. We only stored a unique movie on the server, which is played each time you click on a play symbol on the homepage.
+
+### Tutorial
+
 
 ## Hightech
 
