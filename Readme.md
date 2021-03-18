@@ -63,11 +63,11 @@ On startup, the server asks the static sources to build themselves once.
 const buildPublic = require("../src/build");
 ```
 
-This build the `public` folder which contains all _.html_ and _.css_ files to run our website.
+This builds the `public` folder which contains all _.html_ and _.css_ files to run our website.
 
 In addition, to manage the dynamical side of the homepage, an asynchronous function (`genHtml` specified in `src/index.js`) is called each time the website user asks for a dynamical content (preferences, high font size and contrast mode, search bar & page navigation), to generate the html files according to this request and store them in the `public` folder.
 
-All the homepage dynamical content is implemented and managed thanks to the HTML ```html <form>```. It allows to use GET requests along with parameters, that are then recovered in `serveFilm.js`, `serveHome.js` & `serveSearch.js` located in `server/middlewares/` folder.
+All the homepage dynamic content is implemented and managed thanks to the `<form>` HTML tag. It allows to use GET requests along with parameters which are then recovered in `serveFilm.js`, `serveHome.js` & `serveSearch.js` located in the `server/middlewares/` folder.
 
 Finally, Express simply serves the HTML and CSS files located in the `public` folder.
 
