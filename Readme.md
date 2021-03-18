@@ -11,7 +11,7 @@
 
 ## About
 
-Initiated by _Accenture_, the project was meant to bring to light how one could design or re-design a webpage in order to reduce it's ecological impact. We achieved it by designing two separate apps : a standard one and an eco-friendly one. We defined a business case that would be as harmfull as possible for the environnement, but also not too fancy. We went for a streaming app like _Netflix_ of _Prime_. For convenience, we called them respectively `hightech` and `lowtech`.
+Initiated by _Accenture_, the project was meant to bring to the light how we could design or re-design a webpage in order to reduce it's ecological impact. We achieved it by designing two separate apps : a standard one and an eco-friendly one. For convenience, we called them respectively `hightech` and `lowtech`. We defined a business case that would be as harmfull as possible for the environnement, but also not too fancy. We went for a streaming app like _Netflix_ of _Prime_.
 
 **We do not maintain any of this anymore, if you want to use the code feel free to fork.**
 
@@ -28,7 +28,7 @@ In order to run any of the two web sites you need the following installed on you
 - NodeJS : follow the [official guide](https://nodejs.org/en/) for your operating system.
 - Clone the repository on your machine.
 
-In order to run the `hightech` webstie, you will need a local (or distant) mongoDB database. [Here is how](https://www.mongodb.com/try/download/community).
+In order to run the `hightech` website, you will need a local (or distant) mongoDB database. [Here is how](https://www.mongodb.com/try/download/community).
 
 - Open a terminal in the following locations :
   - `./lowtech` and run `npm i && npm start`
