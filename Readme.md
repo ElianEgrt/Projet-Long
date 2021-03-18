@@ -32,7 +32,7 @@ In order to run the `hightech` website, you will need a local (or distant) mongo
 
 - Open a terminal in the following locations :
   - `./lowtech` and run `npm i && npm start`
-  - `./hightech` and run `npm build`
+  - `./hightech` and run `npm run build`
   - `./hightech-server` and run `npm start`
 
 If everything runs smoothly, you will be able to use the `lowtech` website at [localhost:3000](localhost:3000) and the `hightech` at [localhost:8000](localhost:8000).
