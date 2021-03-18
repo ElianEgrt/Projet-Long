@@ -28,7 +28,7 @@ In order to run any of the two web sites you need the following installed on you
 - NodeJS : follow the [official guide](https://nodejs.org/en/) for your operating system.
 - Clone the repository on your machine.
 
-In order to run the `hightech` website, you will need a local (or distant) mongoDB database. [Here is how](https://www.mongodb.com/try/download/community).
+In order to run the `hightech` website, you will need a local (or distant) mongoDB database. [Here is how to install and launch mongodb server](https://docs.mongodb.com/manual/installation/) (Choose the MongoDB Community Edition Installation Tutorial referring to your OS & follow the _install_ and _run_ sections).
 
 - Open a terminal in the following locations :
   - `./lowtech` and run `npm i && npm start`
