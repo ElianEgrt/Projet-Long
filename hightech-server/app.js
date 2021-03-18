@@ -27,7 +27,7 @@ app.use(session({ secret: 'hightech', cookie: { maxAge: 60000 }, resave: false, 
 
 //Configure Mongoose
 try {
-  mongoose.connect('mongodb://localhost/hightech', { useNewUrlParser: true, useUnifiedTopology: true });
+  mongoose.connect('mongodb://127.0.0.1/hightech', { useNewUrlParser: true, useUnifiedTopology: true });
   mongoose.set('debug', true);
 } catch (error) {
   // console.error(error)
