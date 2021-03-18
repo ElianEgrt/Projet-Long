@@ -47,7 +47,7 @@ If you want to re-use our code or if you are just curious about more technical i
 
 Our goal here was to match as close as possible a static website. Static pages don't involve any processing power from the server nor the device, which was obviously the goal for an eco-friendly page.
 
-# Server
+### Server
 
 We went with a NodeJS server (using express) in order to compensate for the lack of front-end javascript we wanted to avoid.
 
@@ -75,9 +75,10 @@ Express simply serve all these files located in the `public` folder.
 app.use(express.static("../public"));
 ```
 
-# Movies
+### Movies
 
 To recover the information on movies, we used the online API _The Movie Database API_ available [here](https://developers.themoviedb.org/3/getting-started/introduction).
+
 To simplify our project (to avoid a database management in particular), we decided not to store the whole movies (video files) available on the api. We only stored a unique movie on server.
 
 ## Hightech
