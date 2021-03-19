@@ -83,8 +83,6 @@ To recover the information on movies, we used the online API _The Movie Database
 
 To simplify our project (to avoid a database management in particular), we decided not to store the whole movies (video files) available on the api. We only stored a unique movie on the server, which is played each time you click on a play symbol on the homepage.
 
-### Tutorial
-
 ## Hightech
 
 Our goal here was to load the browser with a lot of processing work, since end devices have the most ecological impact. A client-side rendering framework was the obvious way to go, and because one of us already had done some apps with ReactJS, this is what we went with.
