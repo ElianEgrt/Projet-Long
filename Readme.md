@@ -85,10 +85,13 @@ To simplify our project (to avoid a database management in particular), we decid
 
 ### Tutorial
 
-
 ## Hightech
 
 Our goal here was to load the browser with a lot of processing work, since end devices have the most ecological impact. A client-side rendering framework was the obvious way to go, and because one of us already had done some apps with ReactJS, this is what we went with.
+
+For the backend, we used express alongside with [mongoose](https://mongoosejs.com/) for our Mongo database and [passport.js](http://www.passportjs.org/) for authentication.
+
+### Frontend
 
 React is actually pretty simple to learn and there are a lot libraries with custom components to help you do complex things. For the rest of this section we'll assume you have basic knowledge of how React works. If it's not the case, [here is a where you need to start](reactjs.org/docs/getting-started.html).
 
@@ -105,3 +108,58 @@ return (
   <Route exact path="/play" component={Player} />
 )
 ```
+
+In order to control wether tu user is authenticated or not, we use a custom [react hook](https://reactjs.org/docs/hooks-intro.html).
+
+```jsx
+// src/App.tsx
+
+const { token, setToken } = useToken();
+
+...
+
+return (
+  {token ? (
+    // home page
+  ) : (
+    // login or register page
+  )}
+)
+```
+
+Our `useToken` hook is only responsible for fetching the user token from the browser's [session storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage). API calls to our `/login` or `/register` endpoints are defined in `src/App.tsx` and passed within a [react context](https://reactjs.org/docs/context.html) so that they would be usable anywhere within our components.
+
+Next, you will find the different pages of our app in `src/containers`, and their individual components in `src/components`.
+
+### Backend
+
+Our backend is once again in expressjs, with various middlewares to implement user authentication and database support.
+
+We define a `User` schema for mongoose in `models/Users.js` with its different methods. For instance :
+
+```js
+// models/Users.js
+
+UsersSchema.methods.setPassword = function (password) {
+  this.salt = crypto.randomBytes(16).toString("hex");
+  this.hash = crypto
+    .pbkdf2Sync(password, this.salt, 10000, 512, "sha512")
+    .toString("hex");
+};
+```
+
+This method saves a hashed version of a given `password` to the database.
+
+In `config/passport.js` we define a local strategy for passport to operate, and in `routes` you will find our different endpoints.
+
+Thanks to the express middleware implementation, we are able to create routes only accessible with a valid authentication token. To do that, we define the `auth.required` and `auth.optionnal` object in `routes/auth.js`, and we pass one or the other as an option to our route implementation.
+
+```js
+// routes/api/users.js
+
+router.post('/login', auth.optional, (req, res, next) => {
+  ...
+}
+```
+
+Finally we serve statically our frontend build from `./hightech/build` and the whole website now works.
